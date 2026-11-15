@@ -6,6 +6,10 @@ from emotion_sequences import SEQUENCES
 from behaviour import SCENES
 assert len(showcase.KEYS)==46 and len(set(showcase.KEYS))==46
 assert set(showcase.KEYS)==set(SEQUENCES)|set(SCENES)
+for key in showcase.KEYS:
+ frames=showcase.timeline(key)
+ assert sum(d for _,d in frames)==500,key
+ assert len(frames)<=10 and all(d>=50 for _,d in frames),key
 class Changed(Exception):pass
 class Display:
  def __init__(self):self.inverted=None

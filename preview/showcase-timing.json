@@ -1,0 +1,12 @@
+{
+  "target_ms_per_polarity": 500,
+  "observed_http_intervals_seconds": [
+    0.383,
+    0.564,
+    1.139,
+    0.612,
+    0.414,
+    0.58
+  ],
+  "note": "HTTP polling observation includes network delay, not optical frame timing."
+}

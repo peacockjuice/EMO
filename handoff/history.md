@@ -70,3 +70,5 @@ Review tightened verification rather than changing the approved personality: sho
 ## Fast all-variants showcase
 
 User requested a fast endless tour including inverted variants. Added Все подряд (demo): 40 animations and six scenes, paired normal/inverse, with pre-demo inversion restored on exit. This is a user-facing preview mode, not the deferred 30-minute regression test.
+
+User shortened showcase to 0.5 seconds per variant per polarity. Ten time samples bound long scenes to the same preview duration; normal manual scenes and animations are unchanged.

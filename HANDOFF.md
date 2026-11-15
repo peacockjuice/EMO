@@ -47,7 +47,7 @@ Local cancellation, transition, wraparound, inversion and web-handler checks pas
 
 ## Fast showcase mode
 
-The Все подряд button selects demo. showcase.py loops through all 40 canonical frame animations and six composite scenes; each is shown normally then inverted. Aliases are omitted because they repeat the same content; auto is a scheduler, not an additional visual variant. Each basic animation is compressed/repeated to about 1.5 seconds; each scene to about 3 seconds (40 ms minimum frame duration). Loop repeats indefinitely. API showing identifies the current variant; mood remains demo. UI displays the variant and inversion, disables the inversion checkbox during the tour.
+The Все подряд button selects demo. showcase.py loops through all 40 canonical frame animations and six composite scenes; each is shown normally then inverted. Aliases are omitted because they repeat the same content; auto is a scheduler, not an additional visual variant. Each animation and scene is sampled into a 500 ms preview per polarity: ten 50 ms samples with matching neighbours merged. Long scenes are abbreviated, not fully played. A complete 46-variant paired cycle targets 46 seconds plus command overhead. Loop repeats indefinitely. API showing identifies the current variant; mood remains demo. UI displays the variant and inversion, disables the inversion checkbox during the tour.
 
 Selecting another mode cancels demo and restores pre-demo inversion. Explicit API inversion changes during demo update that restored preference. Re-entering demo restarts it; reconnection restarts the tour. Local checks: tools/check_showcase.py, tools/check_web.mjs. The normal frame bank is unchanged.
 

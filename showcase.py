@@ -5,14 +5,22 @@ KEYS=tuple("rosto%02d"%i for i in range(1,31))+tuple(k for k in sorted(SEQUENCES
 def timeline(key):
  if key in SCENES:
   source=[frame for mode,count in SCENES[key][1] for _ in range(count) for frame in SEQUENCES[mode]]
-  target=3000
  else:
-  source=SEQUENCES[key];target=1500
-  # Short speech loops repeat, so their shape remains visible.
+  source=SEQUENCES[key]
   duration=sum(t for _,t in source)
-  source=source*max(1,(target+duration-1)//duration)
- total=sum(t for _,t in source)
- return [(index,max(40,int(duration*target/total))) for index,duration in source]
+  source=source*max(1,(500+duration-1)//duration)
+ # Ten 50ms samples keep even long scenes inside a 500ms preview budget.
+ # Retain the endpoints; merge equal neighbours to avoid redundant I2C writes.
+ total=sum(t for _,t in source);result=[]
+ for sample in range(10):
+  position=sample*(total-1)//9;elapsed=0
+  for index,duration in source:
+   elapsed+=duration
+   if position<elapsed:break
+  if result and result[-1][0]==index:
+   result[-1]=(index,result[-1][1]+50)
+  else:result.append((index,50))
+ return result
 async def run(o,play):
  import bmo
  bmo.S["feeling"]=None;bmo.S["scene"]=None;bmo.S["phase"]="demo"

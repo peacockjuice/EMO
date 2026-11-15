@@ -1,8 +1,8 @@
 {
-  "observed_at": "2026-11-15T08:45:17.102335+00:00",
+  "observed_at": "2026-11-15T08:46:27.800940+00:00",
   "url": "http://192.168.1.43/",
   "state": {
-    "showing": "rosto06",
+    "showing": "rosto04",
     "scene": null,
     "mood": "demo",
     "invert": true,
@@ -44,8 +44,8 @@
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
     },
     "showcase.py": {
-      "bytes": 1237,
-      "sha256": "93e87d632b0d8dee67a97e45af87dae7e34d62a47b95685e5fbd0e8570a1fc21"
+      "bytes": 1499,
+      "sha256": "73138a5066ae1f36aae7baa2338209d9e4dde5218a01d44cc867681d9c8b9946"
     }
   },
   "scope": "Showcase local complete coverage and live inversion/cancellation smoke test passed; HTML equality verified. Full hardware showcase cycle not instrumented; 30-minute character soak remains deferred."
