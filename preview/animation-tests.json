@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Static starting poses and frame bounds",
+    "status": "passed"
+  },
+  {
+    "name": "Board bank matches build SHA256",
+    "status": "passed"
+  },
+  {
+    "name": "Two full cycles per animation with concurrent HTTP requests",
+    "status": "passed"
+  },
+  {
+    "name": "Rapid switching and invalid command",
+    "status": "passed"
+  },
+  {
+    "name": "Physical screen readability",
+    "status": "skipped",
+    "message": "Requires user visual assessment"
+  }
+]

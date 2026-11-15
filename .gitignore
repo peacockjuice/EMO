@@ -1,0 +1,15 @@
+# Private board configuration and local environments
+wifi_cfg.py
+ap_cfg.py
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+# Serial output can contain the home network name
+*.log

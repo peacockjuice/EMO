@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-11-15T06:57:01.008704+00:00",
+  "url": "http://192.168.1.43/",
+  "state": {
+    "mood": "talk_bobo",
+    "invert": false
+  },
+  "served_html_matches_local": true,
+  "local_runtime_files": {
+    "main.py": {
+      "bytes": 21,
+      "sha256": "5ed812ab212b487355cdd7fccee1d73a6543a8c77f9ba9caf1da6bd6bfd8f8be"
+    },
+    "bmo.py": {
+      "bytes": 5308,
+      "sha256": "e1dc112d4168c37d013839c6de87bf7698f7aa767c561619cdafd3934a9257c5"
+    },
+    "emotions.py": {
+      "bytes": 1282,
+      "sha256": "d76f3162d8b9efbc133dd638bc6b3cb13561110b88d6e78d06bacd26eed4a9bf"
+    },
+    "emotion_sequences.py": {
+      "bytes": 2880,
+      "sha256": "85b7ed3efee07097dff027ecf879f028418b2dd25101adf97ef19a5495ed70fa"
+    },
+    "emotions.bin": {
+      "bytes": 106496,
+      "sha256": "a6c6877e1ef85acee01da8e1be34efa9756bac2db1e533cc94baa70c7f70e768"
+    },
+    "index.html": {
+      "bytes": 23256,
+      "sha256": "072ed8487924d3cfe5ea4ac0f37ef74e84bdf635e6976565033f049f0cea3763"
+    },
+    "ssd1306.py": {
+      "bytes": 4922,
+      "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
+    }
+  },
+  "scope": "Read-only HTTP and local file inspection; no new hardware regression or board runtime readback."
+}

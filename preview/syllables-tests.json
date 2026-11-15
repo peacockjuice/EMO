@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Four syllable modes: completed cycles with inversion off/on",
+    "status": "passed"
+  },
+  {
+    "name": "HTTP polling, mode changes, aliases and automatic mode",
+    "status": "passed"
+  },
+  {
+    "name": "Distinct vowel shapes, three repetitions and lip closures",
+    "status": "passed"
+  },
+  {
+    "name": "Existing animation bank and timelines unchanged",
+    "status": "passed"
+  }
+]

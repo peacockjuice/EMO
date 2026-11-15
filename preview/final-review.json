@@ -1,0 +1,26 @@
+[
+  {
+    "severity": "medium",
+    "title": "При обрыве связи терялся выбор эмоции",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/index.template.html",
+    "detail": "pending очищался до ответа сервера. После ошибки повторное подключение запрашивало /state вместо повторения /set. Новый тест воспроизвёл потерю выбора.",
+    "fix": "Не подтверждённая команда сохраняется до ручного повтора; более поздний выбор имеет приоритет.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Тест восстановления связи пропускал сбой команды",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/check_web.mjs",
+    "detail": "Проверялся только отказ фонового /state. Это не проверяло сохранение пользовательского действия.",
+    "fix": "Добавлены отдельные сценарии: сбой /set → повтор, сбой /set → новый выбор → повтор.",
+    "status": "fixed"
+  },
+  {
+    "severity": "low",
+    "title": "Статус обещал больше, чем подтверждает API",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/index.template.html",
+    "detail": "«На экране» описывало выбранный режим, включая auto, а не фактически видимое лицо.",
+    "fix": "Статус теперь говорит «Выбрано».",
+    "status": "fixed"
+  }
+]

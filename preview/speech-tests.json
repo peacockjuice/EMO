@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Three speech variants complete cycles with inversion off and on",
+    "status": "passed"
+  },
+  {
+    "name": "HTTP polling, rapid switching, legacy aliases and auto",
+    "status": "passed"
+  },
+  {
+    "name": "Previous frame bank and timelines unchanged",
+    "status": "passed"
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Page handlers: 33 cards + auto + 7 speech modes",
+    "status": "passed"
+  },
+  {
+    "name": "Rapid selections, inversion, exclusive active state, failure and retry",
+    "status": "passed"
+  },
+  {
+    "name": "Visual browser rendering",
+    "status": "skipped",
+    "message": "Computer-use browser host unavailable"
+  }
+]

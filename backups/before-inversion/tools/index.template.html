@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BMO · Эмоции</title><style>
+:root{color-scheme:dark;--paper:#afd5b7;--ink:#142b25;--yellow:#ffe37c}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-monospace,"SFMono-Regular",Consolas,monospace}main{max-width:1020px;margin:auto;padding:24px 18px 40px}header{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:18px}h1{font-size:54px;letter-spacing:-4px;line-height:1;margin:0}header p{font-size:12px;max-width:240px;line-height:1.6;margin:0}h2{font-size:15px;margin:25px 0 12px}#status{margin:14px 0;min-height:2.6em;font-size:13px;line-height:1.4}#status.error{color:#842a20}button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible{outline:3px solid #194ee9;outline-offset:3px}#modes{display:flex;flex-wrap:wrap;gap:8px}#modes button{background:transparent;color:var(--ink);border:2px solid var(--ink);padding:11px 13px;border-radius:5px;font-size:13px;min-height:44px}#modes button[aria-pressed=true]{background:var(--yellow);box-shadow:3px 3px 0 var(--ink)}#grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}.face{position:relative;min-width:0;background:#15372e;color:#e5f5e8;border:3px solid #15372e;padding:10px;border-radius:9px;text-align:left;box-shadow:0 3px 0 #517b62}.face img{display:block;width:100%;aspect-ratio:2;object-fit:contain;background:#000;image-rendering:pixelated;border-radius:3px}.label{display:block;font-size:12px;line-height:1.4;min-height:2.8em;padding-top:10px}.number{opacity:.65;font-size:10px;display:block;margin:7px 0 0}.face[aria-pressed=true]{border-color:var(--yellow);box-shadow:0 0 0 2px var(--ink)}.face[aria-pressed=true] .number{opacity:1;color:var(--yellow)}.face[aria-pressed=true] .number:after{content:" · ВЫБРАНО"}footer{margin-top:24px;font-size:11px;line-height:1.7}#retry{border:1px solid var(--ink);color:var(--ink);background:transparent;padding:8px 12px;margin-bottom:12px}@media(max-width:360px){main{padding:18px 12px}#grid{gap:8px;grid-template-columns:repeat(2,minmax(0,1fr))}header p{max-width:145px}.face{padding:7px}}@media(prefers-reduced-motion:no-preference){button{transition:border-color .12s,background .12s}}
+</style></head><body><main>
+<header><h1>BMO</h1><p>Выбери лицо — оно появится на экране робота</p></header>
+<p id="status" role="status" aria-live="polite">Подключаемся к роботу…</p><button id="retry" hidden>Повторить подключение</button>
+<nav id="modes" aria-label="Режимы"></nav><h2>Все эмоции · 30</h2><section id="grid" aria-label="Выбор эмоции"></section>
+<footer>«Сам по себе» чередует улыбку с эмоциями из набора.<br>Миниатюры показывают основную позу; на роботе лица двигаются.</footer>
+</main><script>
+const faces=__CATALOG__;
+const modes=[["auto","Сам по себе"],["look","Осматривается"],["wink","Подмигивает"],["sleep","Спит"]];
+const aliases=__ALIASES__;
+const status=document.getElementById("status"),retry=document.getElementById("retry");
+const titles=Object.fromEntries([...modes,...faces.map(f=>[f.id,f.name])]);
+let busy=false,pending=null;
+function mark(m){m=aliases[m]||m;for(const b of document.querySelectorAll("button[data-mood]"))b.setAttribute("aria-pressed",String(b.dataset.mood===m));status.className="";status.textContent="Выбрано: "+(titles[m]||m);retry.hidden=true}
+function choose(m){pending=m;poll()}
+for(const [id,title] of modes){const b=document.createElement("button");b.textContent=title;b.dataset.mood=id;b.setAttribute("aria-pressed","false");b.onclick=()=>choose(id);document.getElementById("modes").append(b)}
+for(const f of faces){const b=document.createElement("button");b.className="face";b.dataset.mood=f.id;b.setAttribute("aria-pressed","false");b.setAttribute("aria-label",f.number+". "+f.name);const im=document.createElement("img");im.src=f.thumb;im.alt="";im.width=128;im.height=64;const n=document.createElement("span");n.className="number";n.textContent=String(f.number).padStart(2,"0");const label=document.createElement("span");label.className="label";label.textContent=f.name;b.append(im,n,label);b.onclick=()=>choose(f.id);document.getElementById("grid").append(b)}
+async function request(path){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);try{const r=await fetch(path,{cache:"no-store",signal:controller.signal});if(!r.ok)throw Error("http");const j=await r.json();if(j.ok===false)throw Error("mood");return j}finally{clearTimeout(timer)}}
+async function poll(){
+ if(busy)return;
+ busy=true;let attempted=null;
+ try{
+  do{
+   attempted=pending;pending=null;
+   if(attempted!==null)status.textContent="Переключаем…";
+   const result=await request(attempted===null?"/state":"/set?e="+encodeURIComponent(attempted));
+   attempted=null;mark(result.mood);
+  }while(pending!==null);
+ }catch(e){
+  if(pending===null&&attempted!==null)pending=attempted;
+  status.className="error";
+  status.textContent=pending!==null?"Команда не подтверждена. Проверь Wi-Fi и повтори выбор.":"Нет связи с роботом. Проверь Wi-Fi и повтори подключение.";
+  retry.textContent=pending!==null?"Повторить выбор":"Повторить подключение";
+  retry.hidden=false;
+ }finally{busy=false}
+}
+retry.onclick=()=>poll();poll();
+setInterval(()=>{if(!document.hidden&&retry.hidden)poll()},3000);
+</script></body></html>

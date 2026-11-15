@@ -1,0 +1,53 @@
+{
+  "stage": "complete: warm beige/brown EMO panel deployed; handoff updated",
+  "completed": [
+    "Originals copied to assets/figma",
+    "Backup saved to backups/before-figma",
+    "30 monochrome frames built and roundtrip checked",
+    "Faces 1,12,13,21,24 displayed on board; sha256 matched",
+    "Board reset; HTTP /state returned auto",
+    "Preserved SVG mask and clip coverage",
+    "Refined cheek hatches, bright eye reflections and tear outlines",
+    "Review bank built together with full bank; records include face IDs",
+    "Added check_faces.py to verify review records against full bank",
+    "Created detailed before/after comparisons for 05,12,13",
+    "Refined faces 1,5,12,13,21,24 sent to OLED; device buffer SHA256 matched current manifest; reset completed",
+    "User approved static faces; 3 animation samples built, 11 unique frames; static starting poses preserved",
+    "Board: sample SHA256 matched; two full cycles each with concurrent HTTP polls, rapid switches and invalid command passed; board reset; sample_blink selected",
+    "Per user photo feedback: enlarged 23 sparse faces with fixed per-face transform; dense faces preserved; rebuilt three sample animations; layout and static-pose tests passed",
+    "Enlarged bank SHA256 verified on board; full sample HTTP regression passed; sample_blink selected after reboot",
+    "User approved enlarged size and timing, authorized full set and website",
+    "Built 30 animated canonical faces plus look/wink/sleep and legacy aliases",
+    "Deployed and hash-verified full runtime and 30-card web page",
+    "Verified served HTML matches local index.html",
+    "Updated HANDOFF with rebuild, deployment, rollback and current limitations",
+    "Full board regression passed: 30 faces, 3 behaviours, aliases, auto, concurrent HTTP and rapid switching",
+    "Page handlers exercised against live robot: 30 cards + 4 modes; 40 HTTP requests; error recovery passed",
+    "Final selected mode is auto",
+    "OLED inversion checkbox deployed; native driver handler and live panel tests passed, including emotion changes, rapid actions, retry and invalid values",
+    "Added talk_calm, talk_fast, talk_excited and three panel buttons; board cycles passed with inversion off/on; previous frames and timelines unchanged",
+    "Speech review: shortened fast-talk pauses; all pixels outside mouth verified; active-pose timing checked; board regression passed with inversion on/off",
+    "Changed talk_excited to angry speech; rosto08 pupils move independently; sleep has progressive Zs; moved look/wink/sleep into 33-card grid; board regression passed on usbserial-210",
+    "Live panel handlers passed: all 33 cards and 4 modes, inversion and retry; sleep selected for demonstration",
+    "Separated speech controls into their own section; added talk_bobo, talk_bebe, talk_baba, talk_bibi; device tests passed in both inversion modes",
+    "Live panel handlers passed for 33 cards, auto and 7 speech modes; talk_bobo selected",
+    "Four syllable modes now loop continuously without phrase pauses; each passed at least 16 cycles across both inversion modes and switching tests",
+    "Seven speech modes now use visual cards with embedded OLED thumbnails, shared selection styling and inversion; live web handler tests passed",
+    "Visible title/header renamed to EMO; speech section moved below main emotions; served HTML matches local index.html at handoff",
+    "Consolidated hardware, build, deployment, evidence limits and decision history from three related conversations into HANDOFF.md and handoff/",
+    "Warm cream/chocolate/caramel CSS palette deployed; page upload hash verified; served HTML matches local; local handler tests and text contrast checks passed; talk_bobo/inversion off restored."
+  ],
+  "remaining": [],
+  "notes": [
+    "completed is a chronological history; earlier counts and selected modes describe their stage, not current state.",
+    "Current snapshot: handoff-snapshot.json; talk_bobo selected, inversion false.",
+    "Full device regression predates later additions; later device checks were scoped. No new hardware regression during handoff.",
+    "Edit tools/index.template.html then run tools/build_web.py; internal BMO names remain unchanged.",
+    "Inversion resets to false on reboot; survives emotion changes and display reconnection.",
+    "wifi_cfg.py remains board-only; never copy it back or print it."
+  ],
+  "limitations": [
+    "Browser visual rendering unverified: computer-use host unavailable",
+    "All frame strips inspected locally; physical readability of every new animation needs human observation"
+  ]
+}

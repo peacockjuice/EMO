@@ -1,0 +1,7 @@
+{
+  "date": "2026-11-15",
+  "text_files_scanned": 129,
+  "known_removed_ap_password_found": false,
+  "token_or_private_key_payload_found": false,
+  "note": "MicroPython firmware contains private-key format marker strings as library code; no credential payload inferred from marker alone. Raw logs/private configs excluded."
+}

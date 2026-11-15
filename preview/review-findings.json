@@ -1,0 +1,38 @@
+[
+  {
+    "severity": "medium",
+    "title": "Автоконвертация выдана за готовую адаптацию",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/build_faces.py",
+    "line": 18,
+    "detail": "Один набор правил заменяет цвета для всех лиц, убирает прозрачность и утолщает линии. Индивидуальной доводки нет. На борде румянец №05 выглядит как дополнительные глаза, в №13 крупные блики стали чёрными пустотами.",
+    "fix": "Довести проблемные лица отдельно и проверить узнаваемость каждого выражения.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Тестовая выборка может отстать от превью",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/build_faces.py",
+    "line": 48,
+    "detail": "Сборщик обновляет faces.bin, но review.bin был создан отдельной одноразовой командой. После правок на плату можно повторно загрузить старую выборку. В выполненном прогоне расхождение не обнаружено.",
+    "fix": "Создавать review.bin при каждой сборке из тех же кадров.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Аппаратная проверка уже заявленного результата",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/review_board.py",
+    "line": 16,
+    "detail": "Scope corrected; full board regression now passes. Hash confirms frame bank, not physical screen visibility; this limitation is documented.",
+    "fix": "Разделить проверку передачи, визуальную оценку экрана и нагрузочный прогон совместно с веб-сервером.",
+    "status": "fixed"
+  },
+  {
+    "severity": "low",
+    "title": "Борд неудобен для проверки отдельных пикселей",
+    "file": "/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/tools/build_faces.py",
+    "line": 50,
+    "detail": "Одна высокая картинка уменьшается в чате. На ней трудно оценить тонкие линии и сравнить мелкие детали.",
+    "fix": "Добавить отдельные крупные пары для проблемных лиц и превью в исходном разрешении.",
+    "status": "fixed"
+  }
+]

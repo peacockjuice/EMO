@@ -1,0 +1,20 @@
+{
+  "talk_calm": {
+    "cycle_ms": 3610,
+    "rest_ms": 2150,
+    "rest_fraction": 0.5955678670360111,
+    "active_mean_ms": 208.57142857142858
+  },
+  "talk_fast": {
+    "cycle_ms": 1720,
+    "rest_ms": 600,
+    "rest_fraction": 0.3488372093023256,
+    "active_mean_ms": 101.81818181818181
+  },
+  "talk_excited": {
+    "cycle_ms": 4090,
+    "rest_ms": 1950,
+    "rest_fraction": 0.4767726161369193,
+    "active_mean_ms": 267.5
+  }
+}

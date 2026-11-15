@@ -1,0 +1,23 @@
+[
+  {
+    "name": "All 30 animated faces complete a full cycle on OLED driver",
+    "status": "passed"
+  },
+  {
+    "name": "Look, wink, sleep and automatic mode",
+    "status": "passed"
+  },
+  {
+    "name": "Concurrent HTTP polling, rapid switches, legacy aliases, invalid command",
+    "status": "passed"
+  },
+  {
+    "name": "Deployed frame bank SHA256 matches build",
+    "status": "passed"
+  },
+  {
+    "name": "Physical screen inspection of every new animation",
+    "status": "skipped",
+    "message": "Pixel frames reviewed locally; physical display not visible to agent"
+  }
+]
