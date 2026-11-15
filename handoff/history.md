@@ -62,3 +62,7 @@ At the original v0.1 handoff, no feature request remained unfinished. No audio, 
 ## Character and scenes after v0.1
 
 User approved implementation of a real mood-based character and scenes. Four feelings have explicit allowed transitions, rather than replacing character with random reactions. Six scenes reuse the existing bank. Sleep/wake replace the duplicate idea/curiosity scene. Scene execution shares the existing animation task; mode changes cancel it. See root handoff for current validation status.
+
+## Character review refinements
+
+Review tightened verification rather than changing the approved personality: short hardware tests are now the default, long soak requires an explicit mode, frame order is verified against the bank, logs are separated by test scope, and prior mode/inversion are restored after reset. Scene cards use six distinct representative poses. The earlier 15 ms figure is one measurement, not a guaranteed upper bound.

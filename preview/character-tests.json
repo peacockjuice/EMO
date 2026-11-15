@@ -41,5 +41,10 @@
   {
     "name": "Live panel: 33 emotions, seven speech modes, six scenes, retry and inversion",
     "status": "passed"
+  },
+  {
+    "name": "Review regression: exact displayed frame order in six scenes, both inversion states",
+    "status": "passed",
+    "message": "Fresh hardware run; cancellation sample 25 ms; previous mode/inversion restored. Soak not run."
   }
 ]

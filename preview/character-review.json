@@ -1,0 +1,37 @@
+[
+  {
+    "severity": "medium",
+    "title": "Default hardware test started a deferred 30-minute soak",
+    "file": "tools/run_character_test.py",
+    "fix": "Default is short scenes test; soak/full require explicit --mode.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Later test overwrote earlier hardware evidence",
+    "file": "tools/run_character_test.py",
+    "fix": "Separate per-mode logs and structured result files.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Scene completion check did not verify frame order",
+    "file": "tools/test_character_board.py",
+    "fix": "Compare SHA256 of each displayed frame against expected timeline in both inversion states.",
+    "status": "fixed"
+  },
+  {
+    "severity": "low",
+    "title": "Scene thumbnails reused identical starting poses",
+    "file": "tools/build_web.py",
+    "fix": "Use representative distinct poses; assert six distinct thumbnails.",
+    "status": "fixed"
+  },
+  {
+    "severity": "low",
+    "title": "15 ms was reported without identifying it as one measurement",
+    "file": "HANDOFF.md",
+    "fix": "Describe a single measured cancellation sample, not a guaranteed latency bound.",
+    "status": "fixed"
+  }
+]

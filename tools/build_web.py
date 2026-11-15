@@ -32,7 +32,10 @@ sys.path.insert(0,str(P))
 from behaviour import SCENES
 scenes=[]
 for key,(title,steps,ending) in SCENES.items():
- index=manifest["sequences"][steps[0][0]][0][0]
+ # A representative pose, not the common neutral first frame.
+ preview={"scene_curious":("look",2),"scene_greeting":("rosto02",0),"scene_shy":("rosto05",0),"scene_drowsy":("sleep",-1),"scene_wake":("rosto13",0),"scene_grumpy":("rosto07",0)}
+ mode,frame=preview[key]
+ index=manifest["sequences"][mode][frame][0]
  scenes.append({"id":key,"name":title,"number":len(scenes)+1,"thumb":thumbnail(index)})
 (P/"preview/scene-cards.json").write_text(json.dumps(scenes,ensure_ascii=False))
 html=(P/"tools/index.template.html").read_text().replace("__CATALOG__",json.dumps(catalog,ensure_ascii=False,separators=(",",":"))).replace("__SPEECH_CARDS__",json.dumps(speech,ensure_ascii=False,separators=(",",":"))).replace("__SCENE_CARDS__",json.dumps(scenes,ensure_ascii=False,separators=(",",":"))).replace("__COUNT__",str(len(catalog))).replace("__ALIASES__",json.dumps(manifest["aliases"],separators=(",",":")))

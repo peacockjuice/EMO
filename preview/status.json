@@ -36,7 +36,8 @@
     "Visible title/header renamed to EMO; speech section moved below main emotions; served HTML matches local index.html at handoff",
     "Consolidated hardware, build, deployment, evidence limits and decision history from three related conversations into HANDOFF.md and handoff/",
     "Warm cream/chocolate/caramel CSS palette deployed; page upload hash verified; served HTML matches local; local handler tests and text contrast checks passed; talk_bobo/inversion off restored.",
-    "Four mood character and six scene cards deployed; runtime hashes verified, local and live panel checks passed; all scenes normal/inverse completed; cancellation 15 ms."
+    "Four mood character and six scene cards deployed; runtime hashes verified, local and live panel checks passed; all scenes normal/inverse completed; cancellation 15 ms.",
+    "Review: scene runner defaults to short tests, restores mode/invert, separates evidence; exact frame order passed on hardware; distinct scene thumbnails deployed."
   ],
   "remaining": [
     "30-minute uninterrupted auto soak deferred by user",

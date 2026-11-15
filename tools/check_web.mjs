@@ -26,7 +26,7 @@ const context=vm.createContext({document,AbortController,setTimeout,clearTimeout
 }});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],context);
 async function idle(){const deadline=Date.now()+10000;while(vm.runInContext("busy",context)){assert(Date.now()<deadline,"request timed out");await new Promise(r=>setTimeout(r,10))}}
-await idle();assert.equal(nodes.scenes.children.length,6);assert.equal(nodes.grid.children.length,33);assert.equal(nodes.modes.children.length,1);assert.equal(nodes.speech.children.length,7);
+await idle();assert.equal(nodes.scenes.children.length,6);assert.equal(new Set(nodes.scenes.children.map(b=>b.children[0].src)).size,6,"Scene previews must be distinct");assert.equal(nodes.grid.children.length,33);assert.equal(nodes.modes.children.length,1);assert.equal(nodes.speech.children.length,7);
 assert(nodes.speech.children.every(b=>b.className==="face"&&b.children[0].tag==="img"&&b.children[0].src.startsWith("data:image/png;base64,")));
 assert.equal(new Set(nodes.speech.children.slice(3).map(b=>b.children[0].src)).size,4,"Syllable previews must show different mouth shapes");
 for(const button of [...nodes.grid.children,...nodes.modes.children,...nodes.speech.children,...nodes.scenes.children]){

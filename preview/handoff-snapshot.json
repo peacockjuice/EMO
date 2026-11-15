@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-11-15T08:33:24.308580+00:00",
+  "observed_at": "2026-11-15T08:37:35.086199+00:00",
   "url": "http://192.168.1.43/",
   "state": {
     "scene": null,
@@ -35,13 +35,13 @@
       "sha256": "a6c6877e1ef85acee01da8e1be34efa9756bac2db1e533cc94baa70c7f70e768"
     },
     "index.html": {
-      "bytes": 25800,
-      "sha256": "3dc6c516251fb4fe912e4a1fb9cf822dd9834b7d15957bda1aee311c52039749"
+      "bytes": 25992,
+      "sha256": "baca6b83b938123f2ecd980049edfe3f9f0cb6ba6acba3f9e995171e2581c4fc"
     },
     "ssd1306.py": {
       "bytes": 4922,
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
     }
   },
-  "scope": "Runtime upload hashes verified; six scenes in both inversion states; 15 ms cancellation; live web tests passed. 30-minute soak deferred by user."
+  "scope": "Review: six scenes exact displayed-frame order in both inversion states passed; one cancellation sample 25 ms; six distinct scene thumbnails deployed. 30-minute soak remains deferred."
 }

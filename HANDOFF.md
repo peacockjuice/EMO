@@ -43,7 +43,7 @@ A manual scene runs once, then repeats its ending animation in phase hold. Re-se
 
 Auto starts with 20–40 seconds of calm; scene cooldown is 30–90 seconds after completion. No consecutive scene repeats; sleep has a five-minute cooldown. On display reconnect manual scenes restart and auto starts a fresh character. A later user command always wins. State is not persisted across reboot.
 
-Local cancellation, transition, wraparound, inversion and web-handler checks passed. All six manual scenes completed on hardware in both inversion states; cancellation measured 15 ms. The 30-minute auto soak was interrupted by external manual selection; the user explicitly deferred it. It is not complete. Evidence: preview/character-tests.json; raw logs remain local. Physical visual acceptance is still required. Rollback snapshot: backups/before-personality; runtime now also requires behaviour.py.
+Local cancellation, transition, wraparound, inversion and web-handler checks passed. All six manual scenes completed on hardware in both inversion states; the review run also checked exact displayed frame hashes in order; cancellation samples measured 15 ms initially and 25 ms in the review run (not a latency guarantee). The 30-minute auto soak was interrupted by external manual selection; the user explicitly deferred it. It is not complete. Evidence: preview/character-tests.json; raw logs remain local. Physical visual acceptance is still required. Rollback snapshot: backups/before-personality; runtime now also requires behaviour.py.
 
 ## Hardware, network and recovery
 

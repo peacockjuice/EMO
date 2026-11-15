@@ -22,7 +22,7 @@ Work from `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo`. Prefix shell c
 
 ## Character development
 
-behaviour.py owns mood rules and six scenes. emotions.py installs their modes into the existing executor. build_web.py derives six thumbnails from the scene definitions. Bank bytes and indices are unchanged. Run tools/check_character.py, tools/check_character_runtime.py, tools/check_invert.py and tools/check_web.mjs. Hardware runner: tools/run_character_test.py PORT (roughly 33 minutes, includes 30-minute HTTP/auto soak); do not click modes while it runs. The physical display appearance still needs user observation.
+behaviour.py owns mood rules and six scenes. emotions.py installs their modes into the existing executor. build_web.py derives six thumbnails from the scene definitions. Bank bytes and indices are unchanged. Run tools/check_character.py, tools/check_character_runtime.py, tools/check_invert.py and tools/check_web.mjs. Hardware runner: tools/run_character_test.py PORT defaults to a short scenes-only test (about two minutes). It checks actual displayed frame hashes in order in both inversion states. Explicit --mode soak or --mode full enables the deferred 30-minute soak. Do not click modes during a run. Logs/results are separate by mode; the runner resets and restores prior mood/inversion afterward (a scene restarts). The physical display appearance still needs user observation.
 
 ## Panel palette
 
