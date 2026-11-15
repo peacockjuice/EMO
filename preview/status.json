@@ -1,5 +1,5 @@
 {
-  "stage": "character and six scenes deployed; 30-minute soak deferred by user",
+  "stage": "fast showcase deployed; demo running",
   "completed": [
     "Originals copied to assets/figma",
     "Backup saved to backups/before-figma",
@@ -37,7 +37,8 @@
     "Consolidated hardware, build, deployment, evidence limits and decision history from three related conversations into HANDOFF.md and handoff/",
     "Warm cream/chocolate/caramel CSS palette deployed; page upload hash verified; served HTML matches local; local handler tests and text contrast checks passed; talk_bobo/inversion off restored.",
     "Four mood character and six scene cards deployed; runtime hashes verified, local and live panel checks passed; all scenes normal/inverse completed; cancellation 15 ms.",
-    "Review: scene runner defaults to short tests, restores mode/invert, separates evidence; exact frame order passed on hardware; distinct scene thumbnails deployed."
+    "Review: scene runner defaults to short tests, restores mode/invert, separates evidence; exact frame order passed on hardware; distinct scene thumbnails deployed.",
+    "\u0412\u0441\u0435 \u043f\u043e\u0434\u0440\u044f\u0434: 46 variants paired normal/inverse; local complete coverage passed; live inversion and restore checks passed; bank unchanged."
   ],
   "remaining": [
     "30-minute uninterrupted auto soak deferred by user",

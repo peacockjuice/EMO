@@ -66,3 +66,7 @@ User approved implementation of a real mood-based character and scenes. Four fee
 ## Character review refinements
 
 Review tightened verification rather than changing the approved personality: short hardware tests are now the default, long soak requires an explicit mode, frame order is verified against the bank, logs are separated by test scope, and prior mode/inversion are restored after reset. Scene cards use six distinct representative poses. The earlier 15 ms figure is one measurement, not a guaranteed upper bound.
+
+## Fast all-variants showcase
+
+User requested a fast endless tour including inverted variants. Added Все подряд (demo): 40 animations and six scenes, paired normal/inverse, with pre-demo inversion restored on exit. This is a user-facing preview mode, not the deferred 30-minute regression test.

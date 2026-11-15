@@ -43,3 +43,8 @@ def install(moods):
     async def auto(o):
         await behaviour.automatic(o,named)
     moods["auto"] = auto
+    import showcase
+    async def demo(o):
+        await showcase.run(o,play)
+    moods["demo"] = demo
+

@@ -1,12 +1,13 @@
 {
-  "observed_at": "2026-11-15T08:37:35.086199+00:00",
+  "observed_at": "2026-11-15T08:45:17.102335+00:00",
   "url": "http://192.168.1.43/",
   "state": {
+    "showing": "rosto06",
     "scene": null,
-    "mood": "auto",
-    "invert": false,
-    "phase": "idle",
-    "feeling": "calm"
+    "mood": "demo",
+    "invert": true,
+    "phase": "demo",
+    "feeling": null
   },
   "served_html_matches_local": true,
   "local_runtime_files": {
@@ -15,16 +16,16 @@
       "sha256": "5ed812ab212b487355cdd7fccee1d73a6543a8c77f9ba9caf1da6bd6bfd8f8be"
     },
     "bmo.py": {
-      "bytes": 5590,
-      "sha256": "769a80fa9e8d13d7018aebdb79e33c8ea2b8613f374699fb85d962e78373c62a"
+      "bytes": 5868,
+      "sha256": "ba0428188956b9e51321479da01e9324dfdd32153c89137fbc60a071426ac8b9"
     },
     "behaviour.py": {
       "bytes": 3311,
       "sha256": "7b60d901683d1dc74404d5a44bef348d56bc1711d15b601b75b24f744232cb98"
     },
     "emotions.py": {
-      "bytes": 1503,
-      "sha256": "963acba451bd8098aa1bf8df5007df2f1eee3a490fefab91de8d1fa4167aba3e"
+      "bytes": 1607,
+      "sha256": "158c5a4e65ef865b238ba3cf5fb32aa9d06b36e5327ef4998645c7dd29034f43"
     },
     "emotion_sequences.py": {
       "bytes": 2880,
@@ -35,13 +36,17 @@
       "sha256": "a6c6877e1ef85acee01da8e1be34efa9756bac2db1e533cc94baa70c7f70e768"
     },
     "index.html": {
-      "bytes": 25992,
-      "sha256": "baca6b83b938123f2ecd980049edfe3f9f0cb6ba6acba3f9e995171e2581c4fc"
+      "bytes": 26339,
+      "sha256": "2308933944e7b777980ce5ee12ad443e8fd8414e6aa13dc869159d1c6b413d07"
     },
     "ssd1306.py": {
       "bytes": 4922,
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
+    },
+    "showcase.py": {
+      "bytes": 1237,
+      "sha256": "93e87d632b0d8dee67a97e45af87dae7e34d62a47b95685e5fbd0e8570a1fc21"
     }
   },
-  "scope": "Review: six scenes exact displayed-frame order in both inversion states passed; one cancellation sample 25 ms; six distinct scene thumbnails deployed. 30-minute soak remains deferred."
+  "scope": "Showcase local complete coverage and live inversion/cancellation smoke test passed; HTML equality verified. Full hardware showcase cycle not instrumented; 30-minute character soak remains deferred."
 }

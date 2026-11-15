@@ -9,7 +9,7 @@ FLIP = True                  # display is mounted upside down in the robot: rota
 from ap_cfg import AP_NAME, AP_PASS  # private board-local configuration
 
 i2c = SoftI2C(sda=Pin(SDA), scl=Pin(SCL), freq=400000)
-S = {"mood": "auto", "ver": 0, "ip": "", "net": "", "invert": False, "scene": None, "phase": "idle", "feeling": None}
+S = {"mood": "auto", "ver": 0, "ip": "", "net": "", "invert": False, "scene": None, "phase": "idle", "feeling": None, "showing": None, "demo_restore": False}
 _v = 0
 _display = None
 
@@ -96,6 +96,11 @@ async def animate():
 # ---------- web ----------
 def set_mood(m):
     if m in MOODS:
+        if S["mood"] == "demo":
+            S["invert"] = S["demo_restore"]
+        if m == "demo":
+            S["demo_restore"] = S["invert"]
+        S["showing"] = None
         S["mood"] = m
         S["ver"] += 1
         S["scene"] = m if m.startswith("scene_") else None
@@ -107,7 +112,7 @@ def set_mood(m):
 def state_json(ok=None):
     prefix = '"ok":%s,' % ("true" if ok else "false") if ok is not None else ""
     import json
-    result = {k:S[k] for k in ("mood","invert","scene","phase","feeling")}
+    result = {k:S[k] for k in ("mood","invert","scene","phase","feeling","showing")}
     if ok is not None: result["ok"] = ok
     return json.dumps(result)
 
@@ -119,6 +124,7 @@ def set_invert(value):
     if _display is not None:
         _display.invert(enabled)
     S["invert"] = enabled
+    if S["mood"] == "demo": S["demo_restore"] = enabled
     return True
 
 async def handle(r, w):

@@ -8,7 +8,7 @@ class Display:
  def invert(self,value):
   if self.fail:raise OSError("disconnected")
   self.calls.append(value)
-d=Display();state={"mood":"rosto13","ver":4,"invert":False,"scene":None,"phase":"idle","feeling":None}
+d=Display();state={"mood":"rosto13","ver":4,"invert":False,"scene":None,"phase":"idle","feeling":None,"showing":None}
 ns={"S":state,"_display":d};exec(compile(ast.Module(body=functions,type_ignores=[]),"bmo.py","exec"),ns)
 for value in ("1","1","0"):
  assert ns["set_invert"](value)

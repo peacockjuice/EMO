@@ -1,0 +1,10 @@
+[
+  {
+    "name": "46 variants, both polarities, wraparound and cancellation (local)",
+    "status": "passed"
+  },
+  {
+    "name": "Live device toggles polarity; exit restores previous inversion; new preference survives cleanup",
+    "status": "passed"
+  }
+]

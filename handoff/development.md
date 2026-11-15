@@ -18,7 +18,7 @@ Work from `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo`. Prefix shell c
 - `tools/build_all.py` builds 40 timelines, deduplicated bank, 33-face catalog and animation previews.
 - `tools/index.template.html` is the editable UI source; `tools/build_web.py` generates index.html and seven speech thumbnails directly from actual bank frames, using stdlib PNG encoding.
 - `ssd1306.py` is the unchanged driver. `face.py` is the legacy renderer, retained for rollback only.
-- Runtime deployment: main.py, bmo.py, behaviour.py, ssd1306.py, emotions.py, emotion_sequences.py, emotions.bin, index.html. wifi_cfg.py lives only on the board. Older sample files on the board are unused.
+- Runtime deployment: main.py, bmo.py, behaviour.py, showcase.py, ssd1306.py, emotions.py, emotion_sequences.py, emotions.bin, index.html. wifi_cfg.py lives only on the board. Older sample files on the board are unused.
 
 ## Character development
 

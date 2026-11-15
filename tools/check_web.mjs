@@ -26,16 +26,21 @@ const context=vm.createContext({document,AbortController,setTimeout,clearTimeout
 }});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],context);
 async function idle(){const deadline=Date.now()+10000;while(vm.runInContext("busy",context)){assert(Date.now()<deadline,"request timed out");await new Promise(r=>setTimeout(r,10))}}
-await idle();assert.equal(nodes.scenes.children.length,6);assert.equal(new Set(nodes.scenes.children.map(b=>b.children[0].src)).size,6,"Scene previews must be distinct");assert.equal(nodes.grid.children.length,33);assert.equal(nodes.modes.children.length,1);assert.equal(nodes.speech.children.length,7);
+await idle();assert.equal(nodes.scenes.children.length,6);assert.equal(new Set(nodes.scenes.children.map(b=>b.children[0].src)).size,6,"Scene previews must be distinct");assert.equal(nodes.grid.children.length,33);assert.equal(nodes.modes.children.length,2);assert.equal(nodes.speech.children.length,7);
 assert(nodes.speech.children.every(b=>b.className==="face"&&b.children[0].tag==="img"&&b.children[0].src.startsWith("data:image/png;base64,")));
 assert.equal(new Set(nodes.speech.children.slice(3).map(b=>b.children[0].src)).size,4,"Syllable previews must show different mouth shapes");
 for(const button of [...nodes.grid.children,...nodes.modes.children,...nodes.speech.children,...nodes.scenes.children]){
  button.onclick();await idle();assert.equal(button.attrs["aria-pressed"],"true",button.dataset.mood);
  assert.equal(elements.filter(e=>e.attrs["aria-pressed"]==="true").length,1);
 }
+vm.runInContext('mark({mood:"demo",invert:true,showing:"rosto13",phase:"demo"})',context);
+assert.equal(nodes.invert.disabled,true);
+assert(nodes.status.textContent.includes("Инверсия"));
+assert.equal(nodes.modes.children[1].attrs["aria-pressed"],"true");
 // Auto scene status must not steal selected-card focus; manual hold keeps its card.
 vm.runInContext('mark({mood:"auto",invert:false,feeling:"curious",scene:"scene_curious",phase:"scene"})',context);
 assert.equal(nodes.modes.children[0].attrs["aria-pressed"],"true");
+assert.equal(nodes.invert.disabled,false);
 assert(nodes.status.textContent.includes("Интерес")&&nodes.status.textContent.includes("Что там?"));
 vm.runInContext('mark({mood:"scene_grumpy",invert:false,feeling:null,scene:"scene_grumpy",phase:"hold"})',context);
 assert.equal(nodes.scenes.children[5].attrs["aria-pressed"],"true");
@@ -67,6 +72,6 @@ nodes.grid.children[0].onclick();nodes.invert.checked=true;nodes.invert.onchange
 assert.equal(nodes.grid.children[0].attrs["aria-pressed"],"true");assert.equal(nodes.invert.checked,true);
 nodes.invert.checked=false;nodes.invert.onchange();await idle();
 nodes.modes.children[0].onclick();await idle();
-const report=[{name:base?"Live page handlers: 33 cards + auto + 7 speech modes + 6 scenes":"Page handlers: 33 cards + auto + 7 speech modes + 6 scenes",status:"passed"},{name:"Rapid selections, inversion, exclusive active state, failure and retry",status:"passed"},{name:"Visual browser rendering",status:"skipped",message:"Computer-use browser host unavailable"}];
+const report=[{name:base?"Live page handlers: 33 cards + auto/demo + 7 speech modes + 6 scenes":"Page handlers: 33 cards + auto/demo + 7 speech modes + 6 scenes",status:"passed"},{name:"Rapid selections, inversion, exclusive active state, failure and retry",status:"passed"},{name:"Visual browser rendering",status:"skipped",message:"Computer-use browser host unavailable"}];
 fs.writeFileSync(new URL("preview/web-tests.json",root),JSON.stringify(report,null,2));
-console.log("PASS:",base?"live":"mock","handlers, 33 cards, auto, 7 speech modes + 6 scenes, rapid taps, error recovery;",calls.length,"requests");
+console.log("PASS:",base?"live":"mock","handlers, 33 cards, auto/demo, 7 speech modes + 6 scenes, rapid taps, error recovery;",calls.length,"requests");

@@ -13,14 +13,14 @@ Sanitized snapshot: https://github.com/peacockjuice/EMO (private), tag v0.1; loc
 
 ## Sanitized repository deployment
 
-Current and backup bmo.py here require private ignored ap_cfg.py (see README.md). Do not upload repository bmo.py without that config. The source handoff snapshot hashes describe the working-board version before credential extraction. Raw serial logs are intentionally excluded; structured reports are included.
+Current and backup bmo.py here require ignored private ap_cfg.py (see README.md). Source snapshot hashes describe the working-board files before credential extraction. Raw serial logs are excluded.
 
 ## Start here
 
 Project source of truth: `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/`.
 Live panel: http://192.168.1.43/ (DHCP address can change). Current serial device: `/dev/cu.usbserial-10` (previously -210 and -110).
 Last requested changes are complete: visible branding EMO, main 33-card emotion grid, and seven visual speech cards under Разговор BELOW that grid. Auto and inversion controls remain above the grids. The panel now uses a warm cream/beige background, chocolate cards and caramel selection accents; OLED thumbnails remain monochrome. Character/scenes are implemented; see the behaviour section below for release validation status.
-At the latest handoff, live state is auto with inversion off; the served HTML matches local index.html. See [snapshot](./preview/handoff-snapshot.json) for the actual observation time, hashes and state. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
+At the latest handoff, demo is running and inversion alternates automatically; the served HTML matches local index.html. See [snapshot](./preview/handoff-snapshot.json) for the actual observation time, hashes and state. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
 
 ## Current behaviour and API
 
@@ -33,7 +33,7 @@ At the latest handoff, live state is auto with inversion off; the served HTML ma
 - GET /invert?value=1 or 0 sets an explicit native OLED inversion value; returns ok/mood/invert, preserves mood and animation version. Invalid values fail. Inversion survives display reconnect, not reboot.
 - UI serializes requests, keeps the latest unconfirmed intent for retry and pauses polling after an error. Status says Выбрано; it does not claim physical display confirmation.
 
-There are 40 frame timelines, six composite scenes and auto, 104 unique 1024-byte frames (106,496 bytes). The bank stays in flash; only one frame is read into the display buffer. There is no PSRAM. Keep future changes small.
+There are 40 frame timelines, six composite scenes, auto and demo, 104 unique 1024-byte frames (106,496 bytes). The bank stays in flash; only one frame is read into the display buffer. There is no PSRAM. Keep future changes small.
 
 ## Live character and scenes
 
@@ -43,7 +43,13 @@ A manual scene runs once, then repeats its ending animation in phase hold. Re-se
 
 Auto starts with 20–40 seconds of calm; scene cooldown is 30–90 seconds after completion. No consecutive scene repeats; sleep has a five-minute cooldown. On display reconnect manual scenes restart and auto starts a fresh character. A later user command always wins. State is not persisted across reboot.
 
-Local cancellation, transition, wraparound, inversion and web-handler checks passed. All six manual scenes completed on hardware in both inversion states; the review run also checked exact displayed frame hashes in order; cancellation samples measured 15 ms initially and 25 ms in the review run (not a latency guarantee). The 30-minute auto soak was interrupted by external manual selection; the user explicitly deferred it. It is not complete. Evidence: preview/character-tests.json; raw logs remain local. Physical visual acceptance is still required. Rollback snapshot: backups/before-personality; runtime now also requires behaviour.py.
+Local cancellation, transition, wraparound, inversion and web-handler checks passed. All six manual scenes completed on hardware in both inversion states; the review run also checked exact displayed frame hashes in order; cancellation samples measured 15 ms initially and 25 ms in the review run (not a latency guarantee). The 30-minute auto soak was interrupted by external manual selection; the user explicitly deferred it. It is not complete. Evidence: preview/character-tests.json; raw logs remain local. Physical visual acceptance is still required. Rollback snapshot: backups/before-personality; runtime now also requires behaviour.py and showcase.py.
+
+## Fast showcase mode
+
+The Все подряд button selects demo. showcase.py loops through all 40 canonical frame animations and six composite scenes; each is shown normally then inverted. Aliases are omitted because they repeat the same content; auto is a scheduler, not an additional visual variant. Each basic animation is compressed/repeated to about 1.5 seconds; each scene to about 3 seconds (40 ms minimum frame duration). Loop repeats indefinitely. API showing identifies the current variant; mood remains demo. UI displays the variant and inversion, disables the inversion checkbox during the tour.
+
+Selecting another mode cancels demo and restores pre-demo inversion. Explicit API inversion changes during demo update that restored preference. Re-entering demo restarts it; reconnection restarts the tour. Local checks: tools/check_showcase.py, tools/check_web.mjs. The normal frame bank is unchanged.
 
 ## Hardware, network and recovery
 
