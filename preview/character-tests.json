@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Every manual scene step cancellation and final hold",
+    "status": "passed"
+  },
+  {
+    "name": "40 simulated hours: transitions, cooldowns, repeats, clock wrap",
+    "status": "passed"
+  },
+  {
+    "name": "Real frame player cancellation and simulated reconnect",
+    "status": "passed"
+  },
+  {
+    "name": "Native inversion and unchanged mode",
+    "status": "passed"
+  },
+  {
+    "name": "Full bank and existing aliases",
+    "status": "passed"
+  },
+  {
+    "name": "Physical OLED visual acceptance",
+    "status": "skipped",
+    "message": "Requires human observation of physical OLED."
+  },
+  {
+    "name": "Hardware: six scenes completed, normal and inverse",
+    "status": "passed"
+  },
+  {
+    "name": "Hardware cancellation latency",
+    "status": "passed",
+    "message": "15 ms from accepted mode command to first frame show"
+  },
+  {
+    "name": "30-minute auto HTTP soak",
+    "status": "skipped",
+    "message": "Deferred by user after external manual selections interrupted attempts; no completed soak claimed."
+  },
+  {
+    "name": "Live panel: 33 emotions, seven speech modes, six scenes, retry and inversion",
+    "status": "passed"
+  }
+]

@@ -1,4 +1,4 @@
-# EMO v0.1
+# EMO
 
 Private snapshot of the ESP32-S2 / SSD1306 animated face robot. 33 emotion cards, seven speech modes, auto mode, inversion and a warm beige/brown local web panel.
 
@@ -14,6 +14,6 @@ No virtual environments, raw serial logs, credentials or unrelated conversation 
 
 ## Release scope
 
-v0.1 captures the currently implemented robot. Live personality and scenes are planned, not implemented: see [ROADMAP.md](ROADMAP.md).
+The v0.1 tag preserves the original release. Current main adds four moods and six scenes. Local and live-panel tests passed; all six scenes completed on hardware in both inversion states. The 30-minute soak was explicitly deferred by the user. See HANDOFF.md and preview/character-tests.json.
 
 See [SECURITY.md](SECURITY.md) for review scope and remaining limitations. Original third-party artwork and driver notices are retained; private storage does not establish redistribution rights.

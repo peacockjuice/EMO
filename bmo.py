@@ -9,7 +9,7 @@ FLIP = True                  # display is mounted upside down in the robot: rota
 from ap_cfg import AP_NAME, AP_PASS  # private board-local configuration
 
 i2c = SoftI2C(sda=Pin(SDA), scl=Pin(SCL), freq=400000)
-S = {"mood": "auto", "ver": 0, "ip": "", "net": "", "invert": False}
+S = {"mood": "auto", "ver": 0, "ip": "", "net": "", "invert": False, "scene": None, "phase": "idle", "feeling": None}
 _v = 0
 _display = None
 
@@ -98,12 +98,19 @@ def set_mood(m):
     if m in MOODS:
         S["mood"] = m
         S["ver"] += 1
+        S["scene"] = m if m.startswith("scene_") else None
+        S["phase"] = "scene" if S["scene"] else "idle"
+        S["feeling"] = "calm" if m == "auto" else None
         return True
     return False
 
 def state_json(ok=None):
     prefix = '"ok":%s,' % ("true" if ok else "false") if ok is not None else ""
-    return '{%s"mood":"%s","invert":%s}' % (prefix, S["mood"], "true" if S["invert"] else "false")
+    import json
+    result = {k:S[k] for k in ("mood","invert","scene","phase","feeling")}
+    if ok is not None: result["ok"] = ok
+    return json.dumps(result)
+
 
 def set_invert(value):
     if value not in ("0", "1"):

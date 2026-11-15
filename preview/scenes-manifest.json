@@ -1,0 +1,32 @@
+[
+  {
+    "scene": "scene_curious",
+    "duration_ms": 9740,
+    "ending": "rosto01"
+  },
+  {
+    "scene": "scene_greeting",
+    "duration_ms": 9140,
+    "ending": "rosto01"
+  },
+  {
+    "scene": "scene_shy",
+    "duration_ms": 9870,
+    "ending": "rosto15"
+  },
+  {
+    "scene": "scene_drowsy",
+    "duration_ms": 8350,
+    "ending": "sleep"
+  },
+  {
+    "scene": "scene_wake",
+    "duration_ms": 8380,
+    "ending": "rosto01"
+  },
+  {
+    "scene": "scene_grumpy",
+    "duration_ms": 10290,
+    "ending": "rosto08"
+  }
+]

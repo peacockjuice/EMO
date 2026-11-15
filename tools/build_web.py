@@ -27,6 +27,14 @@ for key,title in (("talk_calm","Рассказывает"),("talk_fast","Бол�
  index=manifest["sequences"][key][0 if key=="talk_excited" else 1][0]
  speech.append({"id":key,"name":title,"number":len(speech)+1,"thumb":thumbnail(index)})
 ( P/"preview/speech-cards.json").write_text(json.dumps(speech,ensure_ascii=False))
-html=(P/"tools/index.template.html").read_text().replace("__CATALOG__",json.dumps(catalog,ensure_ascii=False,separators=(",",":"))).replace("__SPEECH_CARDS__",json.dumps(speech,ensure_ascii=False,separators=(",",":"))).replace("__COUNT__",str(len(catalog))).replace("__ALIASES__",json.dumps(manifest["aliases"],separators=(",",":")))
+import sys
+sys.path.insert(0,str(P))
+from behaviour import SCENES
+scenes=[]
+for key,(title,steps,ending) in SCENES.items():
+ index=manifest["sequences"][steps[0][0]][0][0]
+ scenes.append({"id":key,"name":title,"number":len(scenes)+1,"thumb":thumbnail(index)})
+(P/"preview/scene-cards.json").write_text(json.dumps(scenes,ensure_ascii=False))
+html=(P/"tools/index.template.html").read_text().replace("__CATALOG__",json.dumps(catalog,ensure_ascii=False,separators=(",",":"))).replace("__SPEECH_CARDS__",json.dumps(speech,ensure_ascii=False,separators=(",",":"))).replace("__SCENE_CARDS__",json.dumps(scenes,ensure_ascii=False,separators=(",",":"))).replace("__COUNT__",str(len(catalog))).replace("__ALIASES__",json.dumps(manifest["aliases"],separators=(",",":")))
 (P/"index.html").write_text(html)
 print("Built web gallery:",len(catalog),"faces,",len(html.encode()),"bytes")

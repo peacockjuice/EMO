@@ -57,4 +57,8 @@ The user subsequently moved the inversion checkbox to the right of Сам по �
 ## Working preferences and remaining scope
 
 Respond in Russian. User likes direct execution and explicit self-review, with real fixes rather than inflated completion claims. Preserve approved artwork and timing unless a new request changes them. Physical photographs are authoritative for readability; preview screenshots alone are insufficient. Keep memory use small and prefer simple Python/stdlib and Mac-side computation for future external signals.
-No requested feature remains unfinished at this handoff. No audio, background-signal integration or complete internal BMO rename is implied by prior requests. Future hardware/browser verification may add confidence but must not be reported as already performed.
+At the original v0.1 handoff, no feature request remained unfinished. No audio, background-signal integration or complete internal BMO rename is implied by prior requests. Future hardware/browser verification may add confidence but must not be reported as already performed.
+
+## Character and scenes after v0.1
+
+User approved implementation of a real mood-based character and scenes. Four feelings have explicit allowed transitions, rather than replacing character with random reactions. Six scenes reuse the existing bank. Sleep/wake replace the duplicate idea/curiosity scene. Scene execution shares the existing animation task; mode changes cancel it. See root handoff for current validation status.

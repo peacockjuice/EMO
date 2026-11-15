@@ -1,5 +1,5 @@
 {
-  "stage": "complete: warm beige/brown EMO panel deployed; handoff updated",
+  "stage": "character and six scenes deployed; 30-minute soak deferred by user",
   "completed": [
     "Originals copied to assets/figma",
     "Backup saved to backups/before-figma",
@@ -35,9 +35,13 @@
     "Seven speech modes now use visual cards with embedded OLED thumbnails, shared selection styling and inversion; live web handler tests passed",
     "Visible title/header renamed to EMO; speech section moved below main emotions; served HTML matches local index.html at handoff",
     "Consolidated hardware, build, deployment, evidence limits and decision history from three related conversations into HANDOFF.md and handoff/",
-    "Warm cream/chocolate/caramel CSS palette deployed; page upload hash verified; served HTML matches local; local handler tests and text contrast checks passed; talk_bobo/inversion off restored."
+    "Warm cream/chocolate/caramel CSS palette deployed; page upload hash verified; served HTML matches local; local handler tests and text contrast checks passed; talk_bobo/inversion off restored.",
+    "Four mood character and six scene cards deployed; runtime hashes verified, local and live panel checks passed; all scenes normal/inverse completed; cancellation 15 ms."
   ],
-  "remaining": [],
+  "remaining": [
+    "30-minute uninterrupted auto soak deferred by user",
+    "Physical visual acceptance of scene pacing"
+  ],
   "notes": [
     "completed is a chronological history; earlier counts and selected modes describe their stage, not current state.",
     "Current snapshot: handoff-snapshot.json; talk_bobo selected, inversion false.",

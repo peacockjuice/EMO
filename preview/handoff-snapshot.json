@@ -1,9 +1,12 @@
 {
-  "observed_at": "2026-11-15T06:57:01.008704+00:00",
+  "observed_at": "2026-11-15T08:33:24.308580+00:00",
   "url": "http://192.168.1.43/",
   "state": {
-    "mood": "talk_bobo",
-    "invert": false
+    "scene": null,
+    "mood": "auto",
+    "invert": false,
+    "phase": "idle",
+    "feeling": "calm"
   },
   "served_html_matches_local": true,
   "local_runtime_files": {
@@ -12,12 +15,16 @@
       "sha256": "5ed812ab212b487355cdd7fccee1d73a6543a8c77f9ba9caf1da6bd6bfd8f8be"
     },
     "bmo.py": {
-      "bytes": 5308,
-      "sha256": "e1dc112d4168c37d013839c6de87bf7698f7aa767c561619cdafd3934a9257c5"
+      "bytes": 5590,
+      "sha256": "769a80fa9e8d13d7018aebdb79e33c8ea2b8613f374699fb85d962e78373c62a"
+    },
+    "behaviour.py": {
+      "bytes": 3311,
+      "sha256": "7b60d901683d1dc74404d5a44bef348d56bc1711d15b601b75b24f744232cb98"
     },
     "emotions.py": {
-      "bytes": 1282,
-      "sha256": "d76f3162d8b9efbc133dd638bc6b3cb13561110b88d6e78d06bacd26eed4a9bf"
+      "bytes": 1503,
+      "sha256": "963acba451bd8098aa1bf8df5007df2f1eee3a490fefab91de8d1fa4167aba3e"
     },
     "emotion_sequences.py": {
       "bytes": 2880,
@@ -28,13 +35,13 @@
       "sha256": "a6c6877e1ef85acee01da8e1be34efa9756bac2db1e533cc94baa70c7f70e768"
     },
     "index.html": {
-      "bytes": 23256,
-      "sha256": "072ed8487924d3cfe5ea4ac0f37ef74e84bdf635e6976565033f049f0cea3763"
+      "bytes": 25800,
+      "sha256": "3dc6c516251fb4fe912e4a1fb9cf822dd9834b7d15957bda1aee311c52039749"
     },
     "ssd1306.py": {
       "bytes": 4922,
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
     }
   },
-  "scope": "Read-only HTTP and local file inspection; no new hardware regression or board runtime readback."
+  "scope": "Runtime upload hashes verified; six scenes in both inversion states; 15 ms cancellation; live web tests passed. 30-minute soak deferred by user."
 }

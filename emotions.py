@@ -31,7 +31,15 @@ def install(moods):
 
     for alias, target in ALIASES.items():
         moods[alias] = moods[target]
+    import behaviour
+    async def named(o,key):
+        await play(o,SEQUENCES[key])
+    def scene_mode(key):
+        async def run(o):
+            await behaviour.manual(o,key,named)
+        return run
+    for key in behaviour.SCENES:
+        moods[key]=scene_mode(key)
     async def auto(o):
-        await moods["rosto01"](o)
-        await moods["rosto%02d" % random.randint(1, 30)](o)
+        await behaviour.automatic(o,named)
     moods["auto"] = auto

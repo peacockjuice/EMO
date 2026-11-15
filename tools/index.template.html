@@ -9,21 +9,24 @@
 <p id="status" role="status" aria-live="polite">Подключаемся к роботу…</p><button id="retry" hidden>Повторить подключение</button>
 <div class="controls"><nav id="modes" class="mode-buttons" aria-label="Режимы"></nav><label id="display-options"><input id="invert" type="checkbox">Инвертировать цвета экрана</label></div><h2>Все эмоции · __COUNT__</h2><section id="grid" class="face-grid" aria-label="Выбор эмоции"></section>
 <h2>Разговор</h2><nav id="speech" class="face-grid" aria-label="Режимы разговора"></nav>
-<footer>«Сам по себе» чередует улыбку с эмоциями из набора.<br>Миниатюры показывают основную позу; на роботе лица двигаются.</footer>
+<h2>Сценки</h2><nav id="scenes" class="face-grid" aria-label="Сценки"></nav>
+<footer>«Сам по себе» меняет настроение и разыгрывает сценки.<br>Миниатюры показывают основную позу; на роботе лица двигаются.</footer>
 </main><script>
 const faces=__CATALOG__;
 const modes=[["auto","Сам по себе"]];
 const speechCards=__SPEECH_CARDS__;
+const sceneCards=__SCENE_CARDS__;
+const feelingNames={calm:"Спокойствие",curious:"Интерес",joy:"Радость",sleepy:"Сонливость"};
 const speechModes=speechCards.map(f=>[f.id,f.name]);
 const aliases=__ALIASES__;
 const status=document.getElementById("status"),retry=document.getElementById("retry");
-const titles=Object.fromEntries([...modes,...speechModes,...faces.map(f=>[f.id,f.name])]);
+const titles=Object.fromEntries([...modes,...speechModes,...sceneCards.map(f=>[f.id,f.name]),...faces.map(f=>[f.id,f.name])]);
 const invert=document.getElementById("invert");
 let busy=false,pending=null,pendingInvert=null;
-function mark(result){let m=aliases[result.mood]||result.mood;invert.checked=pendingInvert===null?result.invert:pendingInvert;for(const im of document.querySelectorAll(".face img"))im.className=result.invert?"inverted":"";for(const b of document.querySelectorAll("button[data-mood]"))b.setAttribute("aria-pressed",String(b.dataset.mood===m));status.className="";status.textContent="Выбрано: "+(titles[m]||m);retry.hidden=true}
+function mark(result){let m=aliases[result.mood]||result.mood;invert.checked=pendingInvert===null?result.invert:pendingInvert;for(const im of document.querySelectorAll(".face img"))im.className=result.invert?"inverted":"";for(const b of document.querySelectorAll("button[data-mood]"))b.setAttribute("aria-pressed",String(b.dataset.mood===m));status.className="";status.textContent="Выбрано: "+(titles[m]||m)+(result.feeling?" · "+feelingNames[result.feeling]:"")+(result.scene&&m==="auto"?" · "+titles[result.scene]:"")+(result.phase==="hold"?" · Завершено":"");retry.hidden=true}
 function choose(m){pending=m;poll()}
 for(const [id,title] of modes){const b=document.createElement("button");b.textContent=title;b.dataset.mood=id;b.setAttribute("aria-pressed","false");b.onclick=()=>choose(id);document.getElementById("modes").append(b)}
-for(const [container,items] of [["speech",speechCards],["grid",faces]])for(const f of items){const b=document.createElement("button");b.className="face";b.dataset.mood=f.id;b.setAttribute("aria-pressed","false");b.setAttribute("aria-label",f.number+". "+f.name);const im=document.createElement("img");im.src=f.thumb;im.alt="";im.width=128;im.height=64;const n=document.createElement("span");n.className="number";n.textContent=(container==="speech"?"РЕЧЬ ":"")+String(f.number).padStart(2,"0");const label=document.createElement("span");label.className="label";label.textContent=f.name;b.append(im,n,label);b.onclick=()=>choose(f.id);document.getElementById(container).append(b)}
+for(const [container,items] of [["speech",speechCards],["grid",faces],["scenes",sceneCards]])for(const f of items){const b=document.createElement("button");b.className="face";b.dataset.mood=f.id;b.setAttribute("aria-pressed","false");b.setAttribute("aria-label",f.number+". "+f.name);const im=document.createElement("img");im.src=f.thumb;im.alt="";im.width=128;im.height=64;const n=document.createElement("span");n.className="number";n.textContent=(container==="speech"?"РЕЧЬ ":"")+String(f.number).padStart(2,"0");const label=document.createElement("span");label.className="label";label.textContent=f.name;b.append(im,n,label);b.onclick=()=>choose(f.id);document.getElementById(container).append(b)}
 async function request(path){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);try{const r=await fetch(path,{cache:"no-store",signal:controller.signal});if(!r.ok)throw Error("http");const j=await r.json();if(j.ok===false)throw Error("mood");return j}finally{clearTimeout(timer)}}
 invert.onchange=()=>{pendingInvert=invert.checked;poll()};
 async function poll(){

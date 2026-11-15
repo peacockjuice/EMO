@@ -1,12 +1,28 @@
-# After v0.1: live character and scenes
+---
+title: "EMO: живой характер и сценки"
+tags: [emo, behaviour, scenes]
+---
 
-Planned only, not implemented or included in v0.1 functionality.
+# EMO: живой характер и сценки
 
-1. Calm, curious personality with persistent short-term mood (calm, interest, joy, sleepiness), quiet pauses and no unprompted anger/crying/fright.
-2. Single scene executor over existing animation cycles; user selection cancels immediately. Automatic behaviour returns only when Сам по себе is selected.
-3. Six scenes: Что там?, Рад тебя видеть, Есть мысль, Смущается, Клюёт носом; Возмущён! is manual-only.
-4. Replace random auto face selection with mood-aware choices, cooldowns and no consecutive scene repeats.
-5. Add six visual scene cards below Разговор. Manual scenes play once and hold the ending emotion. Expose current scene in auto mode.
-6. Test cancellation at every step, complete scenes, inversion, HTTP, memory and a prolonged device session. Review timing on the physical OLED, then update handoff.
+Реализовано после v0.1. Банк кадров не изменён. Релиз v0.1 сохранён отдельным тегом.
 
-No sensors, sound or new runtime libraries in the first iteration. Behaviour is expressive animation, not actual perception.
+## Характер
+
+Четыре настроения: спокойствие, интерес, радость и сонливость. Каждое длится 2–4 минуты. Переходы заданы в behaviour.py: спокойствие → интерес или сонливость; интерес → радость; радость → спокойствие; сонливость → спокойствие с пробуждением.
+Настроение определяет доступные сценки и малые реакции. Первые 20–40 секунд — спокойствие. После сцены — пауза 30–90 секунд. Пауза состоит из анимации, не из неподвижного кадра. Сцены не повторяются подряд. Сон разрешён не чаще одного раза за пять минут. Злость доступна только вручную.
+
+## Сценки
+
+Готовы шесть сцен: «Что там?», «Рад тебя видеть», «Смущается», «Клюёт носом», «Просыпается», «Возмущён!». Длительность — около 8–10 секунд. Точные шаги и повторения заданы в behaviour.SCENES. GIF и длительности лежат в preview/scene_*.gif и preview/scenes-manifest.json. GIF повторяются для просмотра; ручная сцена выполняется один раз.
+
+## Управление
+
+Один исполнитель управляет OLED. Ручная команда отменяет текущее действие. После ручной сцены повторяется её завершающая эмоция. Повторное нажатие начинает сцену заново. Для возврата характера нужно нажать «Сам по себе». Инверсия не меняет действие.
+Карточки сцен находятся ниже «Разговор». API сохраняет mood/invert и добавляет feeling, scene и phase. Выбранный режим не меняется при переходе между шагами. После ошибки дисплея сцена начинается сначала; более новая команда имеет приоритет. После перезагрузки включается auto.
+
+## Проверки и границы
+
+Локально проверены отмена на каждом шаге, удержание финальной эмоции, 40 моделируемых часов переходов, переполнение часов, ограничение сна, отсутствие повторов, восстановление после ошибки дисплея и панель.
+На плате прошли все шесть сцен в обоих режимах инверсии. Измеренная отмена — 15 мс. Непрерывный 30-минутный тест auto не завершён: поступали ручные команды. Это ограничение проверки, не доказательство сбоя auto.
+Физический вид и темп требуют наблюдения пользователя. Датчиков и звука нет. Название «Рад тебя видеть» обозначает сцену, а не обнаружение человека.
