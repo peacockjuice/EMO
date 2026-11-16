@@ -11,7 +11,7 @@
 
 ## Wi-Fi app updates — 0.3-dev
 
-The update port 8080 requires HMAC-SHA256 with a random 32-byte key, a single-use expiring challenge, body hash and per-file hashes. Successful replies are authenticated. Private keys and boot/config files cannot be replaced by an app bundle. The key is local to Mac and board, not in Git.
+The update port 8080 requires HMAC-SHA256 with a random 32-byte key, a single-use expiring challenge, body hash and per-file hashes. Successful replies are authenticated. The bundle filename allowlist excludes private keys and boot/config files. This is not filesystem isolation: once running, application Python code can write root files. The key is local to Mac and board, not in Git.
 
 Uploads write the inactive application slot. A flushed journal rename selects a verified trial. Failed/unconfirmed trial boots revert; a 60-second watchdog handles a startup hang. The client requires advancing frames and at least ten seconds uptime before confirmation. See handoff/wifi-updates.md for precise limits and recovery.
 

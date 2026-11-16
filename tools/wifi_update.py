@@ -41,18 +41,34 @@ def await_trial(client,release):
         try:
             state=client.call('/ota/status')['status']
         except (OSError,ValueError):time.sleep(1);continue
+        if not state['pending'] and state['last_result'] in ('rolled_back_unconfirmed','rejected_integrity'):
+            raise RuntimeError('Device rejected the new release and kept the previous version')
         if state['running']==release:
-            if not state['trial'] and not state['pending'] and state['active']==release:return state
+            if not state['trial'] and not state['pending'] and state['active']==release and state['last_result']=='confirmed':return state
             if state['trial']:
                 if observed is None:observed=state['frames']
                 if state['boot_ms']>=10000 and state['frames']>max(1,observed):
-                    result=client.call('/ota/confirm',release.encode())['status']
+                    try:
+                        result=client.call('/ota/confirm',release.encode())['status']
+                    except (OSError,ValueError):
+                        # The journal may already be committed. Read signed status again;
+                        # never infer rollback just because the reply was lost.
+                        time.sleep(1)
+                        continue
                     if result['active']!=release or result['trial']:raise RuntimeError('Confirmation mismatch')
                     return result
-        elif state['last_result'] in ('rolled_back_unconfirmed','rejected_integrity'):
-            raise RuntimeError('Device rejected the new release and kept the previous version')
         time.sleep(1)
-    raise TimeoutError('No healthy confirmation; device watchdog will revert unconfirmed trial')
+    raise TimeoutError('Result unknown: run status. A committed confirmation can survive a lost reply; only an unconfirmed trial rolls back.')
+
+def reboot_and_wait(client,release):
+    try:client.call('/ota/reboot')
+    except urllib.error.HTTPError:raise
+    except (OSError,ValueError):
+        # A reset can close the socket before the authenticated reply reaches us.
+        # Subsequent signed status, not this transport error, determines the outcome.
+        pass
+    return await_trial(client,release)
+
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
@@ -70,16 +86,24 @@ def main():
         body,release=bundle(args.source)
         state=client.call('/ota/status')['status']
         if state['trial'] or state['pending']:raise RuntimeError('Pending update: use resume or cancel')
+        if state['active']==release:
+            print('Already installed; no flash write or reboot',release)
+            return
         result=client.call('/ota/upload',body)
         if result.get('staged')!=release:raise RuntimeError('Staging identity mismatch')
         print('Authenticated and staged',release,flush=True)
-        client.call('/ota/reboot')
+        result=reboot_and_wait(client,release)
+        print('Confirmed healthy release',result['active'])
+        return
     elif args.command=='rollback':
         result=client.call('/ota/rollback');release=result['status']['pending']
     else:
         state=client.call('/ota/status')['status'];release=state['pending']
         if not release:raise RuntimeError('No pending update')
-        if not state['trial']:client.call('/ota/reboot')
+        if not state['trial']:
+            result=reboot_and_wait(client,release)
+            print('Confirmed healthy release',result['active'])
+            return
     result=await_trial(client,release)
     print('Confirmed healthy release',result['active'])
 

@@ -1,6 +1,6 @@
 """Stage, hash-check, then activate explicit files; always reset. Never touches Wi-Fi config."""
 from pathlib import Path
-import os,sys,base64,hashlib,subprocess
+import os,sys,base64,hashlib,subprocess,json
 import mp
 ROOT=Path(__file__).resolve().parents[1]
 port=sys.argv[1];names=sys.argv[2:]
@@ -9,6 +9,9 @@ try:
  fd=mp.opn(port)
  try:
   mp.raw(fd)
+  existing=json.loads(mp.ex(fd,"import os,json;print(json.dumps(os.listdir('/')))"))
+  if '.ota_state.json' in existing or '.ota_key' in existing:
+   raise RuntimeError('OTA board: partial USB upload refused. Use tools/wifi_update.py or deliberate USB recovery.')
   for name in names:
    data=(ROOT/name).read_bytes();temp=name+".new"
    mp.ex(fd,"import binascii,hashlib\nf=open(%r,'wb')"%temp)
