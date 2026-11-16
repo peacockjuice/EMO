@@ -14,6 +14,7 @@ async def play(o, sequence):
             if f.readinto(o.buffer) != 1024:
                 raise ValueError("Truncated animation frame")
             o.show()
+            bmo.S["frames"] = bmo.S.get("frames",0)+1
             while True:
                 remaining = duration - time.ticks_diff(time.ticks_ms(), started)
                 if remaining <= 0: break

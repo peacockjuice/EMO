@@ -1,0 +1,31 @@
+{
+  "transport": "real LAN HTTP with HMAC",
+  "tests": [
+    {
+      "name": "wrong key rejected",
+      "status": "passed"
+    },
+    {
+      "name": "replay rejected",
+      "status": "passed"
+    },
+    {
+      "name": "network upload crash rolls back to confirmed app",
+      "status": "passed"
+    },
+    {
+      "name": "recovered app advances frames and serves matching panel",
+      "status": "passed"
+    }
+  ],
+  "confirmed_release": "fb4ac610f1d3ad4a415e4b149c81ab8dec5b09894d90c6294609edebb1fb533e",
+  "final_status": {
+    "pending": null,
+    "running": "fb4ac610f1d3ad4a415e4b149c81ab8dec5b09894d90c6294609edebb1fb533e",
+    "trial": false,
+    "last_result": "rolled_back_unconfirmed",
+    "frames": 36,
+    "active": "fb4ac610f1d3ad4a415e4b149c81ab8dec5b09894d90c6294609edebb1fb533e",
+    "boot_ms": 33009
+  }
+}

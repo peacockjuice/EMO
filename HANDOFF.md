@@ -9,9 +9,9 @@ The user is building an animated monochrome OLED robot face on ESP32-S2, control
 
 ## Repository and deployment differences
 
-Private repository: https://github.com/peacockjuice/EMO. Local checkout: /Users/vpavlin/Projects/EMO. Tag v0.1 is the original release; main contains the implemented character, scenes and 500 ms showcase. VERSION is 0.2-dev. Do not overwrite v0.1.
+Private repository: https://github.com/peacockjuice/EMO. Local checkout: /Users/vpavlin/Projects/EMO. Tag v0.1 is the original release; main contains the implemented character, scenes and 500 ms showcase. VERSION is 0.3-dev. Do not overwrite v0.1.
 
-The working/deployed source folder is /Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/. Repository bmo.py and archived copies are sanitized: they import AP_NAME/AP_PASS from ignored private ap_cfg.py. Read README.md before deploying repository code. The currently running board still uses its existing configuration. Never copy the old embedded AP password into Git.
+The working/deployed source folder is /Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/. Repository bmo.py and archived copies are sanitized: they import AP_NAME/AP_PASS from ignored private ap_cfg.py. Read README.md before deploying repository code. The board now imports its private ap_cfg.py; Wi-Fi credentials remain unchanged. Never copy the old embedded AP password into Git.
 
 wifi_cfg.py is board-only; never read it back, print it or copy it to the Mac. Raw serial logs, private configs and virtual environments are excluded from Git. Source snapshot hashes describe working files before credential extraction. Structured test reports, graphics, firmware, build tools and backup fixtures are included.
 
@@ -20,7 +20,7 @@ wifi_cfg.py is board-only; never read it back, print it or copy it to the Mac. R
 Project source of truth: `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/`.
 Live panel: http://192.168.1.43/ (DHCP address can change). Current serial device: `/dev/cu.usbserial-10` (previously -210 and -110).
 Last requested changes are complete: visible branding EMO, main 33-card emotion grid, and seven visual speech cards under Разговор BELOW that grid. Auto and inversion controls remain above the grids. The panel now uses a warm cream/beige background, chocolate cards and caramel selection accents; OLED thumbnails remain monochrome. Character/scenes are implemented; see the behaviour section below for release validation status.
-On 2026-11-16 the user disconnected USB from the Mac; the robot still responds over home Wi-Fi. The read-only check reported auto, sleepy, inversion off. This is a point-in-time observation, not a persistent setting. No update-over-Wi-Fi endpoint exists yet. See [latest network check](./preview/handoff-network-check.json) and [previous deployment snapshot](./preview/handoff-snapshot.json) for scope and timestamps. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
+On 2026-11-16 the user disconnected USB from the Mac; the robot still responds over home Wi-Fi. The read-only check reported auto, sleepy, inversion off. This is a point-in-time observation, not a persistent setting. An authenticated app updater is now installed on port 8080. A full LAN upload and healthy boot confirmation passed; see the Wi-Fi update section below. See [latest network check](./preview/handoff-network-check.json) and [previous deployment snapshot](./preview/handoff-snapshot.json) for scope and timestamps. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
 
 ## Current behaviour and API
 
@@ -84,3 +84,8 @@ Source: [BB notification implementation plan](./handoff/bb-notifications-plan.md
 The original complete bank received device regression; later additions received scoped device/local checks. Do not claim one full current-release hardware run. The current handoff only rechecks live HTTP/state and documentation; it does not reflash or rerun hardware tests.
 Real-browser rendering was not verified because the computer-use host was unavailable. Mock DOM tests are not browser screenshots. Device buffer hashes prove data/execution, not optical appearance; user photographs supplied physical size/readability approval.
 The latest network check records whether served HTML matches the current local page. Remaining limitations are documented, not hidden unfinished feature requests.
+
+## Safe Wi-Fi app updates
+
+USB-installed supervisor, authenticated bundles, trial boot and recovery checks. Read this before any further deployment: the legacy partial USB upload path can invalidate slot manifests.
+Source: [Wi-Fi updater and recovery](./handoff/wifi-updates.md)

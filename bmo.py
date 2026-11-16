@@ -26,6 +26,7 @@ def net_up():
         import wifi_cfg                       # optional file: SSID = "...", PASSWORD = "..."
         sta = network.WLAN(network.STA_IF)
         sta.active(True)
+        sta.config(pm=network.WLAN.PM_NONE)  # reliable inbound LAN control/update
         sta.connect(wifi_cfg.SSID, wifi_cfg.PASSWORD)
         t = time.ticks_ms()
         while not sta.isconnected() and time.ticks_diff(time.ticks_ms(), t) < 15000:
@@ -113,6 +114,7 @@ def state_json(ok=None):
     prefix = '"ok":%s,' % ("true" if ok else "false") if ok is not None else ""
     import json
     result = {k:S[k] for k in ("mood","invert","scene","phase","feeling","showing")}
+    result["frames"] = S.get("frames",0)
     if ok is not None: result["ok"] = ok
     return json.dumps(result)
 
@@ -166,6 +168,8 @@ async def handle(r, w):
 
 async def main():
     net_up()
+    import ota_http
+    await ota_http.start()
     print("web page: http://%s/  (wifi: %s)" % (S["ip"], S["net"]))
     await asyncio.start_server(handle, "0.0.0.0", 80)
     await animate()

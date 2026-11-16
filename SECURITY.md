@@ -8,3 +8,11 @@
 - Local IP addresses, original Mac paths and BB thread identifiers remain in private operational documentation. Do not make the repository public without another privacy/license review.
 - The robot HTTP API has no authentication or TLS and changes state through GET. Treat it as a trusted-LAN device; do not expose it directly to the internet. Repository privacy does not secure the device network.
 - Hardware was not changed during repository preparation. Existing board AP password has not been rotated; the snapshot requires a private ap_cfg.py before flashing its bmo.py.
+
+## Wi-Fi app updates — 0.3-dev
+
+The update port 8080 requires HMAC-SHA256 with a random 32-byte key, a single-use expiring challenge, body hash and per-file hashes. Successful replies are authenticated. Private keys and boot/config files cannot be replaced by an app bundle. The key is local to Mac and board, not in Git.
+
+Uploads write the inactive application slot. A flushed journal rename selects a verified trial. Failed/unconfirmed trial boots revert; a 60-second watchdog handles a startup hang. The client requires advancing frames and at least ten seconds uptime before confirmation. See handoff/wifi-updates.md for precise limits and recovery.
+
+No TLS, secure boot or encryption at rest is claimed. A shared-key holder can install arbitrary application code. LAN denial of service and physical flash failure are not prevented. Port 80 remains unauthenticated. Do not forward either port to the internet. Physical power-cut fault injection and long-term OTA soak remain untested.

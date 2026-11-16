@@ -1,0 +1,2 @@
+import bmo
+bmo.run()

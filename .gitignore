@@ -13,3 +13,10 @@ __pycache__/
 .DS_Store
 # Serial output can contain the home network name
 *.log
+
+# Private OTA state and device slots
+.ota_key
+.ota_state.json*
+ota_manifest.json
+ota_a/
+ota_b/

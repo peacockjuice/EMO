@@ -1,0 +1,44 @@
+{
+  "transport": "USB-triggered; Wi-Fi transport not tested",
+  "tests": [
+    {
+      "name": "integrity",
+      "status": "passed",
+      "result": {
+        "pending": null,
+        "running": "aff83726a294b372c49c35fef40618524450e5289c52c3cc5bea034a13ebc1ee",
+        "trial": false,
+        "last_result": "rejected_integrity",
+        "frames": 0,
+        "active": "aff83726a294b372c49c35fef40618524450e5289c52c3cc5bea034a13ebc1ee",
+        "boot_ms": 6096
+      }
+    },
+    {
+      "name": "startup_crash",
+      "status": "passed",
+      "result": {
+        "pending": null,
+        "running": "aff83726a294b372c49c35fef40618524450e5289c52c3cc5bea034a13ebc1ee",
+        "trial": false,
+        "last_result": "rolled_back_unconfirmed",
+        "frames": 0,
+        "active": "aff83726a294b372c49c35fef40618524450e5289c52c3cc5bea034a13ebc1ee",
+        "boot_ms": 5344
+      }
+    },
+    {
+      "name": "watchdog_hang",
+      "status": "passed",
+      "result": {
+        "pending": null,
+        "running": "aff83726a294b372c49c35fef40618524450e5289c52c3cc5bea034a13ebc1ee",
+        "trial": false,
+        "last_result": "rolled_back_unconfirmed",
+        "frames": 0,
+        "active": "aff83726a294b372c49c35fef40618524450e5289c52c3cc5bea034a13ebc1ee",
+        "boot_ms": 7118
+      }
+    }
+  ]
+}

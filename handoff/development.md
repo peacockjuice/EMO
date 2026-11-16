@@ -59,7 +59,9 @@ check_invert covers explicit idempotent values, unchanged mood/version and faile
 
 ## Deploy and device regression
 
-Read /state before resetting, then restore the user's mood/invert afterward. Verify the current USB path; it changed from -110 to -210. Serial calls require sandbox escalation; do not interpret a permission failure as a broken board.
+The board now has an A/B updater. Use the [Wi-Fi update procedure](./wifi-updates.md). The partial USB commands below are historical and must not be applied to an OTA slot without rebuilding its manifest and journal.
+
+Read /state before resetting, then restore the user's mood/invert afterward. Verify the current USB path; it changed from -110 to -210. Serial access must be available to the current process; do not interpret a permission failure as a broken board.
 
 ```sh
 rtk proxy python3 tools/upload_release.py /dev/cu.usbserial-210 emotions.bin emotion_sequences.py emotions.py index.html bmo.py
