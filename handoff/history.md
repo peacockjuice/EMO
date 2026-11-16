@@ -72,3 +72,7 @@ Review tightened verification rather than changing the approved personality: sho
 User requested a fast endless tour including inverted variants. Added Все подряд (demo): 40 animations and six scenes, paired normal/inverse, with pre-demo inversion restored on exit. This is a user-facing preview mode, not the deferred 30-minute regression test.
 
 User shortened showcase to 0.5 seconds per variant per polarity. Ten time samples bound long scenes to the same preview duration; normal manual scenes and animations are unchanged.
+
+## Checkpoint 2026-11-16
+
+User disconnected USB; home-network control still works. Wi-Fi file/firmware update is not implemented. Speaker/toy-button integration was discussed but nothing was wired or programmed. BB notifications were planned and reviewed; the user requested this GitHub/handoff checkpoint before implementation. See hardware guide and BB notifications plan.

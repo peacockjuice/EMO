@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-11-16T11:13:11.612006+00:00",
+  "url": "http://192.168.1.43/",
+  "scope": "Read-only HTTP; no USB access, no firmware changes, no Wi-Fi credentials read.",
+  "state": {
+    "showing": null,
+    "scene": null,
+    "mood": "auto",
+    "invert": false,
+    "phase": "idle",
+    "feeling": "sleepy"
+  },
+  "served_html_matches_repository": true
+}

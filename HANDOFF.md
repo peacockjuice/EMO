@@ -1,26 +1,26 @@
 ---
-title: "EMO: handoff for the next agent (2026-11-15)"
+title: "EMO: handoff for the next agent (2026-11-16)"
 tags: [emo, esp32, oled, handoff]
 ---
 
-# EMO: handoff for the next agent (2026-11-15)
+# EMO: handoff for the next agent (2026-11-16)
 
 The user is building an animated monochrome OLED robot face on ESP32-S2, controlled from a local web panel. Reply in Russian. This is the current entrypoint covering all three related conversations; follow the topic links below before changing the relevant part.
 
-## Private repository v0.1
+## Repository and deployment differences
 
-Sanitized snapshot: https://github.com/peacockjuice/EMO (private), tag v0.1; local checkout /Users/vpavlin/Projects/EMO. Read its README.md and SECURITY.md before deploying: its current/backup bmo.py import AP settings from ignored ap_cfg.py instead of embedding a password. This original working folder and board were not changed. Raw serial logs and private configurations were excluded from Git. Live character/scenes are future work, recorded in repository ROADMAP.md.
+Private repository: https://github.com/peacockjuice/EMO. Local checkout: /Users/vpavlin/Projects/EMO. Tag v0.1 is the original release; main contains the implemented character, scenes and 500 ms showcase. VERSION is 0.2-dev. Do not overwrite v0.1.
 
-## Sanitized repository deployment
+The working/deployed source folder is /Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/. Repository bmo.py and archived copies are sanitized: they import AP_NAME/AP_PASS from ignored private ap_cfg.py. Read README.md before deploying repository code. The currently running board still uses its existing configuration. Never copy the old embedded AP password into Git.
 
-Current and backup bmo.py here require ignored private ap_cfg.py (see README.md). Source snapshot hashes describe the working-board files before credential extraction. Raw serial logs are excluded.
+wifi_cfg.py is board-only; never read it back, print it or copy it to the Mac. Raw serial logs, private configs and virtual environments are excluded from Git. Source snapshot hashes describe working files before credential extraction. Structured test reports, graphics, firmware, build tools and backup fixtures are included.
 
 ## Start here
 
 Project source of truth: `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/`.
 Live panel: http://192.168.1.43/ (DHCP address can change). Current serial device: `/dev/cu.usbserial-10` (previously -210 and -110).
 Last requested changes are complete: visible branding EMO, main 33-card emotion grid, and seven visual speech cards under Разговор BELOW that grid. Auto and inversion controls remain above the grids. The panel now uses a warm cream/beige background, chocolate cards and caramel selection accents; OLED thumbnails remain monochrome. Character/scenes are implemented; see the behaviour section below for release validation status.
-At the latest handoff, demo is running and inversion alternates automatically; the served HTML matches local index.html. See [snapshot](./preview/handoff-snapshot.json) for the actual observation time, hashes and state. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
+On 2026-11-16 the user disconnected USB from the Mac; the robot still responds over home Wi-Fi. The read-only check reported auto, sleepy, inversion off. This is a point-in-time observation, not a persistent setting. No update-over-Wi-Fi endpoint exists yet. See [latest network check](./preview/handoff-network-check.json) and [previous deployment snapshot](./preview/handoff-snapshot.json) for scope and timestamps. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
 
 ## Current behaviour and API
 
@@ -51,6 +51,10 @@ The Все подряд button selects demo. showcase.py loops through all 40 ca
 
 Selecting another mode cancels demo and restores pre-demo inversion. Explicit API inversion changes during demo update that restored preference. Re-entering demo restarts it; reconnection restarts the tour. Local checks: tools/check_showcase.py, tools/check_web.mjs. The normal frame bank is unchanged.
 
+## Immediate wiring reference
+
+OLED power: j1 / V3V / 3.3 V → blue wire → VDD. OLED ground: j3 / GND → green → GND. OLED clock: j12 / IO9 → crimson → SCK. OLED data: j13 / IO8 → grey → SDA. j2 is +5 V and must remain unconnected to the OLED. These hole numbers apply only to the previously photographed breadboard orientation (USB at row 1, board pins in columns b and i). Confirm orientation before rewiring; a mirrored pin map previously caused loss of power/USB.
+
 ## Hardware, network and recovery
 
 Read before connecting peripherals, debugging a dark screen, touching serial, Wi-Fi or flashing. Includes exact wiring, DIP switches, rotation and known failure modes. wifi_cfg.py must stay ONLY on the board: never read it back, print it or copy it to the Mac. Normal updates do not require erasing flash.
@@ -69,8 +73,14 @@ Read to understand user approvals, rejected approaches, design choices and ideas
 
 Source: [Decisions across the three conversations](./handoff/history.md)
 
+## Next feature: notifications from BB
+
+Planning only. No notification plugin, robot notification mode, authentication endpoint or Wi-Fi updater has been implemented. The user requested saving this checkpoint before further implementation.
+
+Source: [BB notification implementation plan](./handoff/bb-notifications-plan.md)
+
 ## Verification boundary
 
 The original complete bank received device regression; later additions received scoped device/local checks. Do not claim one full current-release hardware run. The current handoff only rechecks live HTTP/state and documentation; it does not reflash or rerun hardware tests.
 Real-browser rendering was not verified because the computer-use host was unavailable. Mock DOM tests are not browser screenshots. Device buffer hashes prove data/execution, not optical appearance; user photographs supplied physical size/readability approval.
-The source and live HTML match at this handoff. Remaining limitations are documented, not hidden unfinished feature requests.
+The latest network check records whether served HTML matches the current local page. Remaining limitations are documented, not hidden unfinished feature requests.
