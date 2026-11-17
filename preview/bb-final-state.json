@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-17T12:53:11.745033+00:00",
+  "device": {
+    "feeling": null,
+    "frames": 838,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "bridge": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40416,
+      "epoch": 1794919968946,
+      "frames": 833,
+      "ok": true,
+      "seq": 4,
+      "boot": "f872e20fa16ef7012610b8704d1396ee",
+      "heap": 36672,
+      "status": "live",
+      "native_largest": 31744
+    }
+  }
+}

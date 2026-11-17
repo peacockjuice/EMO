@@ -1,0 +1,35 @@
+{
+  "native_after_stop": [
+    [
+      8108,
+      7728,
+      7680,
+      7728
+    ],
+    [
+      14864,
+      4,
+      0,
+      4
+    ],
+    [
+      167464,
+      33076,
+      30720,
+      22112
+    ]
+  ],
+  "device": {
+    "pending": null,
+    "running": "4c396d2e4a5b567f3df8aed0d891377c204793fb599c9e691d013af553f57679",
+    "trial": false,
+    "last_result": "confirmed",
+    "frames": 822,
+    "active": "4c396d2e4a5b567f3df8aed0d891377c204793fb599c9e691d013af553f57679",
+    "boot_ms": 183086
+  },
+  "heap_free_including_potential_growth": 39872,
+  "checked_at": "2026-11-17T13:57:04.857157+00:00",
+  "local_release": "4c396d2e4a5b567f3df8aed0d891377c204793fb599c9e691d013af553f57679",
+  "bundle_bytes": 187210
+}

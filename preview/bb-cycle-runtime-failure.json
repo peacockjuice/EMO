@@ -1,0 +1,1 @@
+{"loaded": ["emo_http", "emo_font", "emo_bb_layout", "emo_bb_display", "emo_bb_http", "emo_bb", "emo_bb_frames"], "native": [[8108, 1568, 1536, 940], [14864, 4, 0, 4], [167464, 880, 208, 52]], "heap_free": 37088, "threshold": 4096, "heap_alloc": 58400, "mode": "bb", "frames": 369}

@@ -1,0 +1,114 @@
+[
+  {
+    "bb_loaded": false,
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        35548,
+        34816,
+        28048
+      ]
+    ],
+    "heap_free": 53184,
+    "heap_alloc": 45632,
+    "connected": true,
+    "stage": "before_gc",
+    "wifi_status": 1010
+  },
+  {
+    "bb_loaded": false,
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        35548,
+        34816,
+        28048
+      ]
+    ],
+    "heap_free": 53248,
+    "heap_alloc": 45568,
+    "connected": true,
+    "stage": "before_import",
+    "wifi_status": 1010
+  },
+  {
+    "bb_loaded": true,
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        728,
+        400,
+        728
+      ]
+    ],
+    "heap_free": 54448,
+    "heap_alloc": 51152,
+    "connected": true,
+    "stage": "after_import",
+    "wifi_status": 1010
+  },
+  {
+    "bb_loaded": true,
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        4136
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        728,
+        400,
+        496
+      ]
+    ],
+    "heap_free": 54016,
+    "heap_alloc": 51584,
+    "connected": true,
+    "stage": "after_one_second",
+    "wifi_status": 1010
+  }
+]

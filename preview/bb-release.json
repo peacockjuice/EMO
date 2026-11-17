@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-17T12:51:31.035088+00:00",
+  "local_release": "6af4e5ebad131a5bbea2fd131648f71c6b4c6dd48e80bbba86609d85c202e84d",
+  "bundle_bytes": 186100,
+  "device": {
+    "pending": null,
+    "running": "6af4e5ebad131a5bbea2fd131648f71c6b4c6dd48e80bbba86609d85c202e84d",
+    "trial": false,
+    "last_result": "confirmed",
+    "frames": 685,
+    "active": "6af4e5ebad131a5bbea2fd131648f71c6b4c6dd48e80bbba86609d85c202e84d",
+    "boot_ms": 444205
+  }
+}

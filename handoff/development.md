@@ -5,11 +5,11 @@ tags: [emo, esp32, oled, handoff]
 
 # EMO: build, deployment and verification
 
-Work from `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo`. Prefix shell commands with `rtk` per `/Users/vpavlin/.codex/RTK.md`.
+Work from `/Users/vpavlin/projects/EMO`. The older thread-storage copy is a historical snapshot. Prefix shell commands with `rtk` per `/Users/vpavlin/.codex/RTK.md`.
 
 ## Source map and runtime
 
-- `main.py` imports bmo and calls run; `bmo.py` owns network setup, display connection, HTTP and asyncio animation loop.
+- Root `main.py` starts the OTA supervisor, which selects and starts the application; `bmo.py` owns network setup, display connection, HTTP and asyncio animation loop. See the Wi-Fi updater guide before deployment.
 - `emotions.py` streams one 1024-byte frame into the existing OLED buffer; transfer counts toward duration. It yields in at most 40 ms slices, detects S.ver changes and closes the bank on cancellation.
 - `emotion_sequences.py` and `emotions.bin` are generated matching timelines/frame bank. Do not mix revisions.
 - `tools/build_faces.py` adapts 30 original SVGs; source art in assets/figma stays unchanged. Masks/clips are preserved, cheeks hatched, highlights light, tears outlined.
@@ -17,8 +17,9 @@ Work from `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo`. Prefix shell c
 - `tools/build_animations.py` makes approved blink/talk/cry samples used as build inputs. samples.py is not imported by runtime.
 - `tools/build_all.py` builds 40 timelines, deduplicated bank, 33-face catalog and animation previews.
 - `tools/index.template.html` is the editable UI source; `tools/build_web.py` generates index.html and seven speech thumbnails directly from actual bank frames, using stdlib PNG encoding.
+- `tools/build_bb.py` appends compact BB faces and updates full-manifest.json; build_all.py invokes it. `emo_bb.py` owns snapshot state, `emo_bb_http.py` handles signed requests and `emo_bb_display.py` owns the display loop, face/speech/text phases, counters and scaled text. The cycle reuses already-loaded emotion_sequences.py and the original full-size frames, shifted down four pixels below the header. Keep these compilation units separate: importing the former monolithic module exhausted native Wi-Fi memory on ESP32-S2; `emo_font.py` contains an original Cyrillic font, and `emo_http.py` bounds HTTP headers with one deadline and reads sockets in 128-byte chunks, preserving buffered body bytes. Run tools/check_bb.py and bb-plugin-emo npm check/test/build after relevant changes.
 - `ssd1306.py` is the unchanged driver. `face.py` is the legacy renderer, retained for rollback only.
-- Runtime deployment: main.py, bmo.py, behaviour.py, showcase.py, ssd1306.py, emotions.py, emotion_sequences.py, emotions.bin, index.html. wifi_cfg.py lives only on the board. Older sample files on the board are unused.
+- Application deployment uses the complete bundle selected by the Wi-Fi updater client, including the BB modules and font. Root main.py/supervisor and board-only wifi_cfg.py are outside normal application updates. Older sample files on the board are unused.
 
 ## Character development
 
@@ -26,7 +27,7 @@ behaviour.py owns mood rules and six scenes. emotions.py installs their modes in
 
 ## Panel palette
 
-Warm beige/brown CSS tokens live in tools/index.template.html (:root). Keep monochrome thumbnail pixels faithful to OLED output; inversion still uses invert(1). The palette update changes only the page, so deploy index.html alone. Backup: backups/before-warm-palette.
+Warm beige/brown CSS tokens live in tools/index.template.html (:root). Keep monochrome thumbnail pixels faithful to OLED output; inversion still uses invert(1). A page-only edit needs only build_web.py locally, but the installed OTA updater still requires a complete application bundle. Backup: backups/before-warm-palette.
 
 ## Build
 
@@ -59,27 +60,29 @@ check_invert covers explicit idempotent values, unchanged mood/version and faile
 
 ## Deploy and device regression
 
-The board now has an A/B updater. Use the [Wi-Fi update procedure](./wifi-updates.md). The partial USB commands below are historical and must not be applied to an OTA slot without rebuilding its manifest and journal.
+The board now has an A/B updater. Use the [Wi-Fi update procedure](./wifi-updates.md). Do not use partial USB writes inside an OTA slot: they invalidate the manifest. For BB-specific startup and memory failures, follow the [diagnostic guide](./bb-troubleshooting.md).
 
-Read /state before resetting, then restore the user's mood/invert afterward. Verify the current USB path; it changed from -110 to -210. Serial access must be available to the current process; do not interpret a permission failure as a broken board.
+Read /state before resetting, then restore the user's mood/invert afterward. Verify the current USB path. The latest connected path is /dev/cu.usbserial-110 (2026-11-17); always enumerate it again. Serial access must be available to the current process; do not interpret a permission failure as a broken board.
 
 ```sh
-rtk proxy python3 tools/upload_release.py /dev/cu.usbserial-210 emotions.bin emotion_sequences.py emotions.py index.html bmo.py
-rtk proxy python3 tools/run_full_test.py /dev/cu.usbserial-210
+rtk proxy python3 tools/run_full_test.py PORT
 rtk proxy env BMO_TEST_URL=http://192.168.1.43 node tools/check_web.mjs
 ```
 
-Upload only changed files (HTML-only: index.html). Uploader refuses wifi_cfg.py, stages .new files in chunks, verifies SHA256, then renames sequentially and resets in finally. This is NOT atomic multi-file activation. Keep bmo.py last and preserve a matching backup.
+Historical pre-OTA behaviour: upload only changed files (HTML-only: index.html). The legacy uploader refuses wifi_cfg.py, stages .new files in chunks, verifies SHA256, then renames sequentially and resets in finally. This is NOT atomic multi-file activation. It now refuses partial updates when OTA is installed; use the full-bundle Wi-Fi path instead.
 Raw tools/mp.py interrupts the program: always finish with tools/ser.py, including after an error. Ctrl-C may leave an HTTP socket bound; test runners soft-reset in raw REPL to prevent EADDRINUSE and cached-module tests.
 Scoped runners: run_speech_test.py, run_behaviour_test.py, run_syllables_test.py. They complete cycles with normal/inverted display, HTTP polling and switches. Full run takes roughly two minutes. Do not run device tests simultaneously or click modes during them; external selection can interfere. Runners log/retry external mode changes a bounded number of times.
 check_web with BMO_TEST_URL drives the real device and ends auto/inversion off: restore prior state. Local HTTP works with curl --noproxy '*'.
 
 ## Evidence and limits
 
+- `tools/check_bb_memory_board.py PORT` measures Python and native heap around each BB import, then resets into the normal app. It interrupts the runtime; stop the sender first and restore BB mode afterward. It reads no Wi-Fi configuration or keys. `preview/bb-memory-diagnosis.json` records the monolithic import exhausting the main native pool; `preview/bb-memory-after.json` records the split modules preserving it.
+- `tools/check_bb_live.py` checks complete HTML equality alongside live BB delivery and frame/sequence progress. Run with the plugin enabled and BB mode already live; the result is saved to `preview/bb-acceptance.json`.
+
 - preview/full-board.log is the successful full regression BEFORE later speech additions. Do not claim it tests the entire latest release.
 - preview/speech-board.log, behaviour-board.log and syllables-board.log cover subsequent scopes. Latest syllable loop run completed at least 16 cycles per new mode across both inversion states; final free heap was 57,424 bytes.
 - preview/*-tests.json and review JSON record individual stages; timestamps and scope matter. Some review reports are historical resolved findings.
-- preview/full-manifest.json, catalog.json, speech-cards.json describe generated assets. Current bank has 104 frames / 106,496 bytes; 33 emotion thumbnails and seven speech thumbnails.
+- preview/full-manifest.json, catalog.json, speech-cards.json describe generated assets. Current bank has 122 frames / 124,928 bytes (the original 104 offsets remain intact); 33 emotion thumbnails and seven speech thumbnails.
 - preview/comparison.png, detail before/after images, rostoXX.gif, look/wink/sleep.gif and talk_*.gif show generated pixel data. Some comparison images are earlier layout stages.
 - Device buffer hashes and driver show calls prove transfer/execution, not optical visibility. User photographs validated the enlargement on the physical display.
 - Real-browser QA was unavailable: computer-use browser host failed to connect. Mock DOM tests do not prove CSS/layout appearance.
@@ -87,11 +90,6 @@ check_web with BMO_TEST_URL drives the real device and ends auto/inversion off: 
 
 ## Rollback
 
-Snapshots: backups/before-figma, before-enlargement, before-full-set, before-inversion, before-speech, before-behaviour-update, before-syllables. Choose a consistent set. Original working renderer rollback:
+Use the confirmed A/B rollback procedure in [Wi-Fi updater and recovery](./wifi-updates.md). Never copy individual old files over the active slot. Historical snapshots under backups/before-figma, before-enlargement, before-full-set, before-inversion, before-speech, before-behaviour-update and before-syllables are fixtures and source references; port a consistent set into a complete validated bundle when needed.
 
-```sh
-rtk proxy python3 tools/mp.py /dev/cu.usbserial-210 put backups/before-figma/face.py backups/before-figma/index.html backups/before-figma/bmo.py
-rtk proxy python3 tools/ser.py /dev/cu.usbserial-210
-```
-
-Reset even on upload failure. Extra unused banks may remain. No erase or Wi-Fi rewrite is needed. The pre-consolidation handoff is archived at backups/handoff-before-consolidation.md and is historical, not current guidance.
+Reset even after failed USB diagnostics and restore the prior mode/inversion. No erase or Wi-Fi rewrite is needed. The pre-consolidation handoff at backups/handoff-before-consolidation.md is historical, not current guidance.

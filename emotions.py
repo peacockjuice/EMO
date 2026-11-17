@@ -49,3 +49,8 @@ def install(moods):
         await showcase.run(o,play)
     moods["demo"] = demo
 
+
+    async def bb_mode(o):
+        import emo_bb
+        await emo_bb.run(o)
+    moods["bb"] = bb_mode

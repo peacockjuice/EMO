@@ -177,3 +177,7 @@ for entry in metadata+[{"id":key} for key in speech]:
   d.text((128*j+2,0),str(ms),fill="white");strip.paste(im.convert("RGB"),(128*j,16))
  strip.save(OUT/(key+"-frames.png"))
 print("Built 33 emotion cards + 7 speech variants:",len(frames),"unique frames,",len(bank),"bytes")
+
+# Compact BB frames follow the unchanged original bank.
+from build_bb import build as build_bb
+build_bb()

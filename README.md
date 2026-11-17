@@ -14,6 +14,6 @@ No virtual environments, raw serial logs, credentials or unrelated conversation 
 
 ## Release scope
 
-The v0.1 tag preserves the original release. Current main (0.3-dev) adds four moods, six scenes and authenticated Wi-Fi app updates. Local and live-panel tests passed; all six scenes completed on hardware in both inversion states. The 30-minute soak was explicitly deferred by the user. See HANDOFF.md and preview/character-tests.json.
+The v0.1 tag preserves the original release. Current development version (0.4-dev) adds four moods, six scenes, authenticated Wi-Fi app updates and a BB session monitor with independent counters and a Cyrillic status line. See [BB notifications](handoff/bb-notifications-plan.md) for setup and verification. Local and live-panel tests passed; all six scenes completed on hardware in both inversion states. The 30-minute soak was explicitly deferred by the user. See HANDOFF.md and preview/character-tests.json.
 
 See [SECURITY.md](SECURITY.md) for review scope and remaining limitations. Original third-party artwork and driver notices are retained; private storage does not establish redistribution rights.

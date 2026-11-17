@@ -1,0 +1,167 @@
+[
+  {
+    "release": "6af4e5ebad131a5bbea2fd131648f71c6b4c6dd48e80bbba86609d85c202e84d"
+  },
+  {
+    "connected": true,
+    "stage": "before_import",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34116,
+        32768,
+        24268
+      ]
+    ],
+    "heap_alloc": 46240,
+    "heap_free": 50528,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34116,
+        32768,
+        24268
+      ]
+    ],
+    "heap_alloc": 49136,
+    "heap_free": 47632,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_http",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34116,
+        32768,
+        24268
+      ]
+    ],
+    "heap_alloc": 50800,
+    "heap_free": 45968,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_display",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34116,
+        32768,
+        24268
+      ]
+    ],
+    "heap_alloc": 52320,
+    "heap_free": 44448,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_font",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34116,
+        32768,
+        24268
+      ]
+    ],
+    "heap_alloc": 56352,
+    "heap_free": 40416,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_frames",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34116,
+        32768,
+        24268
+      ]
+    ],
+    "heap_alloc": 56832,
+    "heap_free": 39936,
+    "wifi_status": 1010
+  }
+]

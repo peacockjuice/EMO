@@ -1,0 +1,194 @@
+[
+  {
+    "release": "a99aa452a998ce22acb847b9b1bdf1f5dc36dea04c3b086ab57448d767c6bc56"
+  },
+  {
+    "connected": true,
+    "stage": "before_import",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 46304,
+    "heap_free": 50464,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 49200,
+    "heap_free": 47568,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_http",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 50864,
+    "heap_free": 45904,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_layout",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 51776,
+    "heap_free": 44992,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_display",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 52528,
+    "heap_free": 44240,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_font",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 56768,
+    "heap_free": 40000,
+    "wifi_status": 1010
+  },
+  {
+    "connected": true,
+    "stage": "emo_bb_frames",
+    "native": [
+      [
+        8108,
+        7728,
+        7680,
+        7728
+      ],
+      [
+        14864,
+        4,
+        0,
+        4
+      ],
+      [
+        167464,
+        34324,
+        32768,
+        24256
+      ]
+    ],
+    "heap_alloc": 57424,
+    "heap_free": 39344,
+    "wifi_status": 1010
+  }
+]

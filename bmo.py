@@ -12,6 +12,7 @@ i2c = SoftI2C(sda=Pin(SDA), scl=Pin(SCL), freq=400000)
 S = {"mood": "auto", "ver": 0, "ip": "", "net": "", "invert": False, "scene": None, "phase": "idle", "feeling": None, "showing": None, "demo_restore": False}
 _v = 0
 _display = None
+_clients = 0
 
 class Changed(Exception):
     pass
@@ -97,6 +98,14 @@ async def animate():
 # ---------- web ----------
 def set_mood(m):
     if m in MOODS:
+        if m == "bb" or S["mood"] == "bb":
+            import emo_bb
+            if m == "bb":
+                import gc
+                gc.collect()
+                import emo_bb_http
+                gc.collect()
+            emo_bb.reset_view()
         if S["mood"] == "demo":
             S["invert"] = S["demo_restore"]
         if m == "demo":
@@ -114,6 +123,9 @@ def state_json(ok=None):
     prefix = '"ok":%s,' % ("true" if ok else "false") if ok is not None else ""
     import json
     result = {k:S[k] for k in ("mood","invert","scene","phase","feeling","showing")}
+    if S["mood"] == "bb":
+        import emo_bb
+        result["bb"] = emo_bb.status()
     result["frames"] = S.get("frames",0)
     if ok is not None: result["ok"] = ok
     return json.dumps(result)
@@ -130,14 +142,20 @@ def set_invert(value):
     return True
 
 async def handle(r, w):
+    global _clients
+    if _clients >= 3:
+        w.close()
+        return
+    _clients += 1
+    version = S["ver"]
     try:
-        line = await asyncio.wait_for(r.readline(), 5)
-        while True:
-            h = await asyncio.wait_for(r.readline(), 5)
-            if not h or h == b"\r\n":
-                break
-        parts = line.split()
-        path = parts[1].decode() if len(parts) > 1 else "/"
+        import emo_http
+        r = emo_http.Buffered(r)
+        method, path, headers = await emo_http.request(r)
+        if path.startswith("/bb/"):
+            import emo_bb
+            await emo_bb.handle(method, path, headers, r, w, version)
+            return
         if path.split("?", 1)[0] == "/invert":
             value = path.split("value=", 1)[-1].split("&", 1)[0]
             ok = set_invert(value)
@@ -149,22 +167,30 @@ async def handle(r, w):
         elif path.startswith("/state"):
             w.write('HTTP/1.0 200 OK\r\nContent-Type: application/json\r\nCache-Control: no-store\r\n\r\n' + state_json())
         elif path == "/" or path.startswith("/?"):
-            w.write("HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n")
+            import os, gc
+            gc.collect()
+            size = os.stat("index.html")[6]
+            w.write("HTTP/1.0 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: %d\r\nConnection: close\r\n\r\n" % size)
             with open("index.html", "rb") as f:
                 while True:
                     chunk = f.read(512)
                     if not chunk:
                         break
                     w.write(chunk)
-                    await w.drain()
+                    await asyncio.wait_for(w.drain(), 3)
+                    await asyncio.sleep_ms(0)
         else:
             w.write("HTTP/1.0 404 Not Found\r\n\r\n")
-        await w.drain()
+        await asyncio.wait_for(w.drain(), 3)
     except Exception as e:
         print("http error:", e)
     finally:
+        _clients -= 1
         w.close()
-        await w.wait_closed()
+        try:
+            await asyncio.wait_for(w.wait_closed(), 1)
+        except Exception:
+            pass
 
 async def main():
     net_up()

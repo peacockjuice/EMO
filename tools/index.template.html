@@ -13,7 +13,7 @@
 <footer>«Сам по себе» меняет настроение и разыгрывает сценки.<br>«Все подряд» быстро показывает каждый вариант в обычных цветах и в инверсии, по кругу.<br>Миниатюры показывают основную позу; на роботе лица двигаются.</footer>
 </main><script>
 const faces=__CATALOG__;
-const modes=[["auto","Сам по себе"],["demo","Все подряд"]];
+const modes=[["auto","Сам по себе"],["demo","Все подряд"],["bb","Уведомления BB"]];
 const speechCards=__SPEECH_CARDS__;
 const sceneCards=__SCENE_CARDS__;
 const feelingNames={calm:"Спокойствие",curious:"Интерес",joy:"Радость",sleepy:"Сонливость"};
@@ -23,7 +23,7 @@ const status=document.getElementById("status"),retry=document.getElementById("re
 const titles=Object.fromEntries([...modes,...speechModes,...sceneCards.map(f=>[f.id,f.name]),...faces.map(f=>[f.id,f.name])]);
 const invert=document.getElementById("invert");
 let busy=false,pending=null,pendingInvert=null;
-function mark(result){let m=aliases[result.mood]||result.mood;invert.disabled=m==="demo";invert.checked=pendingInvert===null?result.invert:pendingInvert;for(const im of document.querySelectorAll(".face img"))im.className=result.invert?"inverted":"";for(const b of document.querySelectorAll("button[data-mood]"))b.setAttribute("aria-pressed",String(b.dataset.mood===m));status.className="";status.textContent="Выбрано: "+(titles[m]||m)+(result.feeling?" · "+feelingNames[result.feeling]:"")+(result.scene&&m==="auto"?" · "+titles[result.scene]:"")+(result.showing?" · "+(titles[result.showing]||result.showing)+(result.invert?" · Инверсия":" · Обычный"):"")+(result.phase==="hold"?" · Завершено":"");retry.hidden=true}
+function mark(result){let m=aliases[result.mood]||result.mood;invert.disabled=m==="demo";invert.checked=pendingInvert===null?result.invert:pendingInvert;for(const im of document.querySelectorAll(".face img"))im.className=result.invert?"inverted":"";for(const b of document.querySelectorAll("button[data-mood]"))b.setAttribute("aria-pressed",String(b.dataset.mood===m));status.className="";status.textContent="Выбрано: "+(titles[m]||m)+(result.feeling?" · "+feelingNames[result.feeling]:"")+(result.scene&&m==="auto"?" · "+titles[result.scene]:"")+(result.showing?" · "+(titles[result.showing]||result.showing)+(result.invert?" · Инверсия":" · Обычный"):"")+(result.bb?" · "+({live:"Связь с BB",waiting:"Ожидание BB",offline:"Нет связи с BB",unknown:"Статус BB неизвестен"}[result.bb]||result.bb):"")+(result.phase==="hold"?" · Завершено":"");retry.hidden=true}
 function choose(m){pending=m;poll()}
 for(const [id,title] of modes){const b=document.createElement("button");b.textContent=title;b.dataset.mood=id;b.setAttribute("aria-pressed","false");b.onclick=()=>choose(id);document.getElementById("modes").append(b)}
 for(const [container,items] of [["speech",speechCards],["grid",faces],["scenes",sceneCards]])for(const f of items){const b=document.createElement("button");b.className="face";b.dataset.mood=f.id;b.setAttribute("aria-pressed","false");b.setAttribute("aria-label",f.number+". "+f.name);const im=document.createElement("img");im.src=f.thumb;im.alt="";im.width=128;im.height=64;const n=document.createElement("span");n.className="number";n.textContent=(container==="speech"?"РЕЧЬ ":"")+String(f.number).padStart(2,"0");const label=document.createElement("span");label.className="label";label.textContent=f.name;b.append(im,n,label);b.onclick=()=>choose(f.id);document.getElementById(container).append(b)}

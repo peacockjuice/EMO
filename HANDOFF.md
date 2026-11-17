@@ -1,26 +1,26 @@
 ---
-title: "EMO: handoff for the next agent (2026-11-16)"
+title: "EMO: handoff for the next agent (2026-11-17)"
 tags: [emo, esp32, oled, handoff]
 ---
 
-# EMO: handoff for the next agent (2026-11-16)
+# EMO: handoff for the next agent (2026-11-17)
 
 The user is building an animated monochrome OLED robot face on ESP32-S2, controlled from a local web panel. Reply in Russian. This is the current entrypoint covering all three related conversations; follow the topic links below before changing the relevant part.
 
 ## Repository and deployment differences
 
-Private repository: https://github.com/peacockjuice/EMO. Local checkout: /Users/vpavlin/Projects/EMO. Tag v0.1 is the original release; main contains the implemented character, scenes and 500 ms showcase. VERSION is 0.3-dev. Do not overwrite v0.1.
+Private repository: https://github.com/peacockjuice/EMO. Local checkout: /Users/vpavlin/Projects/EMO. Tag v0.1 is the original release; main contains the implemented character, scenes and 500 ms showcase. VERSION is 0.4-dev. Do not overwrite v0.1.
 
-The working/deployed source folder is /Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/. Repository bmo.py and archived copies are sanitized: they import AP_NAME/AP_PASS from ignored private ap_cfg.py. Read README.md before deploying repository code. The board now imports its private ap_cfg.py; Wi-Fi credentials remain unchanged. Never copy the old embedded AP password into Git.
+The canonical working/deployment source is now /Users/vpavlin/projects/EMO/. The older /Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/ snapshot is historical. Repository bmo.py and archived copies are sanitized: they import AP_NAME/AP_PASS from ignored private ap_cfg.py. Read README.md before deploying repository code. The board now imports its private ap_cfg.py; Wi-Fi credentials remain unchanged. Never copy the old embedded AP password into Git.
 
 wifi_cfg.py is board-only; never read it back, print it or copy it to the Mac. Raw serial logs, private configs and virtual environments are excluded from Git. Source snapshot hashes describe working files before credential extraction. Structured test reports, graphics, firmware, build tools and backup fixtures are included.
 
 ## Start here
 
-Project source of truth: `/Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/`.
-Live panel: http://192.168.1.43/ (DHCP address can change). Current serial device: `/dev/cu.usbserial-10` (previously -210 and -110).
+Project source of truth: `/Users/vpavlin/projects/EMO/`.
+Live panel: http://192.168.1.43/ (DHCP address can change). Current serial device: `/dev/cu.usbserial-110` (USB data reconnected 2026-11-17; previously -10 and -210).
 Last requested changes are complete: visible branding EMO, main 33-card emotion grid, and seven visual speech cards under Разговор BELOW that grid. Auto and inversion controls remain above the grids. The panel now uses a warm cream/beige background, chocolate cards and caramel selection accents; OLED thumbnails remain monochrome. Character/scenes are implemented; see the behaviour section below for release validation status.
-On 2026-11-16 the user disconnected USB from the Mac; the robot still responds over home Wi-Fi. The read-only check reported auto, sleepy, inversion off. This is a point-in-time observation, not a persistent setting. An authenticated app updater is now installed on port 8080. A full LAN upload and healthy boot confirmation passed; see the Wi-Fi update section below. See [latest network check](./preview/handoff-network-check.json) and [previous deployment snapshot](./preview/handoff-snapshot.json) for scope and timestamps. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
+On 2026-11-16 the user disconnected USB from the Mac; the robot still responds over home Wi-Fi. The read-only check reported auto, sleepy, inversion off. This is a point-in-time observation, not a persistent setting. An authenticated app updater is now installed on port 8080. A full LAN upload and healthy boot confirmation passed; see the Wi-Fi update section below. See [historical network check (2026-11-16)](./preview/handoff-network-check.json) and [previous deployment snapshot](./preview/handoff-snapshot.json) for scope and timestamps. A reboot starts auto with inversion off; selected mode and inversion are not persisted.
 
 ## Current behaviour and API
 
@@ -33,7 +33,7 @@ On 2026-11-16 the user disconnected USB from the Mac; the robot still responds o
 - GET /invert?value=1 or 0 sets an explicit native OLED inversion value; returns ok/mood/invert, preserves mood and animation version. Invalid values fail. Inversion survives display reconnect, not reboot.
 - UI serializes requests, keeps the latest unconfirmed intent for retry and pauses polling after an error. Status says Выбрано; it does not claim physical display confirmation.
 
-There are 40 frame timelines, six composite scenes, auto and demo, 104 unique 1024-byte frames (106,496 bytes). The bank stays in flash; only one frame is read into the display buffer. There is no PSRAM. Keep future changes small.
+There are 40 frame timelines, six composite scenes, auto and demo, 122 unique 1024-byte frames (124,928 bytes), including 18 legacy compact BB frames. The bank stays in flash; only one frame is read into the display buffer. There is no PSRAM. Keep future changes small.
 
 ## Live character and scenes
 
@@ -73,15 +73,25 @@ Read to understand user approvals, rejected approaches, design choices and ideas
 
 Source: [Decisions across the three conversations](./handoff/history.md)
 
-## Next feature: notifications from BB
+## Latest OLED cycle update (2026-11-17)
 
-Planning only. No notification plugin, robot notification mode, authentication endpoint or Wi-Fi updater has been implemented. The user requested saving this checkpoint before further implementation.
+Installed and confirmed `4c396d2e4a5b567f3df8aed0d891377c204793fb599c9e691d013af553f57679`: pending questions show shock for 1s, bobo speech for 1s, then 3x scrolling text for 6s, repeating. The footer is removed; top counters remain. The renderer reuses the original full-size frames and shifts them down four pixels. The font is a 460-byte packed table with no glyph dictionary, reducing persistent RAM. Fifteen receiver/render tests passed. Earlier cycle builds exhausted native memory despite isolated import tests; their reports are historical. Twelve full panel transfers alongside live BB passed (preview/bb-cycle-acceptance.json); local and installed hashes match (preview/bb-cycle-final-release.json). A clean restart and three more panel/live checks also passed (preview/bb-cycle-cold-boot.json). Final state: plugin enabled, BB live, inversion off (preview/bb-cycle-final-state.json). See the notification checkpoint for scope and physical visual limits.
+
+## Previous BB recovery checkpoint (2026-11-17)
+
+USB diagnostics identified native Wi-Fi memory exhaustion during import of the monolithic BB module. The module is now split into state, HTTP and display units; the main native pool retains 34,116 bytes after all imports. The complete application release `6af4e5ebad131a5bbea2fd131648f71c6b4c6dd48e80bbba86609d85c202e84d` was installed and confirmed at this earlier checkpoint; the OLED cycle release above supersedes it. No root updater, MicroPython core, Wi-Fi configuration or key was changed.
+
+Twelve complete HTML transfers alongside live signed notifications and increasing frame/sequence counters passed over 172 seconds. Overlapping nonce reuse was rejected on hardware. OTA status timed out during concurrent panel/BB load but succeeded with the sender stopped and auto selected; use that quiet condition for updates. This is scoped verification, not a long soak or physical OLED visual acceptance. Sender expiry/restart, manual mode priority, BB resume and inversion passed on this release. Final state: emo plugin enabled, BB live, inversion off (`preview/bb-final-state.json`). Read [notification checkpoint](./handoff/bb-notifications-plan.md) for evidence and remaining limits.
+
+## Notifications from BB
+
+Implemented on 2026-11-17: local plugin bb-plugin-emo, signed /bb/challenge and /bb/state, separate bb mode, a repeating face/speech/large Cyrillic text cycle and independent counters. The local plugin is installed as emo; existing projects were selected on install. Normal control is the EMO sidebar page and the robot’s «Уведомления BB» button. Reboot returns to auto. Read the notification document for protocol, tests and remaining physical verification limits.
 
 Source: [BB notification implementation plan](./handoff/bb-notifications-plan.md)
 
 ## Verification boundary
 
-The original complete bank received device regression; later additions received scoped device/local checks. Do not claim one full current-release hardware run. The current handoff only rechecks live HTTP/state and documentation; it does not reflash or rerun hardware tests.
+The original complete bank received device regression; later additions received scoped device/local checks. Do not claim one full current-release hardware run. The latest BB checkpoint includes full app installation and scoped hardware checks; earlier reports retain their original coverage.
 Real-browser rendering was not verified because the computer-use host was unavailable. Mock DOM tests are not browser screenshots. Device buffer hashes prove data/execution, not optical appearance; user photographs supplied physical size/readability approval.
 The latest network check records whether served HTML matches the current local page. Remaining limitations are documented, not hidden unfinished feature requests.
 

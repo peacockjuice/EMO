@@ -1,0 +1,27 @@
+[
+  {
+    "name": "USB и память платы",
+    "status": "passed",
+    "evidence": "preview/bb-memory-after.json"
+  },
+  {
+    "name": "Обновление установлено и подтверждено",
+    "status": "passed",
+    "evidence": "preview/bb-release.json"
+  },
+  {
+    "name": "Панель + уведомления: 12 загрузок",
+    "status": "passed",
+    "evidence": "preview/bb-acceptance.json"
+  },
+  {
+    "name": "Восстановление после остановки BB",
+    "status": "passed",
+    "evidence": "preview/bb-lifecycle.json"
+  },
+  {
+    "name": "Физическая читаемость OLED",
+    "status": "untested",
+    "evidence": "Проверены данные и выполнение драйвера; камера не использовалась."
+  }
+]

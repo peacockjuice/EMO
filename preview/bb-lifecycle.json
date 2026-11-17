@@ -1,0 +1,75 @@
+{
+  "started_at": "2026-11-17T12:51:49.311294+00:00",
+  "passed": true,
+  "before": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40404,
+      "epoch": 1794919892195,
+      "frames": 706,
+      "ok": true,
+      "seq": 3,
+      "boot": "f872e20fa16ef7012610b8704d1396ee",
+      "heap": 34624,
+      "status": "live",
+      "native_largest": 29696
+    }
+  },
+  "expired": {
+    "feeling": null,
+    "frames": 774,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "offline",
+    "showing": null,
+    "invert": false
+  },
+  "recovered": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40420,
+      "epoch": 1794919945846,
+      "frames": 779,
+      "ok": true,
+      "seq": 2,
+      "boot": "f872e20fa16ef7012610b8704d1396ee",
+      "heap": 36928,
+      "status": "live",
+      "native_largest": 31744
+    }
+  },
+  "manual": {
+    "sourceReady": true,
+    "delivery": "mode_disabled",
+    "receipt": {
+      "native_heap": 40420,
+      "epoch": 1794919945846,
+      "frames": 788,
+      "ok": true,
+      "seq": 3,
+      "boot": "f872e20fa16ef7012610b8704d1396ee",
+      "heap": 34032,
+      "status": "mode_disabled",
+      "native_largest": 28672
+    }
+  },
+  "resumed": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40420,
+      "epoch": 1794919945846,
+      "frames": 797,
+      "ok": true,
+      "seq": 4,
+      "boot": "f872e20fa16ef7012610b8704d1396ee",
+      "heap": 33856,
+      "status": "live",
+      "native_largest": 28672
+    }
+  },
+  "finished_at": "2026-11-17T12:52:51.755136+00:00"
+}

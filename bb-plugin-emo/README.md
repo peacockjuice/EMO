@@ -1,0 +1,31 @@
+---
+title: "EMO BB plugin"
+tags: [emo, bb, plugin]
+---
+
+# EMO BB plugin
+
+Monitors visible root threads in selected BB projects and sends an authenticated snapshot to the EMO OLED over the LAN. Existing projects are selected on first install; new threads within them join automatically. The EMO sidebar page changes this selection, excludes individual threads and opens a thread by its stable alias.
+
+## Install and update
+
+From this directory, run `rtk proxy npm ci`, `rtk proxy npm run check`, `rtk proxy npm test`, then `rtk proxy bb plugin build .`. Install the resulting local package with `rtk proxy bb plugin install . --yes`. After source changes, build again and reload with `rtk proxy bb plugin reload emo`.
+
+On the Mac holding the robot updater key, run `rtk proxy bb emo provision`. It stores a domain-separated derived key in BB secret settings; neither key is printed. Configure a changed LAN address with `rtk proxy bb plugin config emo set url http://<device-ip>`. Select «Уведомления BB» in the robot panel. Mode selection resets to auto after reboot.
+
+## Runtime rules
+
+One event subscription plus startup/reconnect reconciliation; no steady polling of thread lists. Pending questions and background work are independent. Questions and errors rotate fairly every eight seconds. A normal root-turn completion gets one reaction and stays in the unread counter until read or a new turn. An interrupted turn never celebrates. A retry must reference the failed request.
+
+The device heartbeat is ten seconds, snapshot TTL thirty seconds. A lost BB subscription sends unknown state; failed delivery lets the last snapshot expire. Manual mode commands win over in-flight packets. Authentication covers a single-use boot challenge, sender epoch, increasing sequence and the response. Delivery does not require or send transcript/error text.
+
+## Tests
+
+Node 22.18+ with built-in TypeScript stripping runs the policy, signed transport and SDK fake-host tests. Device-side protocol and frame checks are in `../tools/check_bb.py`. CPU tests do not prove physical OLED readability or Wi-Fi reliability.
+
+## Dependencies
+
+| Document | Purpose |
+|---|---|
+| [Operator skill](./skills/emo/SKILL.md) | Commands and delivery diagnosis |
+| [Design and acceptance](../handoff/bb-notifications-plan.md) | Display, queue and deployment contracts |

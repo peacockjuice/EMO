@@ -1,0 +1,37 @@
+{
+  "single_use_overlap": true,
+  "manual_priority": true,
+  "signed_receipt": {
+    "native_heap": 38460,
+    "epoch": 1794919862915,
+    "frames": 649,
+    "ok": true,
+    "seq": 1,
+    "boot": "f872e20fa16ef7012610b8704d1396ee",
+    "heap": 30752,
+    "status": "mode_disabled",
+    "native_largest": 26624
+  },
+  "responses": [
+    {
+      "status": 200,
+      "body": {
+        "native_heap": 38460,
+        "epoch": 1794919862915,
+        "frames": 649,
+        "ok": true,
+        "seq": 1,
+        "boot": "f872e20fa16ef7012610b8704d1396ee",
+        "heap": 30752,
+        "status": "mode_disabled",
+        "native_largest": 26624
+      }
+    },
+    {
+      "status": 401,
+      "body": {
+        "ok": false
+      }
+    }
+  ]
+}

@@ -20,3 +20,7 @@ __pycache__/
 ota_manifest.json
 ota_a/
 ota_b/
+
+# BB plugin build/dependencies
+node_modules/
+bb-plugin-emo/dist/

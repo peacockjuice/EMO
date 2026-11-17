@@ -1,0 +1,44 @@
+[
+  {
+    "severity": "medium",
+    "title": "Новая карточка наследовала остаток времени старой",
+    "file": "/Users/vpavlin/projects/EMO/bb-plugin-emo/model.ts",
+    "detail": "Завершение на седьмой секунде рабочего слота исчезало уже на восьмой. Теперь смена состояния той же сессии получает полный слот.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Лицо вопроса сопровождалось подписью ожидания повтора",
+    "file": "/Users/vpavlin/projects/EMO/bb-plugin-emo/model.ts",
+    "detail": "Одновременные pending и retry выбирали разные приоритеты для лица и строки. Теперь оба определяются выбранным состоянием.",
+    "status": "fixed"
+  },
+  {
+    "severity": "high",
+    "title": "Начальная сверка могла затереть свежее событие",
+    "file": "/Users/vpavlin/projects/EMO/bb-plugin-emo/server.ts",
+    "detail": "Устаревшая строка из общего списка удаляла отметку изменения. Изменённые за время выборки сессии теперь перечитываются.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Одноразовый nonce принимался двумя перекрывающимися запросами",
+    "file": "/Users/vpavlin/projects/EMO/emo_bb_http.py",
+    "detail": "Проверка до await не защищала момент применения пакета. После чтения тела повторно проверяются nonce и срок действия. Подпись по-прежнему обязательна. Правка установлена; перекрывающиеся запросы проверены на плате.",
+    "status": "fixed"
+  },
+  {
+    "severity": "medium",
+    "title": "Лимит ответа применялся после загрузки в память",
+    "file": "/Users/vpavlin/projects/EMO/bb-plugin-emo/transport.ts",
+    "detail": "Challenge не имел лимита, а signed response проверялся после arrayBuffer. Теперь поток отменяется сразу при превышении лимита.",
+    "status": "fixed"
+  },
+  {
+    "severity": "high",
+    "title": "Импорт BB исчерпывал native-память Wi-Fi",
+    "file": "/Users/vpavlin/projects/EMO/handoff/bb-notifications-plan.md",
+    "detail": "USB-замер: основной native-пул падал с 35 548 до 728 байт. После разделения модулей сохраняет 34 116 байт; пакет подтверждён, 12 полных загрузок панели вместе с уведомлениями прошли. OTA status под нагрузкой требует остановки отправителя; длительный soak не выполнялся.",
+    "status": "fixed"
+  }
+]

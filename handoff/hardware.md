@@ -7,7 +7,7 @@ tags: [emo, esp32, oled, handoff]
 
 - Board: LILYGO ESP32-S2 WOOR V1.1 (ESP32-S2-WROOM, 4 MB flash, no PSRAM, **no Bluetooth**).
   Schematic: `firmware/SchematicV1_1.pdf`. USB goes through a CH340C bridge.
-- Last working Mac serial port: `/dev/cu.usbserial-10` (previously -210, then -110). On 2026-11-16 the user disconnected the robot from the Mac. Re-discover /dev/cu.* after reconnecting; do not assume that a remembered port exists.
+- Last working Mac serial port: `/dev/cu.usbserial-110` (data USB reconnected on 2026-11-17; previously -10 and -210). Re-discover /dev/cu.* after reconnecting; do not assume that a remembered port exists.
 - Display: GM009605 OLED, SSD1306, 128x64, I2C address found by scan (0x3C/0x3D).
   Display pins left to right: GND, VDD, SCK, SDA.
 - Board sits with USB at row 1; board pin rows are in breadboard columns b and i. The table below applies to that exact orientation.
@@ -47,7 +47,7 @@ Pin labels are authoritative; breadboard hole numbers are valid only if the boar
 
 - `net_up()` imports `wifi_cfg.py` from the board (`SSID`, `PASSWORD`) and joins the home
   network. If that fails within 15 s, or the file is missing, it starts its own access
-  point. The deployed working copy has AP_NAME/AP_PASS in bmo.py; the sanitized Git copy imports them from private ignored ap_cfg.py
+  point. Current repository and working bmo.py import AP_NAME/AP_PASS from private ignored ap_cfg.py
   (address `192.168.4.1`).
 - Currently on the home network at `http://192.168.1.43/`, also `http://bmo.local/`
   (first request to `.local` from the Mac takes about 5 s; the IP is instant, but may change).
@@ -76,4 +76,4 @@ Do not connect this unknown low-impedance speaker directly to GPIO or power. Sof
 
 ## Current power and connectivity
 
-The robot is unplugged from the Mac but responds over Wi-Fi as of the latest network check. Its present external power source was not identified; do not assume a battery or a particular adapter. USB was previously both power and serial. Wi-Fi currently supports control only, not firmware/file upload. A future Wi-Fi updater or notification receiver needs initial installation over USB. No flash erase is required for those normal file updates.
+The robot is unplugged from the Mac but responds over Wi-Fi as of the latest network check. Its present external power source was not identified; do not assume a battery or a particular adapter. USB was previously both power and serial. An authenticated Wi-Fi application updater was installed on 2026-11-16; see [Wi-Fi updates and recovery](./wifi-updates.md). New notification application code can use that full-bundle path. MicroPython core and root updater changes still require USB; normal application updates do not require a flash erase.

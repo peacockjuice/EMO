@@ -1,0 +1,232 @@
+{
+  "before": {
+    "feeling": null,
+    "frames": 160,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "bridge_before": {
+    "sourceReady": true,
+    "delivery": "offline",
+    "receipt": {
+      "boot": "b646457b16079227606111a2d1cc1c57",
+      "epoch": 1794917512484,
+      "ok": true,
+      "status": "live",
+      "seq": 9,
+      "frames": 148,
+      "heap": 35136
+    }
+  },
+  "after_stop": {
+    "feeling": null,
+    "frames": 192,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "offline",
+    "showing": null,
+    "invert": false
+  },
+  "bridge_recovered": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "boot": "b646457b16079227606111a2d1cc1c57",
+      "epoch": 1794917613110,
+      "ok": true,
+      "status": "live",
+      "seq": 2,
+      "frames": 197,
+      "heap": 36976
+    }
+  },
+  "recovered": {
+    "feeling": null,
+    "frames": 203,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "manual": {
+    "feeling": null,
+    "ok": true,
+    "phase": "idle",
+    "scene": null,
+    "mood": "look",
+    "frames": 282,
+    "showing": null,
+    "invert": false
+  },
+  "manual_receipt": {
+    "sourceReady": true,
+    "delivery": "mode_disabled",
+    "receipt": {
+      "boot": "b646457b16079227606111a2d1cc1c57",
+      "epoch": 1794917613110,
+      "ok": true,
+      "status": "mode_disabled",
+      "seq": 9,
+      "frames": 286,
+      "heap": 39088
+    }
+  },
+  "resumed": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "boot": "b646457b16079227606111a2d1cc1c57",
+      "epoch": 1794917613110,
+      "ok": true,
+      "status": "live",
+      "seq": 11,
+      "frames": 299,
+      "heap": 39232
+    }
+  },
+  "invert_on": {
+    "ok": true,
+    "mood": "bb",
+    "frames": 304,
+    "phase": "idle",
+    "feeling": null,
+    "showing": null,
+    "bb": "live",
+    "invert": true,
+    "scene": null
+  },
+  "invert_off": {
+    "ok": true,
+    "mood": "bb",
+    "frames": 304,
+    "phase": "idle",
+    "feeling": null,
+    "showing": null,
+    "bb": "live",
+    "invert": false,
+    "scene": null
+  },
+  "samples": [
+    {
+      "sourceReady": true,
+      "delivery": "live",
+      "receipt": {
+        "boot": "b646457b16079227606111a2d1cc1c57",
+        "epoch": 1794917613110,
+        "ok": true,
+        "status": "live",
+        "seq": 11,
+        "frames": 299,
+        "heap": 39232
+      }
+    },
+    {
+      "sourceReady": true,
+      "delivery": "live",
+      "receipt": {
+        "boot": "b646457b16079227606111a2d1cc1c57",
+        "epoch": 1794917613110,
+        "ok": true,
+        "status": "live",
+        "seq": 12,
+        "frames": 316,
+        "heap": 36480
+      }
+    },
+    {
+      "sourceReady": true,
+      "delivery": "live",
+      "receipt": {
+        "boot": "b646457b16079227606111a2d1cc1c57",
+        "epoch": 1794917613110,
+        "ok": true,
+        "status": "live",
+        "seq": 13,
+        "frames": 329,
+        "heap": 38144
+      }
+    },
+    {
+      "sourceReady": true,
+      "delivery": "live",
+      "receipt": {
+        "boot": "b646457b16079227606111a2d1cc1c57",
+        "epoch": 1794917613110,
+        "ok": true,
+        "status": "live",
+        "seq": 15,
+        "frames": 355,
+        "heap": 37840
+      }
+    },
+    {
+      "sourceReady": true,
+      "delivery": "live",
+      "receipt": {
+        "boot": "b646457b16079227606111a2d1cc1c57",
+        "epoch": 1794917613110,
+        "ok": true,
+        "status": "live",
+        "seq": 16,
+        "frames": 372,
+        "heap": 34464
+      }
+    },
+    {
+      "sourceReady": true,
+      "delivery": "live",
+      "receipt": {
+        "boot": "b646457b16079227606111a2d1cc1c57",
+        "epoch": 1794917613110,
+        "ok": true,
+        "status": "live",
+        "seq": 16,
+        "frames": 372,
+        "heap": 34464
+      }
+    }
+  ],
+  "final": {
+    "feeling": null,
+    "frames": 397,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "observed_heap_range": [
+    34464,
+    39232
+  ],
+  "followup": {
+    "observed_at": "2026-11-17T12:20:28.868510+00:00",
+    "device_reachable": false,
+    "last_confirmed_release": "a321875037f92f39c648336812da9ba5980b615ad7a4b810ca9462fdb79a257f",
+    "local_release": "3fb99bbbf9c0683c79522aff702ec87d46cb7e3efaade8e56f4fac0ef0e04617",
+    "pending_deployment": "HTTP Content-Length, bounded drain/close, native heap diagnostics, nonce revalidation after body read",
+    "issue": "Large panel response timed out; later HTTP, OTA status and ICMP were unreachable. Cause not established. No serial device connected.",
+    "recovery": "Power-cycle EMO, verify /state and signed OTA status, then upload complete local bundle; verify panel and live bridge together.",
+    "reviewed_at": "2026-11-17T12:23:44.387222+00:00"
+  },
+  "recovery_checkpoint": {
+    "release": "6af4e5ebad131a5bbea2fd131648f71c6b4c6dd48e80bbba86609d85c202e84d",
+    "status": "confirmed",
+    "evidence": [
+      "bb-memory-diagnosis.json",
+      "bb-memory-after.json",
+      "bb-acceptance.json",
+      "bb-wire-live.json",
+      "bb-release.json"
+    ],
+    "note": "Earlier followup is historical. USB diagnosed monolithic import native memory exhaustion; split modules installed and panel/live notification checks passed."
+  }
+}
