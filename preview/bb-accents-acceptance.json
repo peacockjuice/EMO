@@ -1,0 +1,101 @@
+{
+  "started_at": "2026-11-17T14:24:30.387135+00:00",
+  "url": "http://192.168.1.43",
+  "passed": true,
+  "samples": [
+    {
+      "content_length": "26557",
+      "html_seconds": 2.547,
+      "html_bytes": 26557,
+      "html_sha256": "0f28de9f063e528184e4f7a9d2129fd1fe2b7b72c6e8d98717981173d1cb145a",
+      "device": {
+        "feeling": null,
+        "frames": 84,
+        "phase": "idle",
+        "scene": null,
+        "mood": "bb",
+        "bb": "live",
+        "showing": null,
+        "invert": false
+      },
+      "bridge": {
+        "sourceReady": true,
+        "delivery": "live",
+        "receipt": {
+          "native_heap": 39012,
+          "epoch": 1794925467297,
+          "frames": 70,
+          "ok": true,
+          "seq": 3,
+          "boot": "a4452fd86800c9bd9397a3f414ce42f3",
+          "heap": 34208,
+          "status": "live",
+          "native_largest": 28672
+        }
+      }
+    },
+    {
+      "content_length": "26557",
+      "html_seconds": 3.307,
+      "html_bytes": 26557,
+      "html_sha256": "0f28de9f063e528184e4f7a9d2129fd1fe2b7b72c6e8d98717981173d1cb145a",
+      "device": {
+        "feeling": null,
+        "frames": 117,
+        "phase": "idle",
+        "scene": null,
+        "mood": "bb",
+        "bb": "live",
+        "showing": null,
+        "invert": false
+      },
+      "bridge": {
+        "sourceReady": true,
+        "delivery": "live",
+        "receipt": {
+          "native_heap": 40368,
+          "epoch": 1794925467297,
+          "frames": 117,
+          "ok": true,
+          "seq": 4,
+          "boot": "a4452fd86800c9bd9397a3f414ce42f3",
+          "heap": 35232,
+          "status": "live",
+          "native_largest": 29696
+        }
+      }
+    },
+    {
+      "content_length": "26557",
+      "html_seconds": 1.513,
+      "html_bytes": 26557,
+      "html_sha256": "0f28de9f063e528184e4f7a9d2129fd1fe2b7b72c6e8d98717981173d1cb145a",
+      "device": {
+        "feeling": null,
+        "frames": 142,
+        "phase": "idle",
+        "scene": null,
+        "mood": "bb",
+        "bb": "live",
+        "showing": null,
+        "invert": false
+      },
+      "bridge": {
+        "sourceReady": true,
+        "delivery": "live",
+        "receipt": {
+          "native_heap": 40368,
+          "epoch": 1794925467297,
+          "frames": 117,
+          "ok": true,
+          "seq": 4,
+          "boot": "a4452fd86800c9bd9397a3f414ce42f3",
+          "heap": 35232,
+          "status": "live",
+          "native_largest": 29696
+        }
+      }
+    }
+  ],
+  "finished_at": "2026-11-17T14:24:51.696645+00:00"
+}

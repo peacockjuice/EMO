@@ -9,13 +9,15 @@ def text(o,value,x,y,scale=1):
     for ch in value:
         if x>=128:break
         if x>-6*scale:
-            start=glyph(ch)*5
+            accent=scale>1 and y>=3*scale and ch in 'ЁЙ'
+            start=glyph(('Е' if ch=='Ё' else 'И') if accent else ch)*5
             for col in range(5):
                 px=x+col*scale
                 if px<128 and px+scale>0:
                     bits=DATA[start+col]
-                    for row in range(7):
-                        if bits&(1<<row):
+                    for row in range(-3 if accent else 0,7):
+                        ink=bits&(1<<row) if row>=0 else (row==-2 and col in (1,3) if ch=='Ё' else (row==-3 and col in (1,3)) or (row==-2 and col==2))
+                        if ink:
                             if scale==1:o.pixel(px,y+row,1)
                             else:o.fill_rect(max(0,px),y+row*scale,min(128,px+scale)-max(0,px),scale,1)
         x+=6*scale

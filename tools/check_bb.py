@@ -48,15 +48,15 @@ class BBTests(unittest.TestCase):
   self.assertEqual(bb.view(1000)[0],'rosto22');self.assertEqual(bb.view(1999)[0],'rosto22')
   self.assertEqual(bb.view(2000)[0],'talk_bobo');self.assertEqual(bb.view(2999)[0],'talk_bobo')
   self.assertIsNone(bb.view(3000)[0]);self.assertEqual(bb.view(3500)[3],0)
-  distance=len(label)*18-3-128
-  self.assertEqual(bb.view(8500)[3],distance);self.assertEqual(bb.view(8999)[3],distance)
+  distance=len(label)*24-4-128
+  self.assertEqual(bb.view(4750)[3],distance*11//20);self.assertEqual(bb.view(6000)[3],distance);self.assertEqual(bb.view(8500)[3],distance);self.assertEqual(bb.view(8999)[3],distance)
   self.assertEqual(bb.view(9000)[0],'rosto22')
   now[0]=9500;bb.accept(self.value(seq=2,face='question',text=label),1)
   self.assertEqual(bb._card_at,1000);self.assertEqual(bb.view(10000)[0],'talk_bobo')
  def test_scroll_done_unknown(self):
   bb.accept(self.value(text='Я'*36,face='done'),1)
   self.assertEqual(bb.view(1000)[0],'rosto02');self.assertIsNone(bb.view(4000)[0])
-  self.assertEqual(bb.view(8500)[3],517);self.assertEqual(bb.view(9000)[0],'rosto01')
+  self.assertEqual(bb.view(8500)[3],732);self.assertEqual(bb.view(9000)[0],'rosto01')
   bb.accept(self.value(seq=2,source=False),1);self.assertEqual(bb.status(),'unknown');self.assertIsNone(bb.view(4000)[2])
  def test_large_font_clips_and_has_no_footer(self):
   from emo_bb_display import overlay
@@ -68,8 +68,28 @@ class BBTests(unittest.TestCase):
      for yy in range(y,y+h):
       for xx in range(x,x+w):self.pixel(xx,yy,c)
   o=Display();overlay(o,'? PDF#9: НУЖЕН ОТВЕТ',[2,1,0,1],10,True)
-  self.assertTrue(any(y==45 for x,y in o.pixels));self.assertTrue(all(y<46 for x,y in o.pixels))
-  o=Display();overlay(o,'NO FOOTER',[2,1,0,1],0,False);self.assertTrue(all(y<8 for x,y in o.pixels))
+  self.assertTrue(any(y==59 for x,y in o.pixels));self.assertTrue(all(y<60 for x,y in o.pixels))
+  o=Display();overlay(o,'NO FOOTER',[2,1,0,1],0,False);self.assertEqual(o.pixels,[])
+ def test_accents_above_full_height_letters_and_horizontal_clipping(self):
+  from emo_font import text
+  class Display:
+   def __init__(self):self.pixels=set()
+   def pixel(self,x,y,c):
+    assert 0<=x<128 and 0<=y<64
+    if c:self.pixels.add((x,y))
+   def fill_rect(self,x,y,w,h,c):
+    for yy in range(y,y+h):
+     for xx in range(x,x+w):self.pixel(xx,yy,c)
+  for letter,base in [('Ё','Е'),('Й','И')]:
+   o=Display();b=Display();text(o,letter,0,32,4);text(b,base,0,32,4)
+   self.assertEqual({p for p in o.pixels if p[1]>=32},b.pixels)
+   marks={p for p in o.pixels if p[1]<32}
+   self.assertTrue(marks);self.assertTrue(all(20<=y<28 for x,y in marks))
+   for x in (-19,-4,120,127):text(Display(),letter,x,32,4)
+  dots=Display();text(dots,'Ё',0,32,4)
+  self.assertIn((4,24),dots.pixels);self.assertIn((12,24),dots.pixels);self.assertNotIn((8,24),dots.pixels)
+  breve=Display();text(breve,'Й',0,32,4)
+  self.assertIn((4,20),breve.pixels);self.assertIn((8,24),breve.pixels);self.assertIn((12,20),breve.pixels)
  def test_signed_utf8_replay_size_tamper(self):
   async def run():
    challenge=bb.challenge();raw=json.dumps(self.value(text='? PDF#2: НУЖЕН ОТВЕТ'),ensure_ascii=False).encode();nonce=challenge['nonce']
@@ -175,8 +195,11 @@ class BBTests(unittest.TestCase):
   self.assertEqual(rendered[1000],rendered[9000])
   self.assertNotEqual(rendered[1000],rendered[2000])
   self.assertNotEqual(rendered[2000],rendered[3000])
-  # The text phase is empty below its 21px-high glyphs; no old mouth/footer remains.
-  self.assertEqual(rendered[3000][6*128:],bytes(2*128))
+  # The gap between the enlarged header and lowered text stays empty.
+  self.assertEqual(rendered[3000][3*128:4*128],bytes(128))
+  from emotion_sequences import SEQUENCES
+  i=SEQUENCES['rosto22'][0][0]
+  self.assertEqual(rendered[1000],(ROOT/'emotions.bin').read_bytes()[i*1024:(i+1)*1024])
  def test_renderer_yields_to_manual_change(self):
   class Display:
    buffer=bytearray(1024)

@@ -1,0 +1,14 @@
+{
+  "status": {
+    "pending": null,
+    "running": "68e374644986639372dce0119a3de106cf9b70f93f7cad5ef9ed37a15c693dea",
+    "trial": false,
+    "last_result": "confirmed",
+    "frames": 59,
+    "active": "68e374644986639372dce0119a3de106cf9b70f93f7cad5ef9ed37a15c693dea",
+    "boot_ms": 53182
+  },
+  "ok": true,
+  "local_release": "68e374644986639372dce0119a3de106cf9b70f93f7cad5ef9ed37a15c693dea",
+  "bundle_bytes": 187525
+}

@@ -73,9 +73,21 @@ Read to understand user approvals, rejected approaches, design choices and ideas
 
 Source: [Decisions across the three conversations](./handoff/history.md)
 
-## Latest OLED cycle update (2026-11-17)
+## Latest font refinement (2026-11-17)
 
-Installed and confirmed `4c396d2e4a5b567f3df8aed0d891377c204793fb599c9e691d013af553f57679`: pending questions show shock for 1s, bobo speech for 1s, then 3x scrolling text for 6s, repeating. The footer is removed; top counters remain. The renderer reuses the original full-size frames and shifts them down four pixels. The font is a 460-byte packed table with no glyph dictionary, reducing persistent RAM. Fifteen receiver/render tests passed. Earlier cycle builds exhausted native memory despite isolated import tests; their reports are historical. Twelve full panel transfers alongside live BB passed (preview/bb-cycle-acceptance.json); local and installed hashes match (preview/bb-cycle-final-release.json). A clean restart and three more panel/live checks also passed (preview/bb-cycle-cold-boot.json). Final state: plugin enabled, BB live, inversion off (preview/bb-cycle-final-state.json). See the notification checkpoint for scope and physical visual limits.
+Bundle `68e374644986639372dce0119a3de106cf9b70f93f7cad5ef9ed37a15c693dea` (187525 bytes): large Ё and Й reuse full-height Е/И bodies and draw separate dots/breve above the baseline, inside y=20…27. Counters end at y=17 and letter bodies start at y=32. Small glyphs retain their compact form. Sixteen local tests cover body preservation, mark separation and clipping at both screen edges. Preview: preview/bb-accents.png; live check: preview/bb-accents-acceptance.json.
+
+## Previous OLED layout refinement (2026-11-17)
+
+Bundle `07942e4a1b7077632cb5d8f005fab8bc6c45e22ae6a89ffedb508caa078fbef0` (187260 bytes): counters move down to y=4; text grows to 20×28 px at y=32. Complete traversal takes 2500/1.1 ms, with the existing 0.5s lead and 8s card slot. Faces still have no counters. Verification: preview/bb-layout-v3-acceptance.json.
+
+## Previous OLED layout update (2026-11-17)
+
+Installed and confirmed `3d79dd06a8d70f50e9375757786ffa298dc313cf1e094be069b023125a2f90e4` (187258 bytes). Faces have no overlay or shift. Counters appear only with text; numbers are 2x (10×14; 99+ stays compact). The 3x line starts at y=40 and traverses in 2.5s instead of 5s after a 0.5s lead, holding its end for the remainder of the same 8s slot. Preview: preview/bb-layout.png and preview/bb-cycle.gif. Live verification: preview/bb-layout-v2-acceptance.json. Previous release evidence below remains historical.
+
+## Previous OLED cycle update (2026-11-17)
+
+Previously installed and confirmed `4c396d2e4a5b567f3df8aed0d891377c204793fb599c9e691d013af553f57679`: pending questions show shock for 1s, bobo speech for 1s, then 3x scrolling text for 6s, repeating. The footer is removed; top counters remain. The renderer reuses the original full-size frames and shifts them down four pixels. The font is a 460-byte packed table with no glyph dictionary, reducing persistent RAM. Fifteen receiver/render tests passed. Earlier cycle builds exhausted native memory despite isolated import tests; their reports are historical. Twelve full panel transfers alongside live BB passed (preview/bb-cycle-acceptance.json); local and installed hashes match (preview/bb-cycle-final-release.json). A clean restart and three more panel/live checks also passed (preview/bb-cycle-cold-boot.json). Final state: plugin enabled, BB live, inversion off (preview/bb-cycle-final-state.json). See the notification checkpoint for scope and physical visual limits.
 
 ## Previous BB recovery checkpoint (2026-11-17)
 

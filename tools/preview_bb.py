@@ -38,7 +38,6 @@ if __name__=='__main__':
     elapsed-=duration
    data=bank[i*1024:(i+1)*1024]
   o=Display(data)
-  if face:o.scroll(0,4)
   bb.overlay(o,label,counts,offset,face is None)
   return o.image().resize((512,256),Image.Resampling.NEAREST)
  result=Image.new('RGB',(528,920),'#e8ddc9');draw=ImageDraw.Draw(result)
@@ -47,4 +46,6 @@ if __name__=='__main__':
  result.save(P/'preview/bb-layout.png')
  frames=[frame(ms) for ms in range(0,8000,125)]
  frames[0].save(P/'preview/bb-cycle.gif',save_all=True,append_images=frames[1:],duration=125,loop=0)
+ o=Display(bytes(1024));bb.overlay(o,'Ё Й',[2,1,0,1],0,True)
+ o.image().resize((768,384),Image.Resampling.NEAREST).save(P/'preview/bb-accents.png')
  print(P/'preview/bb-layout.png')
