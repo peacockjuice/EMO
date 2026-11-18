@@ -23,13 +23,13 @@ function EmoPage(){
  const threads=[...data.threads].sort((a,b)=>Number(a.excluded)-Number(b.excluded)||(order[a.kind]-order[b.kind])||a.alias.localeCompare(b.alias));
  return <main className="mx-auto max-w-4xl space-y-6 p-6">
   <header className="flex flex-wrap items-start justify-between gap-4">
-   <div><h1 className="text-2xl font-semibold">EMO</h1><p className="mt-1 text-sm text-muted-foreground">Сессии BB на экране робота</p></div>
+   <div><h1 className="text-2xl font-semibold">EMO <span className="text-sm font-normal text-muted-foreground">0.2</span></h1><p className="mt-1 text-sm text-muted-foreground">Сессии BB на экране робота</p></div>
    <Button variant="outline" onClick={()=>navigate.openUrl(data.url)}>Панель робота</Button>
   </header>
   <section className="rounded-lg border p-4" aria-label="Подключение">
    <p className="font-medium" role="status">{connection!=="connected"?"Нет связи этой страницы с BB":deliveries[data.delivery]??data.delivery}</p>
    {!data.sourceReady&&<p className="mt-1 text-sm text-muted-foreground">Сверяю состояния сессий. Прежняя сводка не считается актуальной.</p>}
-   {data.delivery==="mode_disabled"&&<p className="mt-1 text-sm text-muted-foreground">В панели робота выберите «Уведомления BB». После перезагрузки режим нужно включить снова.</p>}
+   {data.delivery==="mode_disabled"&&<p className="mt-1 text-sm text-muted-foreground">В панели робота выберите «Уведомления BB». При перезагрузке EMO включает этот режим автоматически.</p>}
    {data.delivery==="needs-key"&&<p className="mt-1 text-sm text-muted-foreground">На Mac с ключом обновления выполните bb emo provision.</p>}
    {(error||data.error)&&<p className="mt-2 text-sm text-destructive" role="alert">{error||data.error}</p>}
   </section>

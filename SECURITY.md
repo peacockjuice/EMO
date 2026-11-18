@@ -1,4 +1,6 @@
-# Security review — v0.1
+# Security and publication status — v0.2
+
+## Initial repository review — v0.1
 
 - Git repository starts with a new history; no old commits containing credentials are imported.
 - Removed embedded fallback AP password from current and backup firmware sources; replaced with ignored board-local ap_cfg.py.
@@ -9,7 +11,7 @@
 - The robot HTTP API has no authentication or TLS and changes state through GET. Treat it as a trusted-LAN device; do not expose it directly to the internet. Repository privacy does not secure the device network.
 - Hardware was not changed during repository preparation. Existing board AP password has not been rotated; the snapshot requires a private ap_cfg.py before flashing its bmo.py.
 
-## Wi-Fi app updates — 0.3-dev
+## Wi-Fi app updates — included in v0.2 (original checkpoint 0.3-dev)
 
 The update port 8080 requires HMAC-SHA256 with a random 32-byte key, a single-use expiring challenge, body hash and per-file hashes. Successful replies are authenticated. The bundle filename allowlist excludes private keys and boot/config files. This is not filesystem isolation: once running, application Python code can write root files. The key is local to Mac and board, not in Git.
 
@@ -26,3 +28,7 @@ A bounded scan checked 464 textual Git blobs reachable from all local refs. It s
 Historical blobs still contain personal filesystem paths, private LAN addresses, and BB thread identifiers. Review those files and their history before publication. Do not assume that cleaning the current README removes historical data.
 
 The project license and third-party permissions are also unresolved. See [credits and reuse status](docs/credits.md). No repository visibility, Git history, device credentials, or installed firmware was changed by this documentation work.
+
+## Release 0.2 publication request — 2026-11-18
+
+The owner requested public repository visibility after the README review identified historical local paths, LAN addresses, thread identifiers, and unresolved licensing. These metadata remain in the history; no history rewrite or credential rotation is included in this release. The request does not establish third-party artwork provenance or grant an open-source license. See the credits page for the remaining reuse restrictions.

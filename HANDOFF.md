@@ -9,7 +9,7 @@ The user is building an animated monochrome OLED robot face on ESP32-S2, control
 
 ## Repository and deployment differences
 
-Private repository: https://github.com/peacockjuice/EMO. Local checkout: /Users/vpavlin/Projects/EMO. Tag v0.1 is the original release; main contains the implemented character, scenes and 500 ms showcase. VERSION is 0.4-dev. Do not overwrite v0.1.
+Repository: https://github.com/peacockjuice/EMO. The current source release is **0.2**, with plugin package **0.2.0** and tag **v0.2**. This release replaces the working labels 0.3-dev and 0.4-dev; these were development checkpoints, not published releases. Tag v0.1 remains the original release. See [release notes](./CHANGELOG.md). Version labels and publication do not deploy code to the robot or reload the installed plugin.
 
 The canonical working/deployment source is now /Users/vpavlin/projects/EMO/. The older /Users/vpavlin/.bb/thread-storage/thr_psix2q4mn2/bmo/ snapshot is historical. Repository bmo.py and archived copies are sanitized: they import AP_NAME/AP_PASS from ignored private ap_cfg.py. Read README.md before deploying repository code. The board now imports its private ap_cfg.py; Wi-Fi credentials remain unchanged. Never copy the old embedded AP password into Git.
 

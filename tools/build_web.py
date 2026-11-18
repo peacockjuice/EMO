@@ -38,6 +38,6 @@ for key,(title,steps,ending) in SCENES.items():
  index=manifest["sequences"][mode][frame][0]
  scenes.append({"id":key,"name":title,"number":len(scenes)+1,"thumb":thumbnail(index)})
 (P/"preview/scene-cards.json").write_text(json.dumps(scenes,ensure_ascii=False))
-html=(P/"tools/index.template.html").read_text().replace("__CATALOG__",json.dumps(catalog,ensure_ascii=False,separators=(",",":"))).replace("__SPEECH_CARDS__",json.dumps(speech,ensure_ascii=False,separators=(",",":"))).replace("__SCENE_CARDS__",json.dumps(scenes,ensure_ascii=False,separators=(",",":"))).replace("__COUNT__",str(len(catalog))).replace("__ALIASES__",json.dumps(manifest["aliases"],separators=(",",":")))
+html=(P/"tools/index.template.html").read_text().replace("__VERSION__",(P/"VERSION").read_text().strip()).replace("__CATALOG__",json.dumps(catalog,ensure_ascii=False,separators=(",",":"))).replace("__SPEECH_CARDS__",json.dumps(speech,ensure_ascii=False,separators=(",",":"))).replace("__SCENE_CARDS__",json.dumps(scenes,ensure_ascii=False,separators=(",",":"))).replace("__COUNT__",str(len(catalog))).replace("__ALIASES__",json.dumps(manifest["aliases"],separators=(",",":")))
 (P/"index.html").write_text(html)
 print("Built web gallery:",len(catalog),"faces,",len(html.encode()),"bytes")

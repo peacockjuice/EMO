@@ -6,6 +6,8 @@
 
 # Give your coding sessions a face.
 
+**Version 0.2** · [Release notes](CHANGELOG.md)
+
 EMO is a DIY desk display for coding agents in [BB](https://getbb.app). A face and a scrolling label show which session needs your attention.
 
 **[Build your EMO](docs/build.md)** &nbsp; · &nbsp; [See it in action](#a-moment-at-your-desk) &nbsp; · &nbsp; [How it works](#how-it-works)

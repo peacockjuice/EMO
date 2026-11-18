@@ -20,6 +20,7 @@ import emo_bb as state
 import emo_bb_display as renderer
 
 OUT = ROOT / 'assets/readme'
+VERSION = (ROOT / 'VERSION').read_text().strip()
 BANK = (ROOT / 'emotions.bin').read_bytes()
 PAPER, INK, MUTED, ACCENT = '#f1eadf', '#252922', '#66685d', '#ad5735'
 
@@ -52,11 +53,11 @@ def hero(theme):
     edge = '#606858' if dark else '#ccc5b7'
     pixels = pixel_paths(pose('rosto01'))
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="600" viewBox="0 0 1440 600" role="img" aria-labelledby="title desc">
-<title id="title">EMO. Give your coding sessions a face.</title>
+<title id="title">EMO {VERSION}. Give your coding sessions a face.</title>
 <desc id="desc">A warm editorial cover with the EMO wordmark and an exact pixel face from the OLED frame bank. Display preview, not a photograph.</desc>
 <rect width="1440" height="600" fill="{paper}"/>
 <g fill="{muted}" font-family="ui-monospace,monospace" font-size="18" letter-spacing="2">
-<text x="64" y="64">A DESK COMPANION FOR BB</text><text x="1376" y="64" text-anchor="end">DIY / 01</text></g>
+<text x="64" y="64">A DESK COMPANION FOR BB</text><text x="1376" y="64" text-anchor="end">V{VERSION} / DIY</text></g>
 <path d="M64 90H1376M64 526H1376" stroke="{edge}"/>
 <text x="52" y="364" fill="{ink}" font-family="Georgia,serif" font-size="268" letter-spacing="-17">EMO</text>
 <circle cx="667" cy="350" r="11" fill="{accent}"/>
@@ -128,7 +129,7 @@ def compose(ms, raw, font_path):
     number, title, caption, _ = stage(ms)
     im = Image.new('RGB', (720, 650), PAPER)
     d = ImageDraw.Draw(im)
-    d.text((40, 30), 'EMO / A MOMENT AT YOUR DESK', fill=MUTED, font=font(font_path, 20))
+    d.text((40, 30), f'EMO {VERSION} / A MOMENT AT YOUR DESK', fill=MUTED, font=font(font_path, 20))
     d.line((40, 72, 680, 72), fill='#ccc5b7')
     d.text((40, 100), title, fill=INK, font=font(font_path, 39))
     d.rounded_rectangle((88, 186, 632, 474), radius=8, fill='#111610')
