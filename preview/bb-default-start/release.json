@@ -1,0 +1,9 @@
+{
+  "release": "d7d80f81a6d61ad36f62f80113ddf5aec98cc485c3310a02b80d601ada8d9dda",
+  "ota_bytes": 169600,
+  "sha256": "237cb890fdbdf2ca2e97c881514e2d5b60dd4171fb81a0e8c9b594fa459dd5d1",
+  "scroll_speed_factor": 1.1,
+  "old_scroll_ms": 2066.115702479339,
+  "new_scroll_ms": 1878.2870022539444,
+  "boot_mode": "bb"
+}

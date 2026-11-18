@@ -9,7 +9,7 @@ FLIP = True                  # display is mounted upside down in the robot: rota
 from ap_cfg import AP_NAME, AP_PASS  # private board-local configuration
 
 i2c = SoftI2C(sda=Pin(SDA), scl=Pin(SCL), freq=400000)
-S = {"mood": "auto", "ver": 0, "ip": "", "net": "", "invert": False, "scene": None, "phase": "idle", "feeling": None, "showing": None, "demo_restore": False}
+S = {"mood": "bb", "ver": 0, "ip": "", "net": "", "invert": False, "scene": None, "phase": "idle", "feeling": None, "showing": None, "demo_restore": False}
 _v = 0
 _display = None
 _clients = 0
@@ -196,6 +196,7 @@ async def main():
     net_up()
     import ota_http
     await ota_http.start()
+    set_mood(S["mood"])  # Prepare BB HTTP before the scene/font/renderer imports.
     print("web page: http://%s/  (wifi: %s)" % (S["ip"], S["net"]))
     await asyncio.start_server(handle, "0.0.0.0", 80)
     await animate()

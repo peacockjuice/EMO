@@ -36,6 +36,6 @@ def view(now):
             face='wink' if phase<1000 else 'rosto01'
     if phase<2000:return face,label,counts,0
     distance=max(0,len(label)*24-4-128)
-    offset=min(distance,max(0,(phase-2500)*distance*121//250000))
+    offset=min(distance,max(0,(phase-2500)*distance*1331//2500000))
     return None,label,counts,offset
 

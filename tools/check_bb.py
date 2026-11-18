@@ -51,10 +51,32 @@ class BBTests(unittest.TestCase):
   self.assertEqual(bb.view(2000)[0],'talk_bobo');self.assertEqual(bb.view(2999)[0],'talk_bobo')
   self.assertIsNone(bb.view(3000)[0]);self.assertEqual(bb.view(3500)[3],0)
   distance=len(label)*24-4-128
-  self.assertEqual(bb.view(4750)[3],distance*121//200);self.assertEqual(bb.view(6000)[3],distance);self.assertEqual(bb.view(8500)[3],distance);self.assertEqual(bb.view(8999)[3],distance)
+  self.assertEqual(bb.view(4750)[3],distance*1331//2000)
+  self.assertLess(bb.view(5378)[3],distance);self.assertEqual(bb.view(5379)[3],distance)
+  self.assertEqual(bb.view(6000)[3],distance);self.assertEqual(bb.view(8500)[3],distance);self.assertEqual(bb.view(8999)[3],distance)
   self.assertEqual(bb.view(9000)[0],'rosto22')
   now[0]=9500;bb.accept(self.value(seq=2,face='question',text=label),1)
   self.assertEqual(bb._card_at,1000);self.assertEqual(bb.view(10000)[0],'talk_bobo')
+ def test_default_start_prepares_http_before_serving_and_drawing(self):
+  import ast,builtins
+  from unittest.mock import patch
+  tree=ast.parse((ROOT/'bmo.py').read_text())
+  nodes=[n for n in tree.body if (isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='S' for t in n.targets)) or (isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name in ('main','set_mood'))]
+  calls=[]
+  async def ota_start():calls.append('ota')
+  async def server(*args):calls.append('server')
+  async def animate():calls.append('animate');self.assertEqual(ns['S']['mood'],'bb')
+  ns={'net_up':lambda:calls.append('network'),'asyncio':types.SimpleNamespace(start_server=server),'animate':animate,'handle':None,'print':lambda *a:None,'MOODS':{'bb':None,'auto':None}}
+  exec(compile(ast.Module(body=nodes,type_ignores=[]),'bmo.py','exec'),ns)
+  original_import=builtins.__import__
+  def importing(name,*args,**kwargs):
+   if name=='emo_bb_http':calls.append('bb_http')
+   return original_import(name,*args,**kwargs)
+  modules={'ota_http':types.SimpleNamespace(start=ota_start),'emo_bb':types.SimpleNamespace(reset_view=lambda:calls.append('reset')),'emo_bb_http':types.SimpleNamespace()}
+  with patch.dict(sys.modules,modules),patch('builtins.__import__',side_effect=importing):
+   self.assertEqual(ns['S']['mood'],'bb');asyncio.run(ns['main']())
+   self.assertEqual(calls,['network','ota','bb_http','reset','server','animate'])
+   self.assertTrue(ns['set_mood']('auto'));self.assertEqual(ns['S']['mood'],'auto')
  def test_scroll_done_unknown(self):
   bb.accept(self.value(text='Я'*36,face='done'),1)
   self.assertEqual(bb.view(1000)[0],'wink')
