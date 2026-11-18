@@ -27,6 +27,18 @@ class Reader:
 
 with tempfile.TemporaryDirectory() as temp:
  root=Path(temp);boot.STATE=str(root/'state.json');boot.path=lambda slot,name:str(root/slot.strip('/')/name)
+ # Exercise the real cleanup, including removal of files absent from the new manifest.
+ target=root/'ota_a';target.mkdir();legacy=target/'emo_bb_frames.py';legacy.write_text('obsolete')
+ original_os=service.os;original_running=boot._running
+ service.os=types.SimpleNamespace(mkdir=lambda slot:(root/slot.strip('/')).mkdir(),listdir=lambda slot:os.listdir(root/slot.strip('/')),remove=os.remove)
+ try:
+  boot._running='/';service.clear_slot('/ota_a');assert list(target.iterdir())==[]
+  legacy.write_text('active');boot._running='/ota_a'
+  try:service.clear_slot('/ota_a')
+  except ValueError:pass
+  else:raise AssertionError('running slot was cleared')
+  assert legacy.read_text()=='active'
+ finally:service.os=original_os;boot._running=original_running
  def clear(slot):
   assert slot in ('/ota_a','/ota_b') and slot!=boot._running
   target=root/slot.strip('/');target.mkdir(exist_ok=True)

@@ -1,0 +1,104 @@
+[
+  {
+    "name": "python3 tools/check_assets.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS frozen 104 frames, 40 animations, six scenes, aliases and demo timings"
+  },
+  {
+    "name": "python3 tools/check_bb.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.088s\n\nOK\nhttp error: simulated slow peer"
+  },
+  {
+    "name": "python3 tools/check_full.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: all 30 animated, exact static starting poses, frame offsets, aliases, catalog, syntax"
+  },
+  {
+    "name": "python3 tools/check_faces.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: review IDs, frames and SHA256 match the full bank"
+  },
+  {
+    "name": "python3 tools/check_speech.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: source poses, all non-mouth pixels stable, active timing and pause balance"
+  },
+  {
+    "name": "python3 tools/check_syllables.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: four distinct vowels, continuous two-pose loops without rest frames, lip closure, stable non-mouth pixels, old animations unchanged"
+  },
+  {
+    "name": "python3 tools/check_behaviour_update.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: moving pupils only, progressive Zs, 33 cards, all unrelated animations unchanged"
+  },
+  {
+    "name": "python3 tools/check_character.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: every scene step cancellation and hold; 40 simulated hours including clock wrap, moods, cooldown and no repeat"
+  },
+  {
+    "name": "python3 tools/check_character_runtime.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: real frame-player cancellation within one 40ms slice; reconnect honours latest command"
+  },
+  {
+    "name": "python3 tools/check_showcase.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: 46 variants, both polarities, wraparound, cancellation and original inversion restored"
+  },
+  {
+    "name": "python3 tools/check_invert.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: native driver command, idempotence, unchanged mood, invalid input, hardware failure, deferred state"
+  },
+  {
+    "name": "python3 tools/check_wifi_update.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: HMAC, wrong key/path, replay/expiry, file allowlist, truncation/tamper, boot integrity, rollback, health gate and atomic state failure"
+  },
+  {
+    "name": "python3 tools/check_wifi_client.py",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: lost confirmation/reboot replies, same-release rollback, uncertain timeout, no-op upload and legacy USB guard"
+  },
+  {
+    "name": "node tools/check_web.mjs",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "PASS: mock handlers, 33 cards, auto/demo/BB, 7 speech modes + 6 scenes, rapid taps, error recovery; 67 requests"
+  },
+  {
+    "name": "npm --prefix bb-plugin-emo test",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "\n> bb-plugin-emo@0.1.0 test\n> node --test tests/*.test.ts\n\n\u2714 work and question are independent; question and error are both counted (0.8235ms)\n\u2714 completion only from root; stop, duplicate, new turn and bootstrap preserve only unread completion (0.179083ms)\n\u2714 completion reaction yields to work once; unread count persists (0.252166ms)\n\u2714 urgent interruption and ten sessions remain fair as new urgent sessions arrive (0.8485ms)\n\u2714 old unread completion is still an answer; stale source does not claim work (0.114209ms)\n\u2714 dismissed failure does not hide a new failure and queued work is not running (0.122084ms)\n\u2714 a new completion in the same session receives its own eight-second slot (0.092375ms)\n\u2714 question label wins over retry just like its face (0.058625ms)\n\u2714 unread reminders repeat at sixty seconds, survive restart and stop on reading (0.10875ms)\n\u2714 urgent and unread rings both progress without interrupting an attention card (0.194792ms)\n\u2714 read reply cannot clear a pending interaction; new completion gets a fresh notice (0.086583ms)\n\u2714 monitor observes interactions, source disconnect, read state, exclusions and removal without polling (4054.852959ms)\n\u2714 a change during initial enumeration cannot be overwritten by its stale row (605.921292ms)\n\u2714 signed UTF8 wire, monotonic sequence, forged response and cancellation (28.721083ms)\n\u2714 oversized challenge is cancelled before buffering the full response (0.949958ms)\n\u2139 tests 15\n\u2139 suites 0\n\u2139 pass 15\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 4935.4165"
+  },
+  {
+    "name": "npm --prefix bb-plugin-emo run check",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "\n> bb-plugin-emo@0.1.0 check\n> tsc --noEmit"
+  },
+  {
+    "name": "bb plugin build bb-plugin-emo",
+    "status": "passed",
+    "exit_code": 0,
+    "output": "(node:23660) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\nbb-plugin-emo/dist/server.js\nbb-plugin-emo/dist/server.js.map\nbb-plugin-emo/dist/server.meta.json\nbb-plugin-emo/dist/app.js\nbb-plugin-emo/dist/app.css\nbb-plugin-emo/dist/app.meta.json"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "phase": "baseline",
+    "passed": true,
+    "rounds": 12,
+    "html_median_seconds": 1.4415,
+    "html_max_seconds": 2.049,
+    "native_heap_min": 38424,
+    "native_largest_min": 26624
+  },
+  {
+    "phase": "assets",
+    "passed": true,
+    "rounds": 12,
+    "html_median_seconds": 1.444,
+    "html_max_seconds": 2.207,
+    "native_heap_min": 40396,
+    "native_largest_min": 26624
+  }
+]

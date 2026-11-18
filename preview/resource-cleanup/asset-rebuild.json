@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "environment": "Python 3.14 / pinned Pillow 13.0.0 in local .venv; no runtime dependency added",
+  "runs": [
+    {
+      "run": 1,
+      "stdout": "Built 33 emotion cards + 7 speech variants: 104 unique frames, 106496 bytes",
+      "sha256": {
+        "emotions.bin": "a6c6877e1ef85acee01da8e1be34efa9756bac2db1e533cc94baa70c7f70e768",
+        "emotion_sequences.py": "85b7ed3efee07097dff027ecf879f028418b2dd25101adf97ef19a5495ed70fa"
+      }
+    },
+    {
+      "run": 2,
+      "stdout": "Built 33 emotion cards + 7 speech variants: 104 unique frames, 106496 bytes",
+      "sha256": {
+        "emotions.bin": "a6c6877e1ef85acee01da8e1be34efa9756bac2db1e533cc94baa70c7f70e768",
+        "emotion_sequences.py": "85b7ed3efee07097dff027ecf879f028418b2dd25101adf97ef19a5495ed70fa"
+      }
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "git_head": "6e4d95d14fecadf786535055d27c83a75de181f7",
+  "plugin_version": "0.1.0",
+  "inventory_sha256": "7ce72e63219d1526c141e4f08b723cec6460dcc585c1ff09b8205ad64842bb54",
+  "files": [
+    {
+      "file": "bb-plugin-emo/app.tsx",
+      "bytes": 6421,
+      "nonempty_lines": 51,
+      "sha256": "93cf6eb647b6884238d2ce517039c4b0dcdedb20b9cf443993dea34cbbcb49f4"
+    },
+    {
+      "file": "bb-plugin-emo/model.ts",
+      "bytes": 4890,
+      "nonempty_lines": 81,
+      "sha256": "07f1c339f50e6a741d65408fb043655aad5f82d5a36d9db0086c716b1696ebd3"
+    },
+    {
+      "file": "bb-plugin-emo/server.ts",
+      "bytes": 11975,
+      "nonempty_lines": 151,
+      "sha256": "cc094647e10eddb4ca5e62754d3e248e04a6c98f6040d10159f623232983804e"
+    },
+    {
+      "file": "bb-plugin-emo/transport.ts",
+      "bytes": 2961,
+      "nonempty_lines": 42,
+      "sha256": "73b65d7ec1caa1a6baed781f48ea9345ac33c787a4201900241977353e5d16fe"
+    },
+    {
+      "file": "behaviour.py",
+      "bytes": 3311,
+      "nonempty_lines": 66,
+      "sha256": "7b60d901683d1dc74404d5a44bef348d56bc1711d15b601b75b24f744232cb98"
+    },
+    {
+      "file": "bmo.py",
+      "bytes": 6797,
+      "nonempty_lines": 189,
+      "sha256": "0fdfe1f0b256aa67713bd71336d0e3885f9168358cc90e6d8670b04fa10d6d81"
+    },
+    {
+      "file": "emo_bb.py",
+      "bytes": 3333,
+      "nonempty_lines": 85,
+      "sha256": "aafb881b00d47eccdfd7a25481d531157c86da2c0e6ffaee21643cca28102742"
+    },
+    {
+      "file": "emo_bb_display.py",
+      "bytes": 2059,
+      "nonempty_lines": 46,
+      "sha256": "2847867464a01670dad9245ab0431c05ecca71e1c92d2151db447d67fc1f0a7f"
+    },
+    {
+      "file": "emo_bb_http.py",
+      "bytes": 2623,
+      "nonempty_lines": 51,
+      "sha256": "0cf723dd1f12902f8a56d68674d5b3734280bcdd2db185993d508b8529cc3c69"
+    },
+    {
+      "file": "emo_bb_view.py",
+      "bytes": 1729,
+      "nonempty_lines": 38,
+      "sha256": "f0956161ae75444eedc03e954cbdb504cd9aec1e12497dc2626633324019b682"
+    },
+    {
+      "file": "emo_font.py",
+      "bytes": 2143,
+      "nonempty_lines": 21,
+      "sha256": "9bf1080ab7fa3ff392c5c162cb4a17e663d4ee14b1a897e24ead0c119a348a15"
+    },
+    {
+      "file": "emo_http.py",
+      "bytes": 1695,
+      "nonempty_lines": 39,
+      "sha256": "0a10f54c09c64e4f2aca65d02c0d6ef9e72892b68c52f759b4c926c60d3ef75c"
+    },
+    {
+      "file": "emotions.py",
+      "bytes": 1764,
+      "nonempty_lines": 51,
+      "sha256": "82bb90d818fce6ab85efa0ea4dd6d70ea067f6b73d22c8a27f124afb44e02c65"
+    },
+    {
+      "file": "face.py",
+      "bytes": 2374,
+      "nonempty_lines": 56,
+      "sha256": "f7114b592436ca943e4a75cfa17c676ebf6c3194eebafd42f25d9f523842b5d3"
+    },
+    {
+      "file": "main.py",
+      "bytes": 206,
+      "nonempty_lines": 8,
+      "sha256": "a6f1446095c643aa126848fa65cf95d2540e867d376cad6291ebeff604a78fd3"
+    },
+    {
+      "file": "ota_boot.py",
+      "bytes": 4430,
+      "nonempty_lines": 100,
+      "sha256": "03b80a3231bef7ea016b5a815f239035efe589de1f7ce26975ea3f82a9fd5ad9"
+    },
+    {
+      "file": "ota_http.py",
+      "bytes": 7315,
+      "nonempty_lines": 159,
+      "sha256": "e61ee1a1ff085cc659d246c6d14c6a84faced5727d61bcea0cdabf4dec99a49c"
+    },
+    {
+      "file": "ota_protocol.py",
+      "bytes": 1889,
+      "nonempty_lines": 35,
+      "sha256": "13dfd44402d7964f46b79a2e9e8eea60146f56a6006850168be67b23ac2bf57d"
+    },
+    {
+      "file": "samples.py",
+      "bytes": 1035,
+      "nonempty_lines": 27,
+      "sha256": "8b32af7a8c9fe4b95b544f6b5c377c39f0c1ad23c645ff8cea123163ebcbf88e"
+    },
+    {
+      "file": "showcase.py",
+      "bytes": 1499,
+      "nonempty_lines": 37,
+      "sha256": "73138a5066ae1f36aae7baa2338209d9e4dde5218a01d44cc867681d9c8b9946"
+    },
+    {
+      "file": "tools/bootstrap_wifi.py",
+      "bytes": 3039,
+      "nonempty_lines": 50,
+      "sha256": "1ca2c680ecaab127b5b2e594908166dd2da660e1b495319f8f348ff8dc39afe6"
+    },
+    {
+      "file": "tools/build_all.py",
+      "bytes": 9569,
+      "nonempty_lines": 174,
+      "sha256": "57adccdde63a4068ad02e11fb56d2aa04280224a4545f88409d676bc5d87e4eb"
+    },
+    {
+      "file": "tools/build_animations.py",
+      "bytes": 3197,
+      "nonempty_lines": 68,
+      "sha256": "de0a8ed8eb5618b6d641a0f7a0f9fb51735639fe1b5f29faf5870ee356ee675e"
+    },
+    {
+      "file": "tools/build_bb.py",
+      "bytes": 0,
+      "nonempty_lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "tools/build_faces.py",
+      "bytes": 5597,
+      "nonempty_lines": 106,
+      "sha256": "c019db11836f5dd646bd1002f21f4142a71c9a77e0be550b2b8908c0431f2ea1"
+    },
+    {
+      "file": "tools/build_scene_previews.py",
+      "bytes": 1312,
+      "nonempty_lines": 24,
+      "sha256": "e33f30eb7203e4b753c51674ae129595e34b2d6e82ff99a13976d76236d2962e"
+    },
+    {
+      "file": "tools/build_web.py",
+      "bytes": 2681,
+      "nonempty_lines": 43,
+      "sha256": "e8433b345f9ad10c9b23cbf1201eefd2fc06406ec928e9c6f0d55f1fe699bdbc"
+    },
+    {
+      "file": "tools/enter_boot.py",
+      "bytes": 610,
+      "nonempty_lines": 12,
+      "sha256": "745071d0be382e0311b9c9bf0589fcbc6a04fbf9af26926de9e1f2cb35a54603"
+    },
+    {
+      "file": "tools/face_layout.py",
+      "bytes": 741,
+      "nonempty_lines": 16,
+      "sha256": "cbd31d7f07c3e6e5ec4582e0b99365e941dbe6061fe05426b49d7d71787bcbe7"
+    },
+    {
+      "file": "tools/mp.py",
+      "bytes": 2020,
+      "nonempty_lines": 44,
+      "sha256": "e084b3066edc569955c1a96deedd9e3ef98c6f71157e26b6adc72aecdf45e753"
+    },
+    {
+      "file": "tools/preview_bb.py",
+      "bytes": 2256,
+      "nonempty_lines": 51,
+      "sha256": "f49a6e8e507289f308a87ec0acec538b08fc3146fdd28f9afa7babf61506e2e5"
+    },
+    {
+      "file": "tools/ser.py",
+      "bytes": 1117,
+      "nonempty_lines": 25,
+      "sha256": "b79261ca34fcd49abf14d0905fdc3f9c8d6b9e61712e751c0c64dd93ee57490b"
+    },
+    {
+      "file": "tools/shot.py",
+      "bytes": 265,
+      "nonempty_lines": 5,
+      "sha256": "ebd390f04a3f0d64f49dfdb189b8d91c25d97b9414420062273470e10872e205"
+    },
+    {
+      "file": "tools/upload_release.py",
+      "bytes": 1616,
+      "nonempty_lines": 31,
+      "sha256": "7d7d290829f91de80ff87665f60d19fba6a06a599576433b65ceda7f18e107e4"
+    },
+    {
+      "file": "tools/wifi_update.py",
+      "bytes": 6078,
+      "nonempty_lines": 107,
+      "sha256": "bc6a4d1342b4bb455d23f46f1ff4621888b9511439748ea2100b8a6c86e9adc6"
+    }
+  ],
+  "source_bytes": 110547,
+  "source_nonempty_lines": 2089,
+  "ota_bytes": 169517,
+  "ota_release": "15ded75b26f381f113c64fca760bc193f88498a356e154951e87a0eda4e512d7",
+  "ota_body_sha256": "7ae7fe5c9851e6be0a852ad615ba5900d8c68a726b6ac90523d26bc38c09a2c8",
+  "python": {
+    "bytes": 84300,
+    "nonempty_lines": 1764
+  },
+  "typescript": {
+    "bytes": 26247,
+    "nonempty_lines": 325
+  }
+}

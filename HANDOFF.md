@@ -33,7 +33,7 @@ On 2026-11-16 the user disconnected USB from the Mac; the robot still responds o
 - GET /invert?value=1 or 0 sets an explicit native OLED inversion value; returns ok/mood/invert, preserves mood and animation version. Invalid values fail. Inversion survives display reconnect, not reboot.
 - UI serializes requests, keeps the latest unconfirmed intent for retry and pauses polling after an error. Status says Выбрано; it does not claim physical display confirmation.
 
-There are 40 frame timelines, six composite scenes, auto and demo, 122 unique 1024-byte frames (124,928 bytes), including 18 legacy compact BB frames. The bank stays in flash; only one frame is read into the display buffer. There is no PSRAM. Keep future changes small.
+There are 40 frame timelines, six composite scenes, auto and demo, 104 unique 1024-byte frames (106,496 bytes). The unused 18-frame compact BB tail and its generator/module were removed; active bytes, indices and timings are unchanged. The bank stays in flash; only one frame is read into the display buffer. There is no PSRAM. Keep future changes small.
 
 ## Live character and scenes
 
@@ -75,7 +75,7 @@ Source: [Decisions across the three conversations](./handoff/history.md)
 
 ## Current attention scenarios (2026-11-18)
 
-Current bundle `32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac implements the accepted attention policy. Questions: shock/bobo; unread replies: wink/smile plus «ЕСТЬ ОТВЕТ», once per minute until BB read; errors: confusion/sadness. Work/queue/idle show only faces. Connection warnings repeat once per minute, with a 30s startup grace. Display history is separate from read state and survives plugin restart. Urgent and reply rings share complete 8s slots without starvation. The notification document's “Экран и очередь” section is canonical; older checkpoints below are historical.
+Current bundle `15ded75b26f381f113c64fca760bc193f88498a356e154951e87a0eda4e512d7` (169,517 bytes) removes unused assets from the previous `32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac` bundle and preserves the accepted attention policy. Questions: shock/bobo; unread replies: wink/smile plus «ЕСТЬ ОТВЕТ», once per minute until BB read; errors: confusion/sadness. Work/queue/idle show only faces. Connection warnings repeat once per minute, with a 30s startup grace. Display history is separate from read state and survives plugin restart. Urgent and reply rings share complete 8s slots without starvation. The notification document's “Экран и очередь” section is canonical; older checkpoints below are historical.
 
 The first attempt confirmed in auto but lost network after selecting BB (preview/bb-attention-first-attempt.json). After power recovery, extracting emo_bb_view.py and collecting between scene/font/renderer imports restored mode-first startup and live delivery, with about 40 KB native free in signed receipts. No USB diagnostics were available, so the exact memory cause is an inference, not a measured before/after allocation trace. The sender remains off during updates. Evidence: preview/bb-attention-mode-first.json and preview/bb-attention-acceptance.json. The intended live unread-minute check is recorded as skipped in preview/bb-attention-reminders.json because the user had already read the available reply; deterministic policy tests cover the cadence, restart and actual-read distinction. tools/check_bb_reminders.py can observe a future real unread reply without mutating it.
 

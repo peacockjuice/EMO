@@ -1,0 +1,12 @@
+PASS panel + live snapshot 1 / 12
+PASS panel + live snapshot 2 / 12
+PASS panel + live snapshot 3 / 12
+PASS panel + live snapshot 4 / 12
+PASS panel + live snapshot 5 / 12
+PASS panel + live snapshot 6 / 12
+PASS panel + live snapshot 7 / 12
+PASS panel + live snapshot 8 / 12
+PASS panel + live snapshot 9 / 12
+PASS panel + live snapshot 10 / 12
+PASS panel + live snapshot 11 / 12
+PASS panel + live snapshot 12 / 12

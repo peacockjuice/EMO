@@ -5,6 +5,9 @@ m=json.loads((P/"preview/full-manifest.json").read_text());bank=(P/"emotions.bin
 assert hashlib.sha256(bank).hexdigest()==m["sha256"]
 assert len(bank)==m["frames"]*1024
 assert m['bytes']==len(bank), 'manifest bytes differs from the actual bank'
+used={i for seq in m['sequences'].values() for i,ms in seq}
+assert len(bank)==(max(used)+1)*1024, 'unused frame tail in current release'
+assert not (P/'emo_bb_frames.py').exists(), 'legacy module would enter the OTA bundle'
 for n in range(1,31):
  key="rosto%02d"%n;seq=m["sequences"][key]
  assert all(0<=i<m["frames"] and ms>=80 for i,ms in seq)
