@@ -23,6 +23,8 @@ class Writer:
  async def drain(self):pass
 class BBTests(unittest.TestCase):
  def setUp(self):
+  import emo_bb_view
+  emo_bb_view._connection=None
   now[0]=1000;bb._snapshot=None;bb._epoch=0;bb._seq=0;bb._nonce=None;bb._key=b'K'*32;bmo.S.update(mood='bb',ver=1);bmo._v=1
  def value(self,**kw):return dict(boot=bb._boot,epoch=1,seq=1,ttl=30,source=True,card='a',face='work',text='PDF#1: РАБОТАЕТ',counts=[1,0,0,0],**kw) if not kw else dict(self.value(),**kw)
  def test_order_epoch_boot(self):
@@ -49,14 +51,14 @@ class BBTests(unittest.TestCase):
   self.assertEqual(bb.view(2000)[0],'talk_bobo');self.assertEqual(bb.view(2999)[0],'talk_bobo')
   self.assertIsNone(bb.view(3000)[0]);self.assertEqual(bb.view(3500)[3],0)
   distance=len(label)*24-4-128
-  self.assertEqual(bb.view(4750)[3],distance*11//20);self.assertEqual(bb.view(6000)[3],distance);self.assertEqual(bb.view(8500)[3],distance);self.assertEqual(bb.view(8999)[3],distance)
+  self.assertEqual(bb.view(4750)[3],distance*121//200);self.assertEqual(bb.view(6000)[3],distance);self.assertEqual(bb.view(8500)[3],distance);self.assertEqual(bb.view(8999)[3],distance)
   self.assertEqual(bb.view(9000)[0],'rosto22')
   now[0]=9500;bb.accept(self.value(seq=2,face='question',text=label),1)
   self.assertEqual(bb._card_at,1000);self.assertEqual(bb.view(10000)[0],'talk_bobo')
  def test_scroll_done_unknown(self):
   bb.accept(self.value(text='Я'*36,face='done'),1)
-  self.assertEqual(bb.view(1000)[0],'rosto02');self.assertIsNone(bb.view(4000)[0])
-  self.assertEqual(bb.view(8500)[3],732);self.assertEqual(bb.view(9000)[0],'rosto01')
+  self.assertEqual(bb.view(1000)[0],'wink');self.assertIsNone(bb.view(4000)[0])
+  self.assertEqual(bb.view(8500)[3],732);self.assertEqual(bb.view(9000)[0],'rosto04')
   bb.accept(self.value(seq=2,source=False),1);self.assertEqual(bb.status(),'unknown');self.assertIsNone(bb.view(4000)[2])
  def test_large_font_clips_and_has_no_footer(self):
   from emo_bb_display import overlay
@@ -90,6 +92,35 @@ class BBTests(unittest.TestCase):
   self.assertIn((4,24),dots.pixels);self.assertIn((12,24),dots.pixels);self.assertNotIn((8,24),dots.pixels)
   breve=Display();text(breve,'Й',0,32,4)
   self.assertIn((4,20),breve.pixels);self.assertIn((8,24),breve.pixels);self.assertIn((12,20),breve.pixels)
+ def test_idle_has_only_face_but_stale_completion_and_offline_stay_visible(self):
+  bb.accept(self.value(card='idle',face='idle',text='BB: ВСЁ СПОКОЙНО'),1)
+  for t in (1000,3000,6000,8999,9000):
+   self.assertEqual(bb.view(t),('rosto04','',None,0))
+  bb.accept(self.value(seq=2,card='thread:done:42',face='done',text='PDF#9: ЕСТЬ ОТВЕТ'),1)
+  self.assertIsNone(bb.view(4000)[0]);self.assertIn('ЕСТЬ ОТВЕТ',bb.view(4000)[1])
+  self.assertEqual(bb.view(32000)[1],'НЕТ СВЯЗИ С BB')
+ def test_background_states_are_quiet_and_error_has_two_distinct_faces(self):
+  for seq,(kind,face) in enumerate([('work','look'),('wait','rosto04'),('idle','rosto04')],1):
+   bb.accept(self.value(seq=seq,face=kind),1)
+   for t in (1000,3000,8000):self.assertEqual(bb.view(t),(face,'',None,0))
+  bb.accept(self.value(seq=4,face='error'),1)
+  self.assertEqual(bb.view(1000)[0],'rosto17');self.assertEqual(bb.view(2000)[0],'rosto03');self.assertIsNone(bb.view(3000)[0])
+ def test_connection_grace_and_minute_reminders(self):
+  self.assertEqual(bb.view(1000),('rosto04','',None,0))
+  self.assertEqual(bb.view(30999)[1],'')
+  self.assertEqual(bb.view(31000)[0],'rosto17');self.assertIsNone(bb.view(33000)[0])
+  self.assertEqual(bb.view(39000)[1],'');self.assertEqual(bb.view(90999)[1],'')
+  self.assertEqual(bb.view(91000)[1],'НЕТ СВЯЗИ С BB')
+  now[0]=92000;bb.accept(self.value(source=False),1)
+  self.assertEqual(bb.view(92000)[0],'rosto16');self.assertIsNone(bb.view(94000)[0])
+  self.assertEqual(bb.view(100000)[1],'')
+  now[0]=102000;bb.accept(self.value(seq=2,source=False),1)
+  self.assertEqual(bb.view(102000)[1],'','unknown heartbeat must not restart notice')
+  self.assertEqual(bb.view(122000)[1],'')
+  now[0]=150000;bb.accept(self.value(seq=3,source=False),1)
+  self.assertEqual(bb.view(152000)[0],'rosto16')
+  now[0]=153000;bb.accept(self.value(seq=4),1)
+  self.assertEqual(bb.view(153000)[1],'')
  def test_signed_utf8_replay_size_tamper(self):
   async def run():
    challenge=bb.challenge();raw=json.dumps(self.value(text='? PDF#2: НУЖЕН ОТВЕТ'),ensure_ascii=False).encode();nonce=challenge['nonce']

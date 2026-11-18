@@ -1,0 +1,7 @@
+{
+  "checked_at": "2026-11-18T08:48:30.526152+00:00",
+  "status": "skipped",
+  "reason": "No unread reply remains in BB; no messages created or read states changed",
+  "eligible_count": 0,
+  "local_coverage": "bb-plugin-emo/tests/model.test.ts: unread reminders repeat at sixty seconds, survive restart and stop on reading"
+}

@@ -1,0 +1,14 @@
+{
+  "status": {
+    "pending": null,
+    "running": "32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac",
+    "trial": false,
+    "last_result": "confirmed",
+    "frames": 304,
+    "active": "32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac",
+    "boot_ms": 208373
+  },
+  "ok": true,
+  "local_release": "32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac",
+  "checked_at": "2026-11-18T08:50:23.563442+00:00"
+}

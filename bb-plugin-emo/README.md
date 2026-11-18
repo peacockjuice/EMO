@@ -15,7 +15,7 @@ On the Mac holding the robot updater key, run `rtk proxy bb emo provision`. It s
 
 ## Runtime rules
 
-One event subscription plus startup/reconnect reconciliation; no steady polling of thread lists. Pending questions and background work are independent. Questions and errors rotate fairly every eight seconds. A normal root-turn completion gets one reaction and stays in the unread counter until read or a new turn. An interrupted turn never celebrates. A retry must reference the failed request.
+One event subscription plus startup/reconnect reconciliation; no steady polling of thread lists. Pending questions and background work are independent. Questions and errors rotate in complete eight-second slots. Unread root replies get wink/smile and «ЕСТЬ ОТВЕТ», immediately and then at least sixty seconds apart until BB marks them read or a new turn starts. A due reply can follow an urgent slot, so neither queue starves. A new urgent event replaces a background face immediately but does not cut an attention slot. Display timestamps are persisted independently of unread state. Old seen fields are not read receipts. Work, queue and idle show faces only. An interrupted turn creates no reply notice. A retry must reference the failed request.
 
 The device heartbeat is ten seconds, snapshot TTL thirty seconds. A lost BB subscription sends unknown state; failed delivery lets the last snapshot expire. Manual mode commands win over in-flight packets. Authentication covers a single-use boot challenge, sender epoch, increasing sequence and the response. Delivery does not require or send transcript/error text.
 

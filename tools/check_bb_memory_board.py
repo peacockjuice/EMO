@@ -10,7 +10,7 @@ def probe(label):
  print(json.dumps({'stage':label,'heap_free':gc.mem_free(),'heap_alloc':gc.mem_alloc(),'native':esp32.idf_heap_info(esp32.HEAP_DATA),'connected':network.WLAN(network.STA_IF).isconnected(),'wifi_status':network.WLAN(network.STA_IF).status()}))
 print(json.dumps({'release':ota_boot.status()['running']}))
 probe('before_import')
-for name in ('emo_bb','emo_bb_http','emo_bb_display','emo_font','emo_bb_frames'):
+for name in ('emo_bb','emo_bb_http','emo_bb_view','emo_font','emo_bb_display'):
  __import__(name)
  probe(name)
 """

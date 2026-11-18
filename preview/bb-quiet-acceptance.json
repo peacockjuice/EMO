@@ -1,0 +1,70 @@
+{
+  "started_at": "2026-11-17T14:35:32.374504+00:00",
+  "url": "http://192.168.1.43",
+  "passed": true,
+  "samples": [
+    {
+      "content_length": "26557",
+      "html_seconds": 3.384,
+      "html_bytes": 26557,
+      "html_sha256": "0f28de9f063e528184e4f7a9d2129fd1fe2b7b72c6e8d98717981173d1cb145a",
+      "device": {
+        "feeling": null,
+        "frames": 70,
+        "phase": "idle",
+        "scene": null,
+        "mood": "bb",
+        "bb": "live",
+        "showing": null,
+        "invert": false
+      },
+      "bridge": {
+        "sourceReady": true,
+        "delivery": "live",
+        "receipt": {
+          "native_heap": 40416,
+          "epoch": 1794926129360,
+          "frames": 51,
+          "ok": true,
+          "seq": 4,
+          "boot": "bb843ebd46acf91057a19b9d678f8f3f",
+          "heap": 34000,
+          "status": "live",
+          "native_largest": 28672
+        }
+      }
+    },
+    {
+      "content_length": "26557",
+      "html_seconds": 1.467,
+      "html_bytes": 26557,
+      "html_sha256": "0f28de9f063e528184e4f7a9d2129fd1fe2b7b72c6e8d98717981173d1cb145a",
+      "device": {
+        "feeling": null,
+        "frames": 98,
+        "phase": "idle",
+        "scene": null,
+        "mood": "bb",
+        "bb": "live",
+        "showing": null,
+        "invert": false
+      },
+      "bridge": {
+        "sourceReady": true,
+        "delivery": "live",
+        "receipt": {
+          "native_heap": 40192,
+          "epoch": 1794926129360,
+          "frames": 95,
+          "ok": true,
+          "seq": 6,
+          "boot": "bb843ebd46acf91057a19b9d678f8f3f",
+          "heap": 32704,
+          "status": "live",
+          "native_largest": 26624
+        }
+      }
+    }
+  ],
+  "finished_at": "2026-11-17T14:35:48.388500+00:00"
+}

@@ -17,7 +17,9 @@ test('monitor observes interactions, source disconnect, read state, exclusions a
   const initialCalls=listCalls;await sleep(600);assert.equal(listCalls,initialCalls,'steady state polled list');
   pending=false;row={...row,hasPendingInteraction:false};changed();await eventually(s=>!s.threads[0].pending);
   events=[{seq:1,type:'turn/started',createdAt:1000,scope:{kind:'turn',turnId:'turn'},data:{}},{seq:2,type:'turn/completed',createdAt:Date.now(),scope:{kind:'turn',turnId:'turn'},data:{status:'completed'}}];row={...row,status:'idle',lastReadAt:0};changed();await eventually(s=>s.threads[0].completion===2);
-  row={...row,lastReadAt:Date.now()+1};changed();await eventually(s=>s.threads[0].completion===0);
+  pending=true;row={...row,hasPendingInteraction:true,lastReadAt:Date.now()+1};changed();
+  await eventually(s=>s.threads[0].completion===0&&s.threads[0].kind==='question');
+  pending=false;row={...row,hasPendingInteraction:false};changed();await eventually(s=>!s.threads[0].pending);
   await harness.behavior.callRpc('exclude',{id:'t',excluded:true});assert.equal((await status()).threads[0].excluded,true);
   callbacks.get('realtime:connection')!({state:'disconnected'});assert.equal((await status()).sourceReady,false);
   callbacks.get('realtime:connection')!({state:'connected'});await eventually(s=>s.sourceReady);

@@ -1,26 +1,8 @@
-"""OLED compositor loaded only when BB mode is selected."""
+"""OLED drawing, loaded after the small scene and font modules."""
 import asyncio,time
 import emo_bb as state
-from emo_bb import status,FACES
-
-def view(now):
-    connection=status(now)
-    elapsed=max(0,time.ticks_diff(now,state._card_at))
-    phase=elapsed%8000
-    if connection!='live':
-        label={'waiting':'ЖДЁТ BB','offline':'НЕТ СВЯЗИ С BB','unknown':'СТАТУС BB НЕИЗВЕСТЕН'}[connection]
-        counts=None;face='rosto04'
-    else:
-        label=state._snapshot['text'][:36].upper()
-        counts=state._snapshot['counts'];kind=state._snapshot['face']
-        face=FACES[kind]
-        if kind=='question':face='rosto22' if phase<1000 else 'talk_bobo'
-        if kind=='done' and elapsed>=3000:face='rosto01'
-    if phase<2000:return face,label,counts,0
-    # 4x glyphs: 0.5s lead, 10% faster travel, then hold to the 8s slot.
-    distance=max(0,len(label)*24-4-128)
-    offset=min(distance,max(0,(phase-2500)*distance*11//25000))
-    return None,label,counts,offset
+import emo_bb_view as scene
+view=scene.view
 
 def overlay(o,label,counts,offset,large=False):
     if not large:return
@@ -36,6 +18,7 @@ def overlay(o,label,counts,offset,large=False):
         text(o,label,x,32,4)
 
 async def run(o):
+    scene._connection=None
     import bmo
     from emotion_sequences import SEQUENCES
     previous=None;face_start=time.ticks_ms();last_face=None;last_index=None

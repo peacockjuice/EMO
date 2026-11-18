@@ -73,7 +73,21 @@ Read to understand user approvals, rejected approaches, design choices and ideas
 
 Source: [Decisions across the three conversations](./handoff/history.md)
 
-## Latest font refinement (2026-11-17)
+## Current attention scenarios (2026-11-18)
+
+Current bundle `32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac implements the accepted attention policy. Questions: shock/bobo; unread replies: wink/smile plus «ЕСТЬ ОТВЕТ», once per minute until BB read; errors: confusion/sadness. Work/queue/idle show only faces. Connection warnings repeat once per minute, with a 30s startup grace. Display history is separate from read state and survives plugin restart. Urgent and reply rings share complete 8s slots without starvation. The notification document's “Экран и очередь” section is canonical; older checkpoints below are historical.
+
+The first attempt confirmed in auto but lost network after selecting BB (preview/bb-attention-first-attempt.json). After power recovery, extracting emo_bb_view.py and collecting between scene/font/renderer imports restored mode-first startup and live delivery, with about 40 KB native free in signed receipts. No USB diagnostics were available, so the exact memory cause is an inference, not a measured before/after allocation trace. The sender remains off during updates. Evidence: preview/bb-attention-mode-first.json and preview/bb-attention-acceptance.json. The intended live unread-minute check is recorded as skipped in preview/bb-attention-reminders.json because the user had already read the available reply; deterministic policy tests cover the cadence, restart and actual-read distinction. tools/check_bb_reminders.py can observe a future real unread reply without mutating it.
+
+## Previous quiet-idle adjustment (2026-11-17)
+
+Bundle `1f13c37023cc468bfb3e1f400abdaf6ff50d0d86cb7daf7806e8811c0ad12cb4`: a live idle card shows only the calm face, without counters or text cycling. Match card=idle and face=idle, not face alone: an older completion also uses the idle face and must retain its message. Offline/unknown states remain visible. Seventeen local tests; live evidence: preview/bb-quiet-acceptance.json.
+
+## Previous scrolling adjustment (2026-11-17)
+
+Bundle `7e26f16d77ffc0281b6e54a7f4d15b3cf638dff2d9f4a0053823d23538cacfa4`: text traversal is another 10% faster, 2500/1.21 ≈ 2066 ms. Layout, accents, 0.5s lead and 8s card slot are unchanged. Updated preview/bb-cycle.gif; live evidence: preview/bb-speed-acceptance.json.
+
+## Previous font refinement (2026-11-17)
 
 Bundle `68e374644986639372dce0119a3de106cf9b70f93f7cad5ef9ed37a15c693dea` (187525 bytes): large Ё and Й reuse full-height Е/И bodies and draw separate dots/breve above the baseline, inside y=20…27. Counters end at y=17 and letter bodies start at y=32. Small glyphs retain their compact form. Sixteen local tests cover body preservation, mark separation and clipping at both screen edges. Preview: preview/bb-accents.png; live check: preview/bb-accents-acceptance.json.
 

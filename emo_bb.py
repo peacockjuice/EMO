@@ -12,7 +12,7 @@ _snapshot=None
 _received=0
 _card_at=0
 _key=None
-FACES={'question':'rosto17','error':'rosto03','done':'rosto02','work':'look','wait':'rosto04','idle':'rosto01'}
+FACES={'question':'rosto17','error':'rosto03','done':'wink','work':'look','wait':'rosto04','idle':'rosto04'}
 
 def hexed(data): return binascii.hexlify(data).decode()
 def key():
@@ -78,6 +78,8 @@ async def handle(*args):
 
 async def run(o):
     import gc
+    gc.collect()
+    import emo_bb_view
     gc.collect()
     import emo_font
     gc.collect()

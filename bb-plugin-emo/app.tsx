@@ -4,7 +4,7 @@ import type { rpcContract, Status } from "./server";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const kinds:Record<string,string>={question:"Нужен ответ",error:"Ошибка",done:"Ход завершён",work:"Работает",wait:"Ждёт запуска",idle:"Спокойно"};
+const kinds:Record<string,string>={question:"Нужен ответ",error:"Ошибка",done:"Есть ответ",work:"Работает",wait:"Ждёт запуска",idle:"Спокойно"};
 const deliveries:Record<string,string>={live:"Экран получает уведомления",mode_disabled:"На роботе выбран другой режим",unknown:"Состояния BB уточняются",offline:"Нет подтверждения от робота",waiting:"Подключение к роботу","needs-key":"Нужна настройка ключа"};
 function EmoPage(){
  const rpc=useRpc<typeof rpcContract>();const navigate=useBbNavigate();const connection=useRealtimeConnectionState();
@@ -45,7 +45,7 @@ function EmoPage(){
     <button className="min-w-0 flex-1 text-left hover:underline" onClick={()=>navigate.toThread(s.id)}><span className="block truncate">{s.title}</span><span className="text-xs text-muted-foreground">{s.excluded?"Исключена":kinds[s.kind]}{!s.excluded&&s.working&&s.pending?" · Работа продолжается":""}{s.retry?" · Ожидает повтора":""}</span></button>
     {s.status==="error"&&s.failure!==s.dismissed&&<Button size="sm" variant="ghost" disabled={busy} onClick={()=>change(()=>rpc.call("dismiss",{id:s.id}))}>Скрыть ошибку</Button>}
    </li>)}</ul>
-   <p className="mt-3 text-xs text-muted-foreground">Вопрос остаётся до ответа. Чтение сессии снимает счётчик завершения. «Ход завершён» означает, что агент закончил ответ.</p>
+   <p className="mt-3 text-xs text-muted-foreground">Вопрос остаётся до ответа. Чтение сессии снимает напоминание «Есть ответ». Показ на роботе не помечает ответ прочитанным.</p>
   </section>
  </main>;
 }
