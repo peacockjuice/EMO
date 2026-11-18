@@ -16,3 +16,13 @@ The update port 8080 requires HMAC-SHA256 with a random 32-byte key, a single-us
 Uploads write the inactive application slot. A flushed journal rename selects a verified trial. Failed/unconfirmed trial boots revert; a 60-second watchdog handles a startup hang. The client requires advancing frames and at least ten seconds uptime before confirmation. See handoff/wifi-updates.md for precise limits and recovery.
 
 No TLS, secure boot or encryption at rest is claimed. A shared-key holder can install arbitrary application code. LAN denial of service and physical flash failure are not prevented. Port 80 remains unauthenticated. Do not forward either port to the internet. Physical power-cut fault injection and long-term OTA soak remain untested.
+
+## README publication review — 2026-11-18
+
+The product README and build guide use generic device addresses and portable setup commands. The redesign does not make the repository ready for public release.
+
+A bounded scan checked 464 textual Git blobs reachable from all local refs. It skipped 215 binary or large blobs. The selected private-key-header, GitHub-token, and AWS-access-ID patterns had no matches. No private configuration files were tracked. This is not an exhaustive secret audit; image contents and binary metadata were not checked.
+
+Historical blobs still contain personal filesystem paths, private LAN addresses, and BB thread identifiers. Review those files and their history before publication. Do not assume that cleaning the current README removes historical data.
+
+The project license and third-party permissions are also unresolved. See [credits and reuse status](docs/credits.md). No repository visibility, Git history, device credentials, or installed firmware was changed by this documentation work.

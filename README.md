@@ -1,19 +1,121 @@
-# EMO
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/hero-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/readme/hero-light.svg">
+  <img src="assets/readme/hero-light.svg" alt="EMO: a desk companion for BB, shown with its actual pixel face." width="1440">
+</picture>
 
-Private snapshot of the ESP32-S2 / SSD1306 animated face robot. 33 emotion cards, seven speech modes, auto mode, inversion and a warm beige/brown local web panel.
+# Give your coding sessions a face.
 
-Start with [HANDOFF.md](HANDOFF.md) for hardware, development, deployment and decision history. This repository is a portable sanitized snapshot of the working project. Absolute Mac paths in historical documentation describe the original environment; run commands from your checkout instead.
+EMO is a small desk display for [BB](https://getbb.app). It shows which sessions need your attention.
 
-## Before deploying this snapshot
+An agent needs a decision. A reply is ready to read. A session has an error. EMO gives each state a face.
 
-The board now has a USB-installed authenticated app updater. Its Wi-Fi configuration remains board-only. See [Wi-Fi updates and recovery](handoff/wifi-updates.md) before deployment. Use the full-bundle updater; legacy partial USB uploads do not maintain slot manifests.
+**[Build your EMO](docs/build.md)** &nbsp; · &nbsp; [See it in action](#a-moment-at-your-desk) &nbsp; · &nbsp; [How it works](#how-it-works)
 
-The hardcoded fallback access-point password has been removed from bmo.py and historical backup copies. These now import `AP_NAME` and `AP_PASS` from **ap_cfg.py**. Create that ignored file from ap_cfg.example.py, choose a unique password and upload it separately before deploying bmo.py from this repository. Before OTA provisioning, the staging uploader supports ap_cfg.py when explicitly named; it refuses partial uploads once OTA is installed. Never commit ap_cfg.py or wifi_cfg.py. Historical rollback instructions also require ap_cfg.py because archived source was sanitized.
+*A DIY project for BB on macOS. Hardware assembly and software setup are required.*
 
-No virtual environments, raw serial logs, credentials or unrelated conversation transcripts are included. Generated assets, firmware image, SVG originals, previews, structured test reports, tools and backup fixtures are included. Historical test records describe the working build before this security-only config extraction; the updater has separate local and hardware evidence in the current handoff.
+## A moment at your desk
 
-## Release scope
+Your agent works in BB. When it needs your input, EMO changes its face and shows the session label. You answer in BB.
 
-The v0.1 tag preserves the original release. Current development version (0.4-dev) adds four moods, six scenes, authenticated Wi-Fi app updates and a BB session monitor with independent counters and a Cyrillic status line. See [BB notifications](handoff/bb-notifications-plan.md) for setup and verification. Local and live-panel tests passed; all six scenes completed on hardware in both inversion states. The 30-minute soak was explicitly deferred by the user. See HANDOFF.md and preview/character-tests.json.
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/readme/demo-poster.png">
+  <img src="assets/readme/demo.gif" alt="An example session works, waits for input, then resumes after a reply in BB. EMO changes from a working face to a question face and a scrolling session label." width="720">
+</picture>
 
-See [SECURITY.md](SECURITY.md) for review scope and remaining limitations. Original third-party artwork and driver notices are retained; private storage does not establish redistribution rights.
+*Staged example using the actual display renderer and its timing. The current display labels are in Russian. [View a still image](assets/readme/demo-poster.png).*
+
+## Know when to step in
+
+**A question needs your answer.** EMO shows the session label. Open that session in BB to read the question and respond.
+
+**A reply is waiting.** A wink marks an unread reply. EMO reminds you until you read it, start a new turn, or stop the turn.
+
+**Something went wrong.** An error has its own face and label. Questions, errors, and unread replies take turns on the display.
+
+You choose which BB projects to follow. You can hide individual sessions from EMO without stopping their work.
+
+## A little character between tasks
+
+Switch to **auto** for changing moods and short scenes. Choose a face in the web panel, or use **demo** to see the full set.
+
+![Three actual EMO poses: looking, winking, and sleeping.](assets/readme/character.png)
+
+The speech animations move the mouth; they have no sound. EMO starts in BB mode after power-on or restart.
+
+<details>
+<summary>See the web controls</summary>
+
+Choose a mode, face, or scene in your browser. A manual selection stays active until you change it or restart EMO.
+
+![The EMO web panel with mode buttons, an inversion control, and a grid of faces.](assets/readme/control-panel.png)
+
+*Local panel preview with example state. It does not show a live device.*
+
+</details>
+
+## How it works
+
+```mermaid
+flowchart TB
+    BB["Your sessions in BB"] -->|"Local Wi-Fi"| EMO["A face and session label"]
+    EMO -->|"Needs your attention"| YOU["Open the session in BB"]
+```
+
+BB and EMO communicate over your local network. The display shows session labels and states. You read messages and answer questions in BB.
+
+<details>
+<summary>Explore the full project</summary>
+
+```mermaid
+flowchart TB
+    subgraph Computer["Computer"]
+        BB["BB session events"] --> PLUGIN["EMO plugin: states and card queue"]
+        PLUGIN <--> KV[("Saved reminder history")]
+        WEB["Browser: EMO web panel"]
+        SRC["Python code and frame assets"] --> BUILD["Full application bundle"]
+        BUILD --> CLIENT["Signed Wi-Fi update client"]
+    end
+    subgraph Device["ESP32-S2 / MicroPython"]
+        RX["BB receiver: signature and expiry checks"]
+        MODE["Mode selection"]
+        AUTO["Auto, manual scenes and demo"]
+        VIEW["BB faces and text"]
+        BANK[("Frame bank in flash")]
+        OLED["128 x 64 OLED"]
+        BOOT["A/B updater: trial, confirm or rollback"]
+        RX -->|"Snapshot used in BB mode"| VIEW
+        MODE --> VIEW
+        MODE --> AUTO
+        BANK --> VIEW
+        BANK --> AUTO
+        VIEW --> OLED
+        AUTO --> OLED
+        BOOT -.->|"Loads the selected application"| MODE
+    end
+    PLUGIN -->|"Authenticated HTTP"| RX
+    WEB -->|"Local HTTP controls"| MODE
+    CLIENT -->|"Complete application and assets"| BOOT
+```
+
+The [plugin](bb-plugin-emo/README.md) selects cards and saves reminder history. The [display code](emo_bb_display.py) draws faces and text. The [frame player](emotions.py) reads frames from flash. The [updater guide](handoff/wifi-updates.md) covers installation, confirmation, and recovery.
+
+</details>
+
+## Build your EMO
+
+The tested build uses a LILYGO ESP32-S2 WOOR V1.1 board and an SSD1306 I²C OLED. You also need wires, a breadboard, USB power, and a data cable for the first install.
+
+The current setup uses BB on macOS and a 2.4 GHz Wi-Fi network. After the first USB install, full application updates use Wi-Fi.
+
+**[Start the build guide →](docs/build.md)**
+
+Already have a configured device? Use the [update instructions](docs/build.md#update-an-existing-device). Want to change which sessions appear? Open the [plugin guide](bb-plugin-emo/README.md).
+
+## Project notes
+
+EMO is a working DIY prototype. Local checks and a twelve-round panel-and-delivery check passed on the [documented build](preview/bb-default-start/checks.json). [Device results](preview/bb-default-start/live.json) describe that run, not a long-term reliability guarantee.
+
+Use a trusted local network. The web controls have no authentication. See [security and publication status](SECURITY.md) before exposing or publishing this project.
+
+The code license and third-party artwork permissions are not yet finalized. See [credits and reuse status](docs/credits.md).

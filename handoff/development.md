@@ -98,6 +98,18 @@ Source: [Plugin simplification and measurements](./optimization-2026-11-18.md)
 Unused legacy BB assets are removed from the installed bundle. Carousel returns an optional reminder-history update; the server persists it before delivery. The original plan now records implementation evidence, measurements and verification limits alongside its acceptance criteria.
 Source: [Resource and notification cleanup: plan and results](./optimization-plan.md)
 
+## Public build guide and README media
+
+The product README is the visitor-facing entrypoint. This agent context tree remains rooted at HANDOFF.md. The public setup guide separates first installation from updates and links to the existing hardware and updater references.
+Source: [Build your EMO](../docs/build.md)
+
+README covers and the staged demo come from tools/build_readme.py. Run it with the existing Pillow environment; --font can select a local TrueType font. It samples the actual BB renderer without contacting a device. The panel screenshot uses local index.html with example state. Do not use the demo as evidence of live message delivery.
+
+## Credits and publication preparation
+
+The code license, artwork provenance and redistribution notices require a separate publication decision. The credits page records the current evidence and its limits.
+Source: [Credits and reuse status](../docs/credits.md)
+
 ## Rollback
 
 Use the confirmed A/B rollback procedure in [Wi-Fi updater and recovery](./wifi-updates.md). Never copy individual old files over the active slot. Historical snapshots under backups/before-figma, before-enlargement, before-full-set, before-inversion, before-speech, before-behaviour-update and before-syllables are fixtures and source references; port a consistent set into a complete validated bundle when needed.

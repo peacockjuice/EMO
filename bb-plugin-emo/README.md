@@ -9,9 +9,9 @@ Monitors visible root threads in selected BB projects and sends an authenticated
 
 ## Install and update
 
-From this directory, run `rtk proxy npm ci`, `rtk proxy npm run check`, `rtk proxy npm test`, then `rtk proxy bb plugin build .`. Install the resulting local package with `rtk proxy bb plugin install . --yes`. After source changes, build again and reload with `rtk proxy bb plugin reload emo`.
+From this directory, run `npm ci`, `npm run check`, `npm test`, then `bb plugin build .`. Install the resulting local package with `bb plugin install . --yes`. After source changes, build again and reload with `bb plugin reload emo`.
 
-On the Mac holding the robot updater key, run `rtk proxy bb emo provision`. It stores a domain-separated derived key in BB secret settings; neither key is printed. Configure a changed LAN address with `rtk proxy bb plugin config emo set url http://<device-ip>`. Select «Уведомления BB» in the robot panel. Mode selection resets to auto after reboot.
+On the Mac holding the robot updater key, run `bb emo provision`. It stores a domain-separated derived key in BB secret settings; neither key is printed. Configure a changed LAN address with `bb plugin config emo set url http://<device-ip>`. The robot starts in BB mode after power-on or restart. If you selected a different mode, choose «Уведомления BB» in the robot panel to return to BB.
 
 ## Runtime rules
 

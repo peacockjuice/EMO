@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="600" viewBox="0 0 1440 600" role="img" aria-labelledby="title desc">
+<title id="title">EMO. Give your coding sessions a face.</title>
+<desc id="desc">A warm editorial cover with the EMO wordmark and an exact pixel face from the OLED frame bank. Display preview, not a photograph.</desc>
+<rect width="1440" height="600" fill="#20251f"/>
+<g fill="#b3b6a8" font-family="ui-monospace,monospace" font-size="18" letter-spacing="2">
+<text x="64" y="64">A DESK COMPANION FOR BB</text><text x="1376" y="64" text-anchor="end">DIY / 01</text></g>
+<path d="M64 90H1376M64 526H1376" stroke="#606858"/>
+<text x="52" y="364" fill="#f1eadf" font-family="Georgia,serif" font-size="268" letter-spacing="-17">EMO</text>
+<circle cx="667" cy="350" r="11" fill="#e4a37b"/>
+<rect x="790" y="145" width="568" height="312" rx="8" fill="#111610"/>
+<g transform="translate(818 173) scale(4)" fill="#f8f7ed" shape-rendering="crispEdges"><path d="M16 12h5v1h-5zM107 12h3v1h-3zM16 13h5v1h-5zM107 13h3v1h-3zM14 14h9v1h-9zM105 14h8v1h-8zM14 15h9v1h-9zM105 15h8v1h-8zM14 16h10v1h-10zM104 16h9v1h-9zM13 17h11v1h-11zM104 17h11v1h-11zM13 18h11v1h-11zM104 18h11v1h-11zM13 19h11v1h-11zM104 19h11v1h-11zM14 20h10v1h-10zM104 20h9v1h-9zM14 21h10v1h-10zM104 21h9v1h-9zM14 22h9v1h-9zM105 22h8v1h-8zM14 23h9v1h-9zM105 23h8v1h-8zM16 24h5v1h-5zM107 24h5v1h-5zM46 42h1v1h-1zM80 42h2v1h-2zM46 43h1v1h-1zM80 43h2v1h-2zM46 44h3v1h-3zM77 44h5v1h-5zM47 45h5v1h-5zM76 45h4v1h-4zM47 46h5v1h-5zM76 46h4v1h-4zM49 47h7v1h-7zM72 47h5v1h-5zM52 48h22v1h-22zM52 49h22v1h-22zM57 50h12v1h-12zM57 51h12v1h-12z"/></g>
+<path d="M780 164v-29h29M1368 438v29h-29" fill="none" stroke="#e4a37b" stroke-width="2"/>
+<g font-family="ui-monospace,monospace" font-size="16" fill="#b3b6a8">
+<text x="790" y="490">EXACT PIXELS. A LITTLE CHARACTER.</text>
+<text x="64" y="566">WORK / QUESTIONS / REPLIES</text><text x="1376" y="566" text-anchor="end">DISPLAY PREVIEW · NOT TO SCALE</text></g>
+</svg>
