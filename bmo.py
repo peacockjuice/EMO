@@ -196,7 +196,15 @@ async def main():
     net_up()
     import ota_http
     await ota_http.start()
-    set_mood(S["mood"])  # Prepare BB HTTP before the scene/font/renderer imports.
+    try:
+        set_mood(S["mood"])  # Prepare BB HTTP before scene/font/renderer imports.
+    except Exception as e:
+        print("BB startup failed; using auto:", e)
+        # Startup imports create no tasks. Do not re-import BB while leaving it.
+        S["mood"] = "auto"
+        set_mood("auto")
+        import gc
+        gc.collect()
     print("web page: http://%s/  (wifi: %s)" % (S["ip"], S["net"]))
     await asyncio.start_server(handle, "0.0.0.0", 80)
     await animate()

@@ -1,0 +1,33 @@
+{
+  "selected": {
+    "feeling": "calm",
+    "ok": true,
+    "phase": "idle",
+    "scene": null,
+    "mood": "auto",
+    "frames": 192,
+    "showing": null,
+    "invert": false
+  },
+  "after_heartbeat": {
+    "feeling": "calm",
+    "phase": "idle",
+    "scene": null,
+    "mood": "auto",
+    "frames": 208,
+    "showing": null,
+    "invert": false
+  },
+  "passed": true,
+  "restored": {
+    "ok": true,
+    "mood": "bb",
+    "frames": 208,
+    "phase": "idle",
+    "feeling": null,
+    "showing": null,
+    "bb": "waiting",
+    "invert": false,
+    "scene": null
+  }
+}

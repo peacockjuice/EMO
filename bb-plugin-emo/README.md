@@ -5,7 +5,7 @@ tags: [emo, bb, plugin]
 
 # EMO BB plugin
 
-EMO version **0.2**.
+EMO version **0.3**.
 
 Monitors visible root threads in selected BB projects and sends an authenticated snapshot to the EMO OLED over the LAN. Existing projects are selected on first install; new threads within them join automatically. The EMO sidebar page changes this selection, excludes individual threads and opens a thread by its stable alias.
 

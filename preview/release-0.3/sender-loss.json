@@ -1,0 +1,14 @@
+{
+  "without_sender": {
+    "feeling": null,
+    "frames": 284,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "offline",
+    "showing": null,
+    "invert": false
+  },
+  "passed": true,
+  "sender_restored": true
+}

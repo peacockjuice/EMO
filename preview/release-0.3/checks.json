@@ -1,0 +1,84 @@
+[
+  {
+    "name": "check_release.py",
+    "status": "passed",
+    "message": ""
+  },
+  {
+    "name": "check_bb.py",
+    "status": "passed",
+    "message": ""
+  },
+  {
+    "name": "check_bb_reminders.py",
+    "status": "skipped",
+    "message": "Live prerequisite missing: no unread reply. No synthetic user messages created."
+  },
+  {
+    "name": "check_assets.py",
+    "status": "passed",
+    "message": ""
+  },
+  {
+    "name": "check_full.py",
+    "status": "passed",
+    "message": ""
+  },
+  {
+    "name": "check_wifi_update.py",
+    "status": "passed",
+    "message": ""
+  },
+  {
+    "name": "check_wifi_client.py",
+    "status": "passed",
+    "message": ""
+  },
+  {
+    "name": "KV-only mutation rejected",
+    "status": "passed",
+    "message": "Mutated server must fail the persisted-notice test."
+  },
+  {
+    "name": "plugin tests",
+    "status": "passed",
+    "message": "18 tests; baseline also passed"
+  },
+  {
+    "name": "TypeScript",
+    "status": "passed"
+  },
+  {
+    "name": "documentation tree",
+    "status": "passed"
+  },
+  {
+    "name": "original startup rejected by fallback test",
+    "status": "passed"
+  },
+  {
+    "name": "live",
+    "status": "passed",
+    "message": "preview/release-0.3/live.json"
+  },
+  {
+    "name": "manual-mode",
+    "status": "passed",
+    "message": "preview/release-0.3/manual-mode.json"
+  },
+  {
+    "name": "sender-loss",
+    "status": "passed",
+    "message": "preview/release-0.3/sender-loss.json"
+  },
+  {
+    "name": "Initial panel probe after plugin reload",
+    "status": "failed",
+    "message": "Connection reset; retained in live-initial.json. Later four-probe run passed."
+  },
+  {
+    "name": "Optical OLED acceptance",
+    "status": "skipped",
+    "message": "Requires user observation; buffer/render checks are not optical proof."
+  }
+]

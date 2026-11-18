@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="600" viewBox="0 0 1440 600" role="img" aria-labelledby="title desc">
-<title id="title">EMO 0.2. Give your coding sessions a face.</title>
+<title id="title">EMO 0.3. Give your coding sessions a face.</title>
 <desc id="desc">A warm editorial cover with the EMO wordmark and an exact pixel face from the OLED frame bank. Display preview, not a photograph.</desc>
 <rect width="1440" height="600" fill="#20251f"/>
 <g fill="#b3b6a8" font-family="ui-monospace,monospace" font-size="18" letter-spacing="2">
-<text x="64" y="64">A DESK COMPANION FOR BB</text><text x="1376" y="64" text-anchor="end">V0.2 / DIY</text></g>
+<text x="64" y="64">A DESK COMPANION FOR BB</text><text x="1376" y="64" text-anchor="end">V0.3 / DIY</text></g>
 <path d="M64 90H1376M64 526H1376" stroke="#606858"/>
 <text x="52" y="364" fill="#f1eadf" font-family="Georgia,serif" font-size="268" letter-spacing="-17">EMO</text>
 <circle cx="667" cy="350" r="11" fill="#e4a37b"/>

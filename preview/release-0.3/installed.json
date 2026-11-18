@@ -1,0 +1,12 @@
+{
+  "status": {
+    "pending": null,
+    "running": "eb5d17d40b05424b06d38a1e555cea0b7ba742129a4ff9c41382d178ad11d3b9",
+    "trial": false,
+    "last_result": "confirmed",
+    "frames": 52,
+    "active": "eb5d17d40b05424b06d38a1e555cea0b7ba742129a4ff9c41382d178ad11d3b9",
+    "boot_ms": 52510
+  },
+  "ok": true
+}

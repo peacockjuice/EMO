@@ -5,7 +5,7 @@ tags: [emo, setup, hardware]
 
 # Build your EMO
 
-EMO version **0.2**.
+EMO version **0.3**.
 
 This guide follows the tested ESP32-S2 build on macOS. It separates a new device from an existing device with the Wi-Fi updater installed.
 

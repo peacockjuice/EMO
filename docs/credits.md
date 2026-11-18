@@ -5,7 +5,7 @@ tags: [emo, credits, publication]
 
 # EMO credits and reuse status
 
-EMO version **0.2**.
+EMO version **0.3**.
 
 This page records what the checkout contains. It does not grant reuse rights for material whose license has not been established.
 

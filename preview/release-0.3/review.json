@@ -1,0 +1,68 @@
+{
+  "scope": {
+    "task": "since-6c4c7a8",
+    "run": "03-after-fix",
+    "scope_path": "/Users/vpavlin/.bb/thread-storage/thr_5v8cphyd64/revmux-tasks/since-6c4c7a8/03-after-fix/input/scope.md"
+  },
+  "sources": {
+    "expected": 2,
+    "reported": 2,
+    "degraded": [],
+    "agents": [
+      {
+        "name": "bugs+impl",
+        "lenses": [
+          "bugs",
+          "impl"
+        ],
+        "executor": "claude",
+        "requested_model": "opus",
+        "actual_model": "claude-opus-5-5",
+        "effort": "high",
+        "tokens": 224011,
+        "raised": 0,
+        "degraded": false
+      },
+      {
+        "name": "adversarial",
+        "lenses": [
+          "adversarial"
+        ],
+        "executor": "codex",
+        "requested_model": "gpt-6.1-sol",
+        "actual_model": "gpt-6.1-sol",
+        "effort": "high",
+        "tokens": 0,
+        "raised": 0,
+        "degraded": false
+      }
+    ]
+  },
+  "findings": [],
+  "open_questions": [],
+  "pre_existing": [],
+  "immaterial": [],
+  "stats": {
+    "started_at": "2026-11-18T15:45:50.373859+04:00",
+    "finished_at": "2026-11-18T15:46:46.201031+04:00",
+    "duration_ms": 55827,
+    "tokens": 235650,
+    "stages": [
+      {
+        "name": "find",
+        "duration_ms": 51651
+      },
+      {
+        "name": "synthesis",
+        "duration_ms": 4174,
+        "executor": "claude",
+        "model": "opus",
+        "effort": "high"
+      },
+      {
+        "name": "verify",
+        "duration_ms": 0
+      }
+    ]
+  }
+}

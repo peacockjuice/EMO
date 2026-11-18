@@ -44,6 +44,8 @@ For HTML-only changes run only build_web.py. Timeline-only changes can leave the
 
 ## Local checks
 
+For release labels, startup fallback and the frozen measurement inventory, run `rtk proxy python3 tools/check_release.py`. The 0.3 installation and checks are recorded under [release evidence](../preview/release-0.3/checks.json). A source test does not prove optical OLED acceptance.
+
 ```sh
 rtk proxy python3 tools/check_faces.py
 rtk proxy .venv/bin/python tools/check_layout.py

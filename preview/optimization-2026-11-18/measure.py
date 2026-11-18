@@ -14,7 +14,12 @@ inventory = HERE / 'source-files.json'
 files = json.loads(inventory.read_text())
 rows = []
 for name in files:
-    data = (ROOT / name).read_bytes()
+    try:
+        data = (ROOT / name).read_bytes()
+    except FileNotFoundError:
+        if name != 'tools/build_bb.py':
+            raise
+        data = b''
     rows.append({'file': name, 'bytes': len(data),
                  'nonempty_lines': sum(bool(line.strip()) for line in data.splitlines()),
                  'sha256': hashlib.sha256(data).hexdigest()})

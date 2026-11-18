@@ -1,5 +1,15 @@
 # EMO release notes
 
+## 0.3 — unreleased
+
+- Fall back to auto if initial BB preparation fails, keeping panel and OTA startup available.
+- Restore the optimization measurement command after removal of tools/build_bb.py; other missing files remain errors.
+- Cover in-memory/persisted reminder history, refresh, reload and read-state boundaries in server tests.
+- Separate recorded installed bundles from current source, and correct automatic BB startup instructions.
+- Align 0.3 labels and add an offline release consistency check (`python3 tools/check_release.py`).
+
+Hardware acceptance and publication are separate from these source changes. No installation is implied by this entry.
+
 ## 0.2 — 2026-11-18
 
 - BB session notices for questions, unread replies, and errors, with project selection and session exclusions.

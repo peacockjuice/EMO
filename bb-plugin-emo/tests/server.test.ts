@@ -51,7 +51,7 @@ function unreadHost(){
   subscribe:({event,callback}:any)=>{callbacks.set(event,callback);return ()=>callbacks.delete(event);},projects:{list:async()=>[{id:'p',name:'PDF'}]},
   threads:{list:async()=>[row],interactions:{list:async()=>pending?[{status:'pending'}]:[]},queue:{list:async()=>[]},events:{list:async({afterSeq}:any)=>events.filter(e=>!afterSeq||e.seq>Number(afterSeq))}},
  } as any});
- return {host,connect:()=>callbacks.get('realtime:connection')!({state:'connected'}),readWithQuestion:()=>{
+ return {host,refresh:()=>callbacks.get('thread:changed')!({id:'t',changes:['status-changed']}),connect:()=>callbacks.get('realtime:connection')!({state:'connected'}),readWithQuestion:()=>{
   pending=true;row={...row,lastReadAt:Date.now(),hasPendingInteraction:true};callbacks.get('thread:changed')!({id:'t',changes:['status-changed']});
  }};
 }
@@ -66,7 +66,7 @@ test('persisted notices survive a host reload; disabled mode and failed delivery
  t.mock.method(Transport.prototype,'send',async(_url,_key,card)=>{
   if(card.face==='done'){
    const saved=await host.bb.storage.kv.get<any>('thread:t');
-   assert.equal(saved.notifiedCompletion,2);assert.equal(saved.notifiedAt,now,'notice was not saved before sending');
+   assert.equal(saved.notifiedCompletion,2);assert.ok(saved.notifiedAt<=now,'notice was not saved before sending');
    assert.equal(saved.completion,2);notices.push(saved.notifiedAt);
   }
   if(failDelivery)throw Error('simulated delivery failure');
@@ -79,18 +79,29 @@ test('persisted notices survive a host reload; disabled mode and failed delivery
   await eventually(async()=>(await status()).delivery==='mode_disabled');now=1001000;
   fixture.connect();await eventually(async()=>notices.length===1&&(await status()).delivery==='mode_disabled');
   const saved=await host.bb.storage.kv.get<any>('thread:t');assert.equal(saved.notifiedAt,1001000);assert.equal(saved.completion,2);
+  for(const elapsed of [7999,8000,8001,59999]){
+   now=1001000+elapsed;fixture.refresh();
+   await eventually(async()=>(await status()).sourceReady);await sleep(300);
+   assert.equal(notices.length,1,'reply repeated before sixty seconds');
+   assert.equal((await status()).threads[0].notifiedAt,saved.notifiedAt);
+   assert.equal((await host.bb.storage.kv.get<any>('thread:t')).notifiedAt,saved.notifiedAt);
+  }
   service.controller.abort();await service.done;
-  now+=1000;host=await host.harness.lifecycle.reload(plugin);
+  now=1060999;host=await host.harness.lifecycle.reload(plugin);
   service=host.harness.behavior.runService('monitor');fixture.connect();
   await eventually(async()=>(await status()).sourceReady);await sleep(300);
   assert.equal(notices.length,1);assert.equal((await status()).threads[0].notifiedAt,1001000);
   assert.equal((await host.bb.storage.kv.get<any>('thread:t')).alias,saved.alias);
   now=1061000;failDelivery=true;
+  await eventually(async()=>(await status()).threads[0].notifiedAt===1061000);
+  // Selection is due at 60 s; delivery also respects its independent 300 ms gate.
+  now+=300;
   await eventually(async()=>notices.length===2&&(await status()).delivery==='offline');
   assert.deepEqual(notices,[1001000,1061000]);
   const afterFailure=await host.bb.storage.kv.get<any>('thread:t');assert.equal(afterFailure.notifiedAt,1061000);assert.equal(afterFailure.completion,2);
   fixture.readWithQuestion();await eventually(async()=>{const s=(await status()).threads[0];return s.completion===0&&s.kind==='question';});
   assert.equal((await host.bb.storage.kv.get<any>('thread:t')).completion,0);
+  now+=60000;await sleep(600);assert.equal(notices.length,2,'read reply repeated');
  }finally{service.controller.abort();await service.done;await host.harness.lifecycle.dispose();}
 });
 
