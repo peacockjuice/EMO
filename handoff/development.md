@@ -93,10 +93,10 @@ check_web with BMO_TEST_URL drives the real device and ends auto/inversion off: 
 The panel now reuses model.counts, and urgent-ring rotation is inline at its single call site. Firmware is unchanged. Baseline, fixed source inventory, before/after measurements and verification limits are recorded separately.
 Source: [Plugin simplification and measurements](./optimization-2026-11-18.md)
 
-## Planned resource and notification cleanup
+## Resource and notification cleanup (2026-11-18)
 
-The next bounded changes remove unused legacy BB assets from the current bundle and make reminder-history updates explicit. This is a plan, not an installed release; it includes the existing manifest-size defect, acceptance checks and rollback conditions.
-Source: [Resource and notification cleanup plan](./optimization-plan.md)
+Unused legacy BB assets are removed from the installed bundle. Carousel returns an optional reminder-history update; the server persists it before delivery. The original plan now records implementation evidence, measurements and verification limits alongside its acceptance criteria.
+Source: [Resource and notification cleanup: plan and results](./optimization-plan.md)
 
 ## Rollback
 

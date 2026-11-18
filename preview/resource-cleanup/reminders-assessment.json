@@ -1,0 +1,21 @@
+{
+  "first_run": "failed",
+  "error": "AssertionError: Source or delivery is not live",
+  "observed_selection_intervals_ms": [
+    60012
+  ],
+  "followup_live": true,
+  "cause": "The first runner did not capture the failing readiness/delivery flags. A later snapshot was ready/live. The exact transient cause is not established; sourceReady can also be false during normal BB reconciliation.",
+  "diagnostic_change": "Capture last_observation only; all original assertions and observation duration remain unchanged.",
+  "retry": "interrupted",
+  "retry_error": "AssertionError: Target was read, excluded or superseded during observation",
+  "retry_last_observation": {
+    "sourceReady": true,
+    "delivery": "live",
+    "error": "",
+    "completion": 0,
+    "excluded": false
+  },
+  "remaining_eligible_unread": 0,
+  "strict_live_check": "not completed"
+}

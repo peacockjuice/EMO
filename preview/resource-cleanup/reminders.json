@@ -1,0 +1,244 @@
+{
+  "started_at": "2026-11-18T10:15:55.919268+00:00",
+  "passed": false,
+  "samples": [
+    {
+      "at": 1794996956578,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 783,
+        "ok": true,
+        "seq": 17,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 35776,
+        "status": "live",
+        "native_largest": 28672
+      }
+    },
+    {
+      "at": 1794996961947,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 805,
+        "ok": true,
+        "seq": 18,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 35808,
+        "status": "live",
+        "native_largest": 28672
+      }
+    },
+    {
+      "at": 1794996967318,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 805,
+        "ok": true,
+        "seq": 18,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 35808,
+        "status": "live",
+        "native_largest": 28672
+      }
+    },
+    {
+      "at": 1794996972674,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 825,
+        "ok": true,
+        "seq": 19,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 36880,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794996978000,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 825,
+        "ok": true,
+        "seq": 19,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 36880,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794996983333,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 841,
+        "ok": true,
+        "seq": 20,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37856,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794996988648,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 851,
+        "ok": true,
+        "seq": 22,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 36560,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794996994012,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 872,
+        "ok": true,
+        "seq": 23,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37312,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794996999335,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 872,
+        "ok": true,
+        "seq": 23,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37312,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794997004669,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794996949191,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 893,
+        "ok": true,
+        "seq": 24,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37664,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794997010014,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794997009203,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 893,
+        "ok": true,
+        "seq": 24,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37664,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794997015363,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794997009203,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 909,
+        "ok": true,
+        "seq": 25,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37824,
+        "status": "live",
+        "native_largest": 30720
+      }
+    },
+    {
+      "at": 1794997020718,
+      "kind": "done",
+      "completion": 3644,
+      "notifiedAt": 1794997009203,
+      "notifiedCompletion": 3644,
+      "receipt": {
+        "native_heap": 40612,
+        "epoch": 1794996839251,
+        "frames": 930,
+        "ok": true,
+        "seq": 26,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 37664,
+        "status": "live",
+        "native_largest": 30720
+      }
+    }
+  ],
+  "alias": "PDF#1",
+  "completion": 3644,
+  "error": "AssertionError: Source or delivery is not live",
+  "finished_at": "2026-11-18T10:17:06.365777+00:00"
+}

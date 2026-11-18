@@ -1,0 +1,32 @@
+[
+  {
+    "name": "19 receiver tests",
+    "status": "passed",
+    "evidence": "preview/resource-cleanup/plugin-python.txt",
+    "output": "...................\n----------------------------------------------------------------------\nRan 19 tests in 0.128s\n\nOK\nhttp error: simulated slow peer"
+  },
+  {
+    "name": "18 plugin tests, including SDK host KV reload and failed save",
+    "status": "passed",
+    "evidence": "preview/resource-cleanup/plugin-tests.txt",
+    "output": "> bb-plugin-emo@0.1.0 test\n> node --test tests/*.test.ts\n\n\u2714 work and question are independent; question and error are both counted (0.854125ms)\n\u2714 completion only from root; stop, duplicate, new turn and bootstrap preserve only unread completion (0.193042ms)\n\u2714 completion reaction yields to work once; unread count persists (0.317417ms)\n\u2714 urgent interruption and ten sessions remain fair as new urgent sessions arrive (1.378292ms)\n\u2714 old unread completion is still an answer; stale source does not claim work (0.135333ms)\n\u2714 dismissed failure does not hide a new failure and queued work is not running (0.08575ms)\n\u2714 a new completion in the same session receives its own eight-second slot (0.101083ms)\n\u2714 question label wins over retry just like its face (0.395584ms)\n\u2714 unread reminders repeat at sixty seconds, survive restart and stop on reading (0.171541ms)\n\u2714 urgent and unread rings both progress without interrupting an attention card (0.233875ms)\n\u2714 read reply cannot clear a pending interaction; new completion gets a fresh notice (0.107584ms)\n\u2714 selection returns an explicit notice without mutating inputs or repeating it during a slot (0.143292ms)\n\u2714 monitor observes interactions, source disconnect, read state, exclusions and removal without polling (4056.024042ms)\n\u2714 a change during initial enumeration cannot be overwritten by its stale row (608.047792ms)\n\u2714 persisted notices survive a host reload; disabled mode and failed delivery never mark a reply read (1293.530875ms)\n\u2714 a failed notice save stops the monitor before the answer card can be sent (254.650583ms)\n\u2714 signed UTF8 wire, monotonic sequence, forged response and cancellation (31.144209ms)\n\u2714 oversized challenge is cancelled before buffering the full response (0.994417ms)\n\u2139 tests 18\n\u2139 suites 0\n\u2139 pass 18\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 6519.010083"
+  },
+  {
+    "name": "TypeScript",
+    "status": "passed",
+    "evidence": "preview/resource-cleanup/plugin-types.txt",
+    "output": "> bb-plugin-emo@0.1.0 check\n> tsc --noEmit"
+  },
+  {
+    "name": "Plugin build",
+    "status": "passed",
+    "evidence": "preview/resource-cleanup/plugin-build.txt",
+    "output": "(node:37760) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\nbb-plugin-emo/dist/server.js\nbb-plugin-emo/dist/server.js.map\nbb-plugin-emo/dist/server.meta.json\nbb-plugin-emo/dist/app.js\nbb-plugin-emo/dist/app.css\nbb-plugin-emo/dist/app.meta.json"
+  },
+  {
+    "name": "42-step frozen semantic trace",
+    "status": "passed",
+    "evidence": "preview/resource-cleanup/plugin-trace.txt",
+    "output": "PASS 42 deterministic selections match the frozen baseline"
+  }
+]

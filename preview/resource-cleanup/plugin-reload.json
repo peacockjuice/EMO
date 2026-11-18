@@ -1,0 +1,20 @@
+{
+  "sourceReady": true,
+  "delivery": "live",
+  "receipt": {
+    "native_heap": 40400,
+    "epoch": 1794996839251,
+    "frames": 570,
+    "ok": true,
+    "seq": 2,
+    "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+    "heap": 35872,
+    "status": "live",
+    "native_largest": 28672
+  },
+  "artifacts": {
+    "model.ts": "4239d2a75841eebbbf514ebb4ae5452e23b5d6d47b54bcc22d27ee94d3e5c638",
+    "server.ts": "f9366ac242687842ad0afe17cf05461858eab4c9b38926c00d17bb382e390a73",
+    "dist/server.js": "fd66977e665fb1eff609f5a3830068022882a54c612b4d56f465ce4798d81913"
+  }
+}

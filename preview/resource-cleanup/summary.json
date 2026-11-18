@@ -1,0 +1,123 @@
+{
+  "metrics": [
+    {
+      "source_bytes": 112815,
+      "source_nonempty_lines": 2131,
+      "ota_bytes": 188586,
+      "ota_release": "32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac",
+      "phase": "baseline"
+    },
+    {
+      "source_bytes": 110547,
+      "source_nonempty_lines": 2089,
+      "ota_bytes": 169517,
+      "ota_release": "15ded75b26f381f113c64fca760bc193f88498a356e154951e87a0eda4e512d7",
+      "phase": "assets"
+    },
+    {
+      "source_bytes": 110738,
+      "source_nonempty_lines": 2094,
+      "ota_bytes": 169517,
+      "ota_release": "15ded75b26f381f113c64fca760bc193f88498a356e154951e87a0eda4e512d7",
+      "phase": "plugin"
+    }
+  ],
+  "live": [
+    {
+      "phase": "baseline",
+      "passed": true,
+      "rounds": 12,
+      "started_at": "2026-11-18T10:03:40.723235+00:00",
+      "finished_at": "2026-11-18T10:05:11.934185+00:00",
+      "boot": "9209afce6c6de5ed205ea5dffd353793",
+      "epoch": 1794996203277,
+      "html_median_seconds": 1.4415,
+      "html_max_seconds": 2.049,
+      "native_heap_min": 38424,
+      "native_largest_min": 26624,
+      "frames_first": 5659,
+      "frames_last": 5813,
+      "seq_first": 4,
+      "seq_last": 13
+    },
+    {
+      "phase": "assets",
+      "passed": true,
+      "rounds": 12,
+      "started_at": "2026-11-18T10:10:28.512141+00:00",
+      "finished_at": "2026-11-18T10:12:00.439192+00:00",
+      "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+      "epoch": 1794996619732,
+      "html_median_seconds": 1.444,
+      "html_max_seconds": 2.207,
+      "native_heap_min": 40396,
+      "native_largest_min": 26624,
+      "frames_first": 199,
+      "frames_last": 355,
+      "seq_first": 3,
+      "seq_last": 11
+    },
+    {
+      "phase": "plugin",
+      "passed": true,
+      "rounds": 12,
+      "started_at": "2026-11-18T10:14:10.724475+00:00",
+      "finished_at": "2026-11-18T10:15:45.084363+00:00",
+      "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+      "epoch": 1794996839251,
+      "html_median_seconds": 1.4595,
+      "html_max_seconds": 2.625,
+      "native_heap_min": 40400,
+      "native_largest_min": 28672,
+      "frames_first": 591,
+      "frames_last": 775,
+      "seq_first": 3,
+      "seq_last": 16
+    }
+  ],
+  "size_rows": [
+    [
+      "OTA, байт",
+      188586,
+      169517,
+      -19069
+    ],
+    [
+      "Собственные исходники, байт",
+      112815,
+      110738,
+      -2077
+    ],
+    [
+      "Непустые строки исходников",
+      2131,
+      2094,
+      -37
+    ]
+  ],
+  "ota_reduction_percent": 10.11,
+  "interpretation": "Sequential scoped observations; no causal speed or native-memory improvement claimed. Own source inventory excludes generated files, tests, docs, dependencies and backups.",
+  "reminders": {
+    "first_run": "failed",
+    "error": "AssertionError: Source or delivery is not live",
+    "observed_selection_intervals_ms": [
+      60012
+    ],
+    "followup_live": true,
+    "cause": "The first runner did not capture the failing readiness/delivery flags. A later snapshot was ready/live. The exact transient cause is not established; sourceReady can also be false during normal BB reconciliation.",
+    "diagnostic_change": "Capture last_observation only; all original assertions and observation duration remain unchanged.",
+    "retry": "interrupted",
+    "retry_error": "AssertionError: Target was read, excluded or superseded during observation",
+    "retry_last_observation": {
+      "sourceReady": true,
+      "delivery": "live",
+      "error": "",
+      "completion": 0,
+      "excluded": false
+    },
+    "remaining_eligible_unread": 0,
+    "strict_live_check": "not completed"
+  },
+  "final_state": "final-state.json",
+  "final_ota": "final-ota.json"
+}

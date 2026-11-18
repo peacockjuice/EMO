@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-18T10:19:22.428139+00:00",
+  "device": {
+    "feeling": null,
+    "frames": 1174,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "bridge": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40400,
+      "epoch": 1794997159015,
+      "frames": 1171,
+      "ok": true,
+      "seq": 2,
+      "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+      "heap": 37920,
+      "status": "live",
+      "native_largest": 30720
+    }
+  },
+  "plugin_enabled": true,
+  "ota_release": "15ded75b26f381f113c64fca760bc193f88498a356e154951e87a0eda4e512d7"
+}

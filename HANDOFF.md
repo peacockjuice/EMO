@@ -79,6 +79,10 @@ Current bundle `15ded75b26f381f113c64fca760bc193f88498a356e154951e87a0eda4e512d7
 
 The first attempt confirmed in auto but lost network after selecting BB (preview/bb-attention-first-attempt.json). After power recovery, extracting emo_bb_view.py and collecting between scene/font/renderer imports restored mode-first startup and live delivery, with about 40 KB native free in signed receipts. No USB diagnostics were available, so the exact memory cause is an inference, not a measured before/after allocation trace. The sender remains off during updates. Evidence: preview/bb-attention-mode-first.json and preview/bb-attention-acceptance.json. The intended live unread-minute check is recorded as skipped in preview/bb-attention-reminders.json because the user had already read the available reply; deterministic policy tests cover the cadence, restart and actual-read distinction. tools/check_bb_reminders.py can observe a future real unread reply without mutating it.
 
+## Resource and reminder-history cleanup (2026-11-18)
+
+The smaller full bundle is confirmed after normal startup, with no pending/trial release. Three separate 12-round panel/live series passed: before cleanup, after assets with the old plugin, and after plugin reload on the same smaller firmware. Carousel now returns an explicit optional notice; the server saves it before delivery, keeping unread state independent. Source totals and scoped verification are recorded in the [completed-change measurements](./handoff/optimization-plan.md). No optical OLED acceptance or deferred 30-minute soak was performed.
+
 ## Previous quiet-idle adjustment (2026-11-17)
 
 Bundle `1f13c37023cc468bfb3e1f400abdaf6ff50d0d86cb7daf7806e8811c0ad12cb4`: a live idle card shows only the calm face, without counters or text cycling. Match card=idle and face=idle, not face alone: an older completion also uses the idle face and must retain its message. Offline/unknown states remain visible. Seventeen local tests; live evidence: preview/bb-quiet-acceptance.json.

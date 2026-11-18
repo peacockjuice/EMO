@@ -1,0 +1,30 @@
+
+> bb-plugin-emo@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ work and question are independent; question and error are both counted (0.854125ms)
+✔ completion only from root; stop, duplicate, new turn and bootstrap preserve only unread completion (0.193042ms)
+✔ completion reaction yields to work once; unread count persists (0.317417ms)
+✔ urgent interruption and ten sessions remain fair as new urgent sessions arrive (1.378292ms)
+✔ old unread completion is still an answer; stale source does not claim work (0.135333ms)
+✔ dismissed failure does not hide a new failure and queued work is not running (0.08575ms)
+✔ a new completion in the same session receives its own eight-second slot (0.101083ms)
+✔ question label wins over retry just like its face (0.395584ms)
+✔ unread reminders repeat at sixty seconds, survive restart and stop on reading (0.171541ms)
+✔ urgent and unread rings both progress without interrupting an attention card (0.233875ms)
+✔ read reply cannot clear a pending interaction; new completion gets a fresh notice (0.107584ms)
+✔ selection returns an explicit notice without mutating inputs or repeating it during a slot (0.143292ms)
+✔ monitor observes interactions, source disconnect, read state, exclusions and removal without polling (4056.024042ms)
+✔ a change during initial enumeration cannot be overwritten by its stale row (608.047792ms)
+✔ persisted notices survive a host reload; disabled mode and failed delivery never mark a reply read (1293.530875ms)
+✔ a failed notice save stops the monitor before the answer card can be sent (254.650583ms)
+✔ signed UTF8 wire, monotonic sequence, forged response and cancellation (31.144209ms)
+✔ oversized challenge is cancelled before buffering the full response (0.994417ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6519.010083

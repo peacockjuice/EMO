@@ -12,7 +12,11 @@ function state(id, extra={}) {
 const trace=[];
 let carousel=new Carousel();
 function sample(scenario, now, states, source=true) {
-  const card=carousel.next(states,now,source);
+  const {card,notice}=carousel.next(states,now,source);
+  if(notice){
+    const s=states.find(s=>s.id===notice.id);
+    s.notifiedCompletion=notice.notifiedCompletion;s.notifiedAt=notice.notifiedAt;
+  }
   trace.push({scenario,now,card,counts:counts(states),states:structuredClone(states)});
 }
 const q=state('q',{pending:true,working:true});

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/vpavlin/projects/EMO/tools/check_bb_reminders.py", line 35, in <module>
+    run(a.report,a.seconds)
+    ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vpavlin/projects/EMO/tools/check_bb_reminders.py", line 17, in run
+    assert snapshot['sourceReady'] and snapshot['delivery']=='live','Source or delivery is not live'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Source or delivery is not live

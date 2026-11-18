@@ -33,6 +33,7 @@ export function kind(s:RecordState):Kind{
 }
 export function counts(states:RecordState[]){return [states.filter(s=>s.working).length,states.filter(s=>s.pending).length,states.filter(s=>s.status==='error'&&!s.retry&&s.dismissed!==s.failure).length,states.filter(s=>s.completion>0).length];}
 export type Card={card:string;face:Kind;text:string;counts:number[];source:boolean;ttl:number};
+export type Selection={card:Card;notice?:{id:string;notifiedCompletion:number;notifiedAt:number}};
 // Display history is separate from unread state; only BB read events clear completion.
 export const SLOT_MS=8000, REMINDER_MS=60000;
 export class Carousel{
@@ -45,8 +46,9 @@ export class Carousel{
   return result;
  }
  private id(s:RecordState){const k=kind(s);return s.id+':'+k+':'+(k==='done'?s.completion:k==='error'?s.failure:0);}
- next(states:RecordState[],now:number,source=true):Card{
-  if(!source){this.current='';return {card:'unknown',face:'idle',text:'СТАТУС BB НЕИЗВЕСТЕН',counts:[0,0,0,0],source:false,ttl:30};}
+ next(states:RecordState[],now:number,source=true):Selection{
+  let notice:Selection['notice'];
+  if(!source){this.current='';return {card:{card:'unknown',face:'idle',text:'СТАТУС BB НЕИЗВЕСТЕН',counts:[0,0,0,0],source:false,ttl:30}};}
   const urgent=states.filter(s=>['question','error'].includes(kind(s)));
   const replies=states.filter(s=>kind(s)==='done');
   const due=replies.filter(s=>s.notifiedCompletion!==s.completion||now-(s.notifiedAt??0)>=REMINDER_MS);
@@ -68,14 +70,14 @@ export class Carousel{
    this.current=selected?.id??'';this.identity=selected?this.id(selected):'';this.until=now+SLOT_MS;
    if(selected){
     this.lastUrgent=['question','error'].includes(kind(selected));
-    if(kind(selected)==='done'){selected.notifiedCompletion=selected.completion;selected.notifiedAt=now;}
+    if(kind(selected)==='done')notice={id:selected.id,notifiedCompletion:selected.completion,notifiedAt:now};
    }else this.lastUrgent=false;
   }
   if(!selected){
    const face=states.some(s=>s.working)?'work':states.some(s=>kind(s)==='wait')?'wait':'idle';
-   return {card:'background:'+face,face,text:labels[face],counts:counts(states),source:true,ttl:30};
+   return {card:{card:'background:'+face,face,text:labels[face],counts:counts(states),source:true,ttl:30}};
   }
   const face=kind(selected);
-  return {card:this.identity,face,text:(face==='question'?'? ':face==='error'?'! ':'')+selected.alias+': '+labels[face],counts:counts(states),source:true,ttl:30};
+  return {card:{card:this.identity,face,text:(face==='question'?'? ':face==='error'?'! ':'')+selected.alias+': '+labels[face],counts:counts(states),source:true,ttl:30},notice};
  }
 }

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/vpavlin/projects/EMO/tools/check_bb_reminders.py", line 36, in <module>
+    run(a.report,a.seconds)
+    ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vpavlin/projects/EMO/tools/check_bb_reminders.py", line 17, in run
+    assert row and not row['excluded'] and row['completion']==target['completion'],'Target was read, excluded or superseded during observation'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Target was read, excluded or superseded during observation

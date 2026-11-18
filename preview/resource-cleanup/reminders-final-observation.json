@@ -1,0 +1,17 @@
+{
+  "sourceReady": true,
+  "delivery": "live",
+  "error": "",
+  "receipt": {
+    "native_heap": 40400,
+    "epoch": 1794996839251,
+    "frames": 1112,
+    "ok": true,
+    "seq": 40,
+    "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+    "heap": 37856,
+    "status": "live",
+    "native_largest": 30720
+  },
+  "eligible_unread_count": 0
+}

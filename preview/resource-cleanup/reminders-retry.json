@@ -1,0 +1,161 @@
+{
+  "started_at": "2026-11-18T10:17:42.578377+00:00",
+  "passed": false,
+  "samples": [
+    {
+      "at": 1794997063320,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40396,
+        "epoch": 1794996839251,
+        "frames": 1011,
+        "ok": true,
+        "seq": 33,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38688,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997068644,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40396,
+        "epoch": 1794996839251,
+        "frames": 1011,
+        "ok": true,
+        "seq": 33,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38688,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997073967,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40392,
+        "epoch": 1794996839251,
+        "frames": 1030,
+        "ok": true,
+        "seq": 34,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38944,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997079295,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40392,
+        "epoch": 1794996839251,
+        "frames": 1030,
+        "ok": true,
+        "seq": 34,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38944,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997084645,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 1047,
+        "ok": true,
+        "seq": 35,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38880,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997089980,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 1047,
+        "ok": true,
+        "seq": 35,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38880,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997095300,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 1062,
+        "ok": true,
+        "seq": 36,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38816,
+        "status": "live",
+        "native_largest": 31744
+      }
+    },
+    {
+      "at": 1794997100616,
+      "kind": "done",
+      "completion": 3074,
+      "notifiedAt": 1794997052451,
+      "notifiedCompletion": 3074,
+      "receipt": {
+        "native_heap": 40400,
+        "epoch": 1794996839251,
+        "frames": 1084,
+        "ok": true,
+        "seq": 37,
+        "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+        "heap": 38928,
+        "status": "live",
+        "native_largest": 31744
+      }
+    }
+  ],
+  "alias": "PDF#2",
+  "completion": 3074,
+  "last_observation": {
+    "sourceReady": true,
+    "delivery": "live",
+    "error": "",
+    "completion": 0,
+    "excluded": false
+  },
+  "error": "AssertionError: Target was read, excluded or superseded during observation",
+  "finished_at": "2026-11-18T10:18:25.971551+00:00"
+}

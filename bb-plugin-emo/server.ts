@@ -134,9 +134,12 @@ export default async function plugin(bb:BbPluginApi){
     }catch(e){if(signal.aborted)break;ready=false;reconcile=true;nextRecovery=Date.now()+5000;error='Не удалось сверить состояния BB';bb.log.warn(error);}
     const source=connected&&ready&&!reconcile&&dirty.size===0;
     const states=[...records.values()].filter(s=>!excluded.has(s.id));
-    const noticesBefore=new Map(states.map(s=>[s.id,s.notifiedAt]));
-    const card=carousel.next(states,Date.now(),source);
-    for(const s of states)if(noticesBefore.get(s.id)!==s.notifiedAt)await bb.storage.kv.set('thread:'+s.id,s);
+    const {card,notice}=carousel.next(states,Date.now(),source);
+    if(notice){
+     const s=records.get(notice.id)!;
+     s.notifiedCompletion=notice.notifiedCompletion;s.notifiedAt=notice.notifiedAt;
+     await bb.storage.kv.set('thread:'+s.id,s);
+    }
     const fingerprint=JSON.stringify(card);
     if(!sendTask&&config.notifyKey&&Date.now()>=nextSend&&(fingerprint!==lastFingerprint||Date.now()-lastSend>=10000)){
      const sentFingerprint=fingerprint;const currentConfig=config;

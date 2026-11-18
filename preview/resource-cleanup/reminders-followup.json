@@ -1,0 +1,26 @@
+{
+  "sourceReady": true,
+  "delivery": "live",
+  "error": "",
+  "receipt": {
+    "native_heap": 40400,
+    "epoch": 1794996839251,
+    "frames": 969,
+    "ok": true,
+    "seq": 30,
+    "boot": "c3e9f20cd874aeec56039a5bbbfafcb7",
+    "heap": 38880,
+    "status": "live",
+    "native_largest": 31744
+  },
+  "unread": [
+    {
+      "alias": "PDF#2",
+      "kind": "done",
+      "completion": 3074,
+      "notifiedCompletion": 3074,
+      "notifiedAt": 1794996992386,
+      "excluded": false
+    }
+  ]
+}

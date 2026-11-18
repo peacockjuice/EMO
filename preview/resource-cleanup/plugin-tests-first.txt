@@ -1,0 +1,47 @@
+
+> bb-plugin-emo@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ work and question are independent; question and error are both counted (0.921875ms)
+✔ completion only from root; stop, duplicate, new turn and bootstrap preserve only unread completion (0.196ms)
+✔ completion reaction yields to work once; unread count persists (0.984333ms)
+✔ urgent interruption and ten sessions remain fair as new urgent sessions arrive (3.342166ms)
+✔ old unread completion is still an answer; stale source does not claim work (0.415875ms)
+✔ dismissed failure does not hide a new failure and queued work is not running (0.113833ms)
+✔ a new completion in the same session receives its own eight-second slot (0.120375ms)
+✔ question label wins over retry just like its face (0.072375ms)
+✔ unread reminders repeat at sixty seconds, survive restart and stop on reading (0.205208ms)
+✔ urgent and unread rings both progress without interrupting an attention card (0.228084ms)
+✔ read reply cannot clear a pending interaction; new completion gets a fresh notice (0.111958ms)
+✔ selection returns an explicit notice without mutating inputs or repeating it during a slot (0.143042ms)
+✔ monitor observes interactions, source disconnect, read state, exclusions and removal without polling (4051.2805ms)
+✔ a change during initial enumeration cannot be overwritten by its stale row (602.775917ms)
+✖ persisted notices survive a host reload; disabled mode and failed delivery never mark a reply read (3114.72475ms)
+✔ a failed notice save stops the monitor before the answer card can be sent (254.262875ms)
+✔ signed UTF8 wire, monotonic sequence, forged response and cancellation (41.057584ms)
+✔ oversized challenge is cancelled before buffering the full response (3.228041ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 17
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8464.519916
+
+✖ failing tests:
+
+test at tests/server.test.ts:63:1
+✖ persisted notices survive a host reload; disabled mode and failed delivery never mark a reply read (3114.72475ms)
+  AssertionError [ERR_ASSERTION]: monitor did not reach the expected state
+      at eventually (file:///Users/vpavlin/projects/EMO/bb-plugin-emo/tests/server.test.ts:60:9)
+      at async TestContext.<anonymous> (file:///Users/vpavlin/projects/EMO/bb-plugin-emo/tests/server.test.ts:78:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }

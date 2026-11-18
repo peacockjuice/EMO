@@ -13,6 +13,7 @@ def run(report_path,seconds):
         deadline=time.monotonic()+seconds
         while True:
             snapshot=status();row=next((s for s in snapshot['threads'] if s['id']==target['id']),None)
+            report['last_observation']={'sourceReady':snapshot['sourceReady'],'delivery':snapshot['delivery'],'error':snapshot['error'],'completion':row['completion'] if row else None,'excluded':row['excluded'] if row else None}
             assert row and not row['excluded'] and row['completion']==target['completion'],'Target was read, excluded or superseded during observation'
             assert snapshot['sourceReady'] and snapshot['delivery']=='live','Source or delivery is not live'
             report['samples'].append({'at':int(time.time()*1000),'kind':row['kind'],'completion':row['completion'],'notifiedAt':row.get('notifiedAt'),'notifiedCompletion':row.get('notifiedCompletion'),'receipt':snapshot['receipt']})
