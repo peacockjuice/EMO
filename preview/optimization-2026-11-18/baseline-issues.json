@@ -1,0 +1,17 @@
+[
+  {
+    "kind": "test_setup",
+    "status": "resolved",
+    "detail": "Three initial log redirects raced creation of the report directory; no tests ran in those attempts. Rerun after directory creation passed."
+  },
+  {
+    "kind": "device_ota_status",
+    "status": "resolved_with_documented_quiet_mode",
+    "detail": "Signed OTA status timed out with sender/BB active. No upload was attempted. Status succeeded after disabling sender and selecting auto; full local release equals active and running, confirmed, no pending or trial."
+  },
+  {
+    "kind": "build_warning",
+    "status": "preexisting",
+    "detail": "Node DEP0205 module.register deprecation warning occurs in both builds; exit 0."
+  }
+]

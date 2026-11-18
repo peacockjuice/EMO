@@ -44,10 +44,6 @@ export class Carousel{
   for(const s of states)if(!result.includes(s.id))result.push(s.id);
   return result;
  }
- private take(queue:string[],states:RecordState[]){
-  const id=queue.shift();if(id)queue.push(id);
-  return states.find(s=>s.id===id);
- }
  private id(s:RecordState){const k=kind(s);return s.id+':'+k+':'+(k==='done'?s.completion:k==='error'?s.failure:0);}
  next(states:RecordState[],now:number,source=true):Card{
   if(!source){this.current='';return {card:'unknown',face:'idle',text:'СТАТУС BB НЕИЗВЕСТЕН',counts:[0,0,0,0],source:false,ttl:30};}
@@ -62,7 +58,9 @@ export class Carousel{
    const dueIds=new Set(due.map(s=>s.id));
    const replyId=this.replyQueue.find(id=>dueIds.has(id));
    if(urgent.length&&(!this.lastUrgent||!replyId)){
-    selected=this.take(this.urgentQueue,urgent);
+    const id=this.urgentQueue.shift();
+    if(id)this.urgentQueue.push(id);
+    selected=urgent.find(s=>s.id===id);
    }else if(replyId){
     selected=due.find(s=>s.id===replyId);
     this.replyQueue=this.replyQueue.filter(id=>id!==replyId);this.replyQueue.push(replyId);

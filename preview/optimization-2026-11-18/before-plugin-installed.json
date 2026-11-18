@@ -1,0 +1,29 @@
+{
+  "id": "emo",
+  "source": "path:/Users/vpavlin/projects/EMO/bb-plugin-emo",
+  "rootDir": "/Users/vpavlin/projects/EMO/bb-plugin-emo",
+  "version": "0.1.0",
+  "enabled": true,
+  "status": "running",
+  "app": {
+    "hasApp": true,
+    "bundle": {
+      "jsUrl": "/api/v1/plugin-app-assets/670d08667e3dfce6/app.js",
+      "cssUrl": "/api/v1/plugin-app-assets/670d08667e3dfce6/app.css",
+      "jsBytes": 32908,
+      "hash": "670d08667e3dfce6",
+      "sdkMajor": 0,
+      "sdkVersion": "0.6.132",
+      "compatible": true,
+      "runtimeSlots": [
+        "classVarianceAuthority",
+        "clsx",
+        "jsxRuntime",
+        "pluginSdkApp",
+        "react",
+        "reactDom",
+        "tailwindMerge"
+      ]
+    }
+  }
+}

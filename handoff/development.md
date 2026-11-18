@@ -88,6 +88,11 @@ check_web with BMO_TEST_URL drives the real device and ends auto/inversion off: 
 - Real-browser QA was unavailable: computer-use browser host failed to connect. Mock DOM tests do not prove CSS/layout appearance.
 - preview/handoff-snapshot.json records current local hashes and live HTML equality. It does not re-read every runtime file on the board or rerun the hardware suite.
 
+## Small plugin simplification (2026-11-18)
+
+The panel now reuses model.counts, and urgent-ring rotation is inline at its single call site. Firmware is unchanged. Baseline, fixed source inventory, before/after measurements and verification limits are recorded separately.
+Source: [Plugin simplification and measurements](./optimization-2026-11-18.md)
+
 ## Rollback
 
 Use the confirmed A/B rollback procedure in [Wi-Fi updater and recovery](./wifi-updates.md). Never copy individual old files over the active slot. Historical snapshots under backups/before-figma, before-enlargement, before-full-set, before-inversion, before-speech, before-behaviour-update and before-syllables are fixtures and source references; port a consistent set into a complete validated bundle when needed.

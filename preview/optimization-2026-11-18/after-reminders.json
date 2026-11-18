@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-11-18T09:15:13.778333+00:00",
+  "passed": false,
+  "samples": [],
+  "error": "RuntimeError: No unread reply available; this check creates no synthetic user messages",
+  "finished_at": "2026-11-18T09:15:14.089567+00:00"
+}

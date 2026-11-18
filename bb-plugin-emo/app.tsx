@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { definePluginApp, useBbNavigate, useRealtime, useRealtimeConnectionState, useRpc } from "@get-bb/plugin-sdk/app";
 import type { rpcContract, Status } from "./server";
+import { counts } from "./model";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -17,8 +18,7 @@ function EmoPage(){
  useEffect(refresh,[refresh,connection]);useRealtime("changed",refresh);
  async function change(action:()=>Promise<unknown>){setBusy(true);setError("");try{await action();refresh();}catch(e){report(e);}finally{setBusy(false);}}
  if(!data)return <div className="p-6" role="status">{error||"Подключение к EMO…"}</div>;
- const watched=data.threads.filter(s=>!s.excluded);
- const totals=[watched.filter(s=>s.working).length,watched.filter(s=>s.pending).length,watched.filter(s=>s.status==="error"&&!s.retry&&s.dismissed!==s.failure).length,watched.filter(s=>s.completion>0).length];
+ const totals=counts(data.threads.filter(s=>!s.excluded));
  const order:Record<string,number>={question:0,error:1,done:2,work:3,wait:4,idle:5};
  const threads=[...data.threads].sort((a,b)=>Number(a.excluded)-Number(b.excluded)||(order[a.kind]-order[b.kind])||a.alias.localeCompare(b.alias));
  return <main className="mx-auto max-w-4xl space-y-6 p-6">

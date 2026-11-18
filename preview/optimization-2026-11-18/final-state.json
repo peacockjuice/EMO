@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-18T09:17:31.504781+00:00",
+  "device": {
+    "feeling": null,
+    "frames": 2135,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "bridge": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40400,
+      "epoch": 1794993295430,
+      "frames": 2134,
+      "ok": true,
+      "seq": 16,
+      "boot": "9209afce6c6de5ed205ea5dffd353793",
+      "heap": 36832,
+      "status": "live",
+      "native_largest": 29696
+    },
+    "url": "http://192.168.1.43"
+  },
+  "plugin": {
+    "id": "emo",
+    "enabled": true,
+    "status": "running",
+    "version": "0.1.0",
+    "rootDir": "/Users/vpavlin/projects/EMO/bb-plugin-emo"
+  },
+  "same_device_boot": true,
+  "inversion_restored": true,
+  "firmware_uploaded": false
+}
