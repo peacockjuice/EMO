@@ -1,0 +1,1 @@
+PASS: all 30 animated, exact static starting poses, frame offsets, aliases, catalog, syntax

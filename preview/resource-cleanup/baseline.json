@@ -1,0 +1,62 @@
+{
+  "at": "2026-11-18T10:02:57.776120+00:00",
+  "git_head": "e13ea084e3ab42237e6728ea984c09b2e026b56d",
+  "device": {
+    "feeling": null,
+    "frames": 5581,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "bridge": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40392,
+      "epoch": 1794993966211,
+      "frames": 5565,
+      "ok": true,
+      "seq": 214,
+      "boot": "9209afce6c6de5ed205ea5dffd353793",
+      "heap": 38656,
+      "status": "live",
+      "native_largest": 31744
+    },
+    "url": "http://192.168.1.43"
+  },
+  "plugin": {
+    "id": "emo",
+    "version": "0.1.0",
+    "rootDir": "/Users/vpavlin/projects/EMO/bb-plugin-emo",
+    "enabled": true,
+    "status": "running",
+    "app": {
+      "hasApp": true,
+      "bundle": {
+        "jsUrl": "/api/v1/plugin-app-assets/cb644e9c148af18e/app.js",
+        "cssUrl": "/api/v1/plugin-app-assets/cb644e9c148af18e/app.css",
+        "jsBytes": 32931,
+        "hash": "cb644e9c148af18e",
+        "sdkMajor": 0,
+        "sdkVersion": "0.6.132",
+        "compatible": true,
+        "runtimeSlots": [
+          "classVarianceAuthority",
+          "clsx",
+          "jsxRuntime",
+          "pluginSdkApp",
+          "react",
+          "reactDom",
+          "tailwindMerge"
+        ]
+      }
+    }
+  },
+  "ota_bytes": 188586,
+  "ota_release": "32d7e7e50941ef08bbf923bbec1c42a35f4e136fca81224cc1dc08c8612467ac",
+  "ota_body_sha256": "66ee5dba40205297d00b43db3fd19c74e3042fc869172c64c8f573e058e12541",
+  "rollback_source": "/Users/vpavlin/.bb/thread-storage/thr_quh35ndgs2/resource-cleanup-rollback"
+}

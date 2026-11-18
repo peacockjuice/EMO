@@ -4,6 +4,7 @@ P=Path(__file__).resolve().parents[1]
 m=json.loads((P/"preview/full-manifest.json").read_text());bank=(P/"emotions.bin").read_bytes();static=(P/"preview/faces.bin").read_bytes()
 assert hashlib.sha256(bank).hexdigest()==m["sha256"]
 assert len(bank)==m["frames"]*1024
+assert m['bytes']==len(bank), 'manifest bytes differs from the actual bank'
 for n in range(1,31):
  key="rosto%02d"%n;seq=m["sequences"][key]
  assert all(0<=i<m["frames"] and ms>=80 for i,ms in seq)

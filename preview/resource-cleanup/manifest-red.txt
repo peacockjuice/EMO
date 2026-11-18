@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/vpavlin/projects/EMO/tools/check_full.py", line 7, in <module>
+    assert m['bytes']==len(bank), 'manifest bytes differs from the actual bank'
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: manifest bytes differs from the actual bank

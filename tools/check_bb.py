@@ -1,5 +1,5 @@
 """Offline BB receiver and frame checks; no device or credentials required."""
-import asyncio, gc, hashlib, hmac, json, sys, time, types, unittest, subprocess
+import asyncio, gc, hashlib, hmac, json, sys, time, types, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 now=[0];PERIOD=1<<30
@@ -179,12 +179,8 @@ class BBTests(unittest.TestCase):
    with self.assertRaises(ValueError):await r.readexactly(1)
   asyncio.run(run())
  def test_frame_bank_and_font(self):
-  original=subprocess.check_output(['git','show','HEAD:emotions.bin'],cwd=ROOT)
-  data=(ROOT/'emotions.bin').read_bytes();self.assertEqual(data[:len(original)],original)
-  from emo_bb_frames import SEQUENCES
-  for seq in SEQUENCES.values():
-   for i,ms in seq:
-    frame=data[i*1024:(i+1)*1024];self.assertEqual(len(frame),1024);self.assertEqual(frame[:128],bytes(128));self.assertEqual(frame[-128:],bytes(128))
+  from tools.check_assets import check
+  check()
   for c in 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ':self.assertNotEqual(DATA[glyph(c)*5:glyph(c)*5+5],bytes(5))
   self.assertEqual(len(DATA),460)
   payload,_=bundle(ROOT);self.assertLess(len(payload),384*1024)

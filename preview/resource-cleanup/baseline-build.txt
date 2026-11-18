@@ -1,0 +1,8 @@
+(node:19521) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+bb-plugin-emo/dist/server.js
+bb-plugin-emo/dist/server.js.map
+bb-plugin-emo/dist/server.meta.json
+bb-plugin-emo/dist/app.js
+bb-plugin-emo/dist/app.css
+bb-plugin-emo/dist/app.meta.json

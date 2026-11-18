@@ -1,0 +1,7 @@
+{
+  "initial_defect_reproduced": true,
+  "manifest_bytes": 124928,
+  "ota_unchanged": true,
+  "baseline_live_passed": true,
+  "frozen_reference": "1d180f653fd270f4213be98f52b9a67558d8344e"
+}
