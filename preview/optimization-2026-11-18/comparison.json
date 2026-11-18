@@ -101,5 +101,8 @@
   },
   "trace_equal": true,
   "trace_sha256": "759f05e22e7873c074ac01865efeecc1cb01e82595103a37f582a4d6231a8759",
-  "trace_steps": 42
+  "trace_steps": 42,
+  "hardware_comparison_valid": false,
+  "superseded_by": "review-comparison.json",
+  "limitation": "Initial before-live overlapped an OTA status request; after-live did not. Original measured values retained, not a matched-load comparison."
 }

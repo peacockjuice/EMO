@@ -11,19 +11,6 @@ sys.path.insert(0, str(ROOT / 'tools'))
 from wifi_update import bundle
 
 inventory = HERE / 'source-files.json'
-if not inventory.exists():
-    tracked = subprocess.check_output(['rtk', 'proxy', 'git', 'ls-files'], cwd=ROOT, text=True).splitlines()
-    excluded = {
-        'ap_cfg.example.py', 'ssd1306.py', 'emotion_sequences.py',
-        'sample_sequences.py', 'emo_bb_frames.py', 'bb-plugin-emo/lib/utils.ts',
-        'tools/review_board.py', 'tools/selftest.py',
-    }
-    files = [name for name in tracked
-             if Path(name).suffix in ('.py', '.ts', '.tsx')
-             and not name.startswith(('backups/', 'preview/', 'bb-plugin-emo/components/',
-                                      'bb-plugin-emo/tests/', 'tools/check_', 'tools/test_', 'tools/run_'))
-             and name not in excluded]
-    inventory.write_text(json.dumps(files, indent=2) + '\n')
 files = json.loads(inventory.read_text())
 rows = []
 for name in files:
@@ -43,5 +30,4 @@ for language, suffixes in [('python', ('.py',)), ('typescript', ('.ts', '.tsx'))
     subset = [r for r in rows if Path(r['file']).suffix in suffixes]
     report[language] = {'bytes': sum(r['bytes'] for r in subset),
                         'nonempty_lines': sum(r['nonempty_lines'] for r in subset)}
-(HERE / (sys.argv[1] + '-metrics.json')).write_text(json.dumps(report, indent=2) + '\n')
-print(json.dumps({k: v for k, v in report.items() if k != 'files'}, indent=2))
+print(json.dumps(report, indent=2))

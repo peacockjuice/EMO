@@ -1,0 +1,14 @@
+[
+  {
+    "path": "before-trace.json.gz",
+    "raw_bytes": 229707,
+    "gzip_bytes": 3473,
+    "raw_sha256": "759f05e22e7873c074ac01865efeecc1cb01e82595103a37f582a4d6231a8759"
+  },
+  {
+    "path": "after-trace.json.gz",
+    "raw_bytes": 229707,
+    "gzip_bytes": 3473,
+    "raw_sha256": "759f05e22e7873c074ac01865efeecc1cb01e82595103a37f582a4d6231a8759"
+  }
+]

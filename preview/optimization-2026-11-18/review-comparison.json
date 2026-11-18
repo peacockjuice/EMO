@@ -1,0 +1,107 @@
+{
+  "rows": [
+    [
+      "Исходники: байты",
+      113055,
+      112815
+    ],
+    [
+      "Исходники: непустые строки",
+      2133,
+      2131
+    ],
+    [
+      "Полный OTA: байты",
+      188586,
+      188586
+    ],
+    [
+      "python: bytes",
+      86568,
+      86568
+    ],
+    [
+      "python: nonempty_lines",
+      1806,
+      1806
+    ],
+    [
+      "typescript: bytes",
+      26487,
+      26247
+    ],
+    [
+      "typescript: nonempty_lines",
+      327,
+      325
+    ],
+    [
+      "Панель + доставка: успешно / попыток",
+      "12 / 12",
+      "12 / 12"
+    ],
+    [
+      "Загрузка панели: медиана, с",
+      1.412,
+      1.441
+    ],
+    [
+      "Загрузка панели: максимум, с",
+      2.382,
+      2.143
+    ],
+    [
+      "native_heap: минимум, байт",
+      37084,
+      37092
+    ],
+    [
+      "native_largest: минимум, байт",
+      25600,
+      26624
+    ],
+    [
+      "Python / plugin tests",
+      "19 / 15",
+      "19 / 15"
+    ],
+    [
+      "Детерминированная трасса: шаги",
+      42,
+      42
+    ],
+    [
+      "TypeScript / build",
+      "passed / passed",
+      "passed / passed"
+    ],
+    [
+      "Frontend JS: байты",
+      32908,
+      32931
+    ]
+  ],
+  "hardware": {
+    "before": {
+      "successes": 12,
+      "attempts": 12,
+      "panel_median_s": 1.412,
+      "panel_max_s": 2.382,
+      "native_heap_min": 37084,
+      "native_largest_min": 25600
+    },
+    "after": {
+      "successes": 12,
+      "attempts": 12,
+      "panel_median_s": 1.441,
+      "panel_max_s": 2.143,
+      "native_heap_min": 37092,
+      "native_largest_min": 26624
+    }
+  },
+  "trace_equal": true,
+  "trace_sha256": "759f05e22e7873c074ac01865efeecc1cb01e82595103a37f582a4d6231a8759",
+  "trace_steps": 42,
+  "method": "Sequential baseline/current plugin, 12 rounds each, no overlapping OTA or external device checks. Same firmware and boot; source hashes in review-pair.json.",
+  "supersedes_hardware_comparison": "comparison.json"
+}

@@ -57,7 +57,11 @@ class BBTests(unittest.TestCase):
   self.assertEqual(bb._card_at,1000);self.assertEqual(bb.view(10000)[0],'talk_bobo')
  def test_scroll_done_unknown(self):
   bb.accept(self.value(text='Я'*36,face='done'),1)
-  self.assertEqual(bb.view(1000)[0],'wink');self.assertIsNone(bb.view(4000)[0])
+  self.assertEqual(bb.view(1000)[0],'wink')
+  self.assertEqual(bb.view(1999)[0],'wink')
+  self.assertEqual(bb.view(2000)[0],'rosto01')
+  self.assertEqual(bb.view(2999)[0],'rosto01')
+  self.assertIsNone(bb.view(3000)[0]);self.assertIsNone(bb.view(4000)[0])
   self.assertEqual(bb.view(8500)[3],732);self.assertEqual(bb.view(9000)[0],'rosto04')
   bb.accept(self.value(seq=2,source=False),1);self.assertEqual(bb.status(),'unknown');self.assertIsNone(bb.view(4000)[2])
  def test_large_font_clips_and_has_no_footer(self):

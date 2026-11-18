@@ -7,7 +7,7 @@
   {
     "kind": "device_ota_status",
     "status": "resolved_with_documented_quiet_mode",
-    "detail": "Signed OTA status timed out with sender/BB active. No upload was attempted. Status succeeded after disabling sender and selecting auto; full local release equals active and running, confirmed, no pending or trial."
+    "detail": "Signed OTA status timed out with sender/BB active and overlapping the beginning of before-live. No upload was attempted. Status later succeeded after disabling sender and selecting auto; local release equals active and running, confirmed, no pending or trial. Cause of the specific timeout is not established."
   },
   {
     "kind": "build_warning",

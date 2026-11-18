@@ -23,7 +23,11 @@ test('monitor observes interactions, source disconnect, read state, exclusions a
   await harness.behavior.callRpc('exclude',{id:'t',excluded:true});assert.equal((await status()).threads[0].excluded,true);
   callbacks.get('realtime:connection')!({state:'disconnected'});assert.equal((await status()).sourceReady,false);
   callbacks.get('realtime:connection')!({state:'connected'});await eventually(s=>s.sourceReady);
-  row={...row,archivedAt:Date.now()};changed();await eventually(s=>s.threads.length===0);
+  for(const hidden of [{parentThreadId:'parent'},{visibility:'hidden'},{archivedAt:1},{deletedAt:1}] as const){
+   row={...row,...hidden};changed();await eventually(s=>s.sourceReady&&s.threads.length===0);
+   row={...row,parentThreadId:null,visibility:'visible',archivedAt:null,deletedAt:null};
+   changed();await eventually(s=>s.sourceReady&&s.threads.length===1);
+  }
  }finally{service.controller.abort();await service.done;await harness.lifecycle.dispose();assert.equal(callbacks.size,0);}
 });
 

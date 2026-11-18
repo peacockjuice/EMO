@@ -1,5 +1,7 @@
 // Fixed clock and identical inputs before/after; records selection, not delivery/read receipts.
-import {writeFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {gunzipSync} from 'node:zlib';
 import {Carousel, counts} from '../../bb-plugin-emo/model.ts';
 
 function state(id, extra={}) {
@@ -53,5 +55,6 @@ for(let i=0;i<20;i++) {
   if(i)many.push(state('new'+i,{pending:true}));
   sample('fair queue with arrivals',i*8000,many);
 }
-writeFileSync(new URL(process.argv[2]+'-trace.json',import.meta.url),JSON.stringify(trace,null,2)+'\n');
-console.log('Recorded',trace.length,'deterministic selections');
+const baseline=JSON.parse(gunzipSync(readFileSync(new URL('./before-trace.json.gz',import.meta.url))).toString());
+assert.deepEqual(trace,baseline,'Selection, timing, counters or unread state changed');
+console.log('PASS',trace.length,'deterministic selections match the frozen baseline');

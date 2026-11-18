@@ -1,0 +1,44 @@
+{
+  "started_at": "2026-11-18T09:24:29.501056+00:00",
+  "baseline_git": "6c4c7a878b2ab6073e87df35c369adbe47eabf70",
+  "phases": {
+    "review-before": {
+      "source_sha256": {
+        "bb-plugin-emo/app.tsx": "fba3c74f54b29413a040c4837ad220896797f4caa035adabba307abf21f0352b",
+        "bb-plugin-emo/model.ts": "a0053d66fdff9309a34d4ca6763df9afbc1e8460c4905ac1d760c31eef1b2bea"
+      },
+      "ready_receipt": {
+        "native_heap": 40400,
+        "epoch": 1794993870279,
+        "frames": 2699,
+        "ok": true,
+        "seq": 2,
+        "boot": "9209afce6c6de5ed205ea5dffd353793",
+        "heap": 35584,
+        "status": "live",
+        "native_largest": 29696
+      },
+      "passed": true
+    },
+    "review-after": {
+      "source_sha256": {
+        "bb-plugin-emo/app.tsx": "93cf6eb647b6884238d2ce517039c4b0dcdedb20b9cf443993dea34cbbcb49f4",
+        "bb-plugin-emo/model.ts": "07f1c339f50e6a741d65408fb043655aad5f82d5a36d9db0086c716b1696ebd3"
+      },
+      "ready_receipt": {
+        "native_heap": 40612,
+        "epoch": 1794993966211,
+        "frames": 2877,
+        "ok": true,
+        "seq": 2,
+        "boot": "9209afce6c6de5ed205ea5dffd353793",
+        "heap": 37712,
+        "status": "live",
+        "native_largest": 30720
+      },
+      "passed": true
+    }
+  },
+  "restored": true,
+  "finished_at": "2026-11-18T09:27:40.596920+00:00"
+}

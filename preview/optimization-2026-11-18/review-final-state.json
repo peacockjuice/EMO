@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-18T09:28:45.542549+00:00",
+  "device": {
+    "feeling": null,
+    "frames": 3136,
+    "phase": "idle",
+    "scene": null,
+    "mood": "bb",
+    "bb": "live",
+    "showing": null,
+    "invert": false
+  },
+  "bridge": {
+    "sourceReady": true,
+    "delivery": "live",
+    "receipt": {
+      "native_heap": 40400,
+      "epoch": 1794993966211,
+      "frames": 3127,
+      "ok": true,
+      "seq": 16,
+      "boot": "9209afce6c6de5ed205ea5dffd353793",
+      "heap": 36816,
+      "status": "live",
+      "native_largest": 29696
+    }
+  },
+  "sources_restored": true,
+  "same_device_boot": true,
+  "firmware_uploaded": false
+}
